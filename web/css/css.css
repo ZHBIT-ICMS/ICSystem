@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,
+body{
+    /*background-image: url("http://www.58pic.com/newpic/26276807.html");*/
+}
+#app,
+.wrapper {
+    width: 100%;
+    min-width: 1240px;
+    max-width: 100%;
+    position: relative;
+}
+.page{
+    width: 1020px;
+    position: relative;
+    left: 50%;
+    margin-left: -510px;
+}
+.clearfix:after { content: ""; display: block; clear: both;}
+
+body {
+    font-family: "微软雅黑",Arial,Helvetica,sans-serif;
+    background: #dcdcdc;
+}
+
+a {
+    text-decoration: none
+}
+li{
+    list-style: none;
+}

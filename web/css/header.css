@@ -1,0 +1,36 @@
+.header{
+
+
+
+}
+.header_head{
+    height: 100px;
+    background: rgb(2,66,43);
+
+}
+.header_logo{
+    position: relative;
+    top: 30px;
+    left: 20px;
+}
+nav{
+    background: rgb(9,71,48);
+}
+.nav-item{
+    font-size: 14px;
+    position: relative;
+    top: -5px;
+    width: 145px;
+    text-align: center;
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+}
+.nav-item:hover{
+    background: rgb(9,58,40);
+    border: none !important;
+}
+.nav-tabs:hover{
+    border: none !important;
+}

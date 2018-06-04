@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+    "http://struts.apache.org/dtds/struts-2.3.dtd">  
+      
+<struts>  
+    <constant name="struts.i18n.encoding" value="UTF-8" />  
+    <constant name="struts.action.extension" value="action" />
+    <!-- 定义登录拦截器 -->
+
+
+	<package name="ics" namespace="/" extends="struts-default">
+
+        <!--新闻-->
+        <action name="news_*" class="com.zhbit.action.NewsAction" method="{1}">
+            <result name="success">morenews.jsp</result>
+        </action>
+
+        <!--政策法规-->
+        <action name="policy_*" class="com.zhbit.action.PolicyAction" method="{1}">
+            <result name="success">main.jsp</result>
+        </action>
+
+        <!--公告-->
+        <action name="notice_*" class="com.zhbit.action.NoticeAction" method="{1}">
+            <result name="success">morenotice.jsp</result>
+        </action>
+
+
+
+    </package>  
+</struts>   
