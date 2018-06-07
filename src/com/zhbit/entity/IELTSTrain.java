@@ -13,7 +13,8 @@ import java.util.List;
 @Entity
 @Table(name="tb_ielts_train")
 public class IELTSTrain {
-    private int id;//编号
+    private int id;//自增编号
+    private String ieltsTrainId;//雅思机构编号
     private String trainName;//雅思机构名称
     private String trainTerm;//培训的学期
     private Date trainTime;//培训的时期
@@ -24,6 +25,15 @@ public class IELTSTrain {
     @GenericGenerator(name="_native",strategy="native")
     public int getId() {
         return id;
+    }
+
+    @Column(length = 50,unique = true)
+    public String getIeltsTrainId() {
+        return ieltsTrainId;
+    }
+
+    public void setIeltsTrainId(String ieltsTrainId) {
+        this.ieltsTrainId = ieltsTrainId;
     }
 
     public void setId(int id) {

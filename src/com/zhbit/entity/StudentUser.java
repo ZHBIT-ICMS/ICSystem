@@ -4,39 +4,38 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
- * Created by wby on 2018/6/3.
+ * @Author zhangrun ã€macmanboy@foxmail.comã€‘
+ * @Date 2018/6/5
+ * @Time:16:34 æè¿°ï¼š
  */
-//¹ÜÀíÔ±ÓÃ»§±í
+//å­¦ç”Ÿç”¨æˆ·è¡¨
 @Entity
-@Table(name="tb_admin_user")
-public class AdminUser {
+@Table(name="tb_student_user")
+public class StudentUser {
     private int id;
-    private String userNo;//ÓÃ»§±àºÅ
-    private String userName;//ÓÃ»§Ãû
-    private String name;//ÓÃ»§ĞÕÃû
-    private String nickName;//êÇ³Æ
-    private String password;//ÃÜÂë
-    private String loginIp;//µÇÂ¼ip
-    private Date loginDate;//×îºóÒ»´ÎµÇÂ¼Ê±¼ä
-    private String photo;//ÓÃ»§Í·Ïñ
-    private String phone;//ÁªÏµµç»°
-    private String email;//ÓÊÏä
-    private Date birthday;//ÉúÈÕ
-    private int gender;//ĞÔ±ğ ĞÔ±ğ 0²»Ïê 1ÄĞ  2Å®
-    private int collegeId;//Ñ§Ôºid
-    private int locked;// DEFAULT'0' COMMENT ÊÇ·ñËø¶¨ 1Ëø¶¨ 0Î´Ëø¶¨',
-    private String remark;//ÃèÊö
-    private String status;//DEFAULT '1' COMMENT '1Õı³£  0É¾³ı -1È«²¿'
-    private Date createDate;//´´½¨Ê±¼ä
-    private Date updateDate;//¸üĞÂÊ±¼ä
-    private int creator;//´´½¨Õß
-    private int updater;//¸üĞÂÕß
-    private Set<AdminUserRole> adminUserRoles=new HashSet<AdminUserRole>(0);
+    private String userNo;//ç”¨æˆ·ç¼–å·
+    private String userName;
+    private String password;
+    private String nickName;//æ˜µç§°
+    private String loginIp;//ç™»å½•ip
+    private Date loginDate;//æœ€åä¸€æ¬¡ç™»å½•æ—¶é—´
+    private String photo;//ç”¨æˆ·å¤´åƒ
+    private String phone;//è”ç³»ç”µè¯
+    private String email;//é‚®ç®±
+    private Date birthday;//ç”Ÿæ—¥
+    private int gender;//æ€§åˆ« æ€§åˆ« 0ä¸è¯¦ 1ç”·  2å¥³
+    private int collegeId;//å­¦é™¢id
+    private int locked;// DEFAULT'0' COMMENT æ˜¯å¦é”å®š 1é”å®š 0æœªé”å®š',
+    private String remark;//æè¿°
+    private String status;//DEFAULT '1' COMMENT '1æ­£å¸¸  0åˆ é™¤ -1å…¨éƒ¨'
+    private Date createDate;//åˆ›å»ºæ—¶é—´
+    private Date updateDate;//æ›´æ–°æ—¶é—´
+    private int creator;//åˆ›å»ºè€…
+    private int updater;//æ›´æ–°è€…
+    private List<InternationalStudent>internationalStudentList;
     @Id
     @GeneratedValue(generator="_native")
     @GenericGenerator(name="_native",strategy="native")
@@ -47,15 +46,7 @@ public class AdminUser {
     public void setId(int id) {
         this.id = id;
     }
-    @Column(length=128)
-    public String getUserNo() {
-        return userNo;
-    }
-
-    public void setUserNo(String userNo) {
-        this.userNo = userNo;
-    }
-    @Column(length=64)
+    @Column(length = 64)
     public String getUserName() {
         return userName;
     }
@@ -63,23 +54,7 @@ public class AdminUser {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-    @Column(length=64)
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    @Column(length=64)
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-    @Column(length=128)
+    @Column(length = 128)
     public String getPassword() {
         return password;
     }
@@ -87,7 +62,23 @@ public class AdminUser {
     public void setPassword(String password) {
         this.password = password;
     }
-    @Column(length=128)
+    @Column(length = 128)
+    public String getUserNo() {
+        return userNo;
+    }
+
+    public void setUserNo(String userNo) {
+        this.userNo = userNo;
+    }
+    @Column(length =64 )
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+    @Column(length = 128)
     public String getLoginIp() {
         return loginIp;
     }
@@ -103,7 +94,7 @@ public class AdminUser {
     public void setLoginDate(Date loginDate) {
         this.loginDate = loginDate;
     }
-    @Column(length=512)
+    @Column(length = 512)
     public String getPhoto() {
         return photo;
     }
@@ -111,7 +102,7 @@ public class AdminUser {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-    @Column(length=16)
+    @Column(length = 16)
     public String getPhone() {
         return phone;
     }
@@ -119,7 +110,7 @@ public class AdminUser {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    @Column(length=64)
+   @Column(length = 64)
     public String getEmail() {
         return email;
     }
@@ -135,7 +126,7 @@ public class AdminUser {
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
-    @Column(length=2)
+    @Column(length = 2)
     public int getGender() {
         return gender;
     }
@@ -143,7 +134,7 @@ public class AdminUser {
     public void setGender(int gender) {
         this.gender = gender;
     }
-    @Column(length=11)
+    @Column(length = 11)
     public int getCollegeId() {
         return collegeId;
     }
@@ -151,7 +142,7 @@ public class AdminUser {
     public void setCollegeId(int collegeId) {
         this.collegeId = collegeId;
     }
-    @Column(length=1)
+    @Column(length = 1)
     public int getLocked() {
         return locked;
     }
@@ -159,7 +150,7 @@ public class AdminUser {
     public void setLocked(int locked) {
         this.locked = locked;
     }
-    @Column(length=512)
+    @Column(length = 512)
     public String getRemark() {
         return remark;
     }
@@ -167,7 +158,7 @@ public class AdminUser {
     public void setRemark(String remark) {
         this.remark = remark;
     }
-    @Column(length=1)
+    @Column(length = 1)
     public String getStatus() {
         return status;
     }
@@ -191,7 +182,7 @@ public class AdminUser {
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
-    @Column(length=20)
+    @Column(length = 20)
     public int getCreator() {
         return creator;
     }
@@ -199,7 +190,7 @@ public class AdminUser {
     public void setCreator(int creator) {
         this.creator = creator;
     }
-    @Column(length=20)
+    @Column(length = 20)
     public int getUpdater() {
         return updater;
     }
@@ -207,12 +198,13 @@ public class AdminUser {
     public void setUpdater(int updater) {
         this.updater = updater;
     }
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "adminUser")
-    public Set<AdminUserRole> getAdminUserRoles() {
-        return adminUserRoles;
+
+    @OneToMany(mappedBy = "studentUser",targetEntity = InternationalStudent.class)
+    public List<InternationalStudent> getInternationalStudentList() {
+        return internationalStudentList;
     }
 
-    public void setAdminUserRoles(Set<AdminUserRole> adminUserRoles) {
-        this.adminUserRoles = adminUserRoles;
+    public void setInternationalStudentList(List<InternationalStudent> internationalStudentList) {
+        this.internationalStudentList = internationalStudentList;
     }
 }
