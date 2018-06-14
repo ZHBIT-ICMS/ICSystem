@@ -1,30 +1,30 @@
-package com.zhbit.entity;
+package com.zhbit.entity.base;
 
 /**
- * ·ÖÒ³ModelÀà
- * @author 
+ * åˆ†é¡µModelç±»
+ * @author
  *
  */
 public class PageBean {
 
-	private int page; // µÚ¼¸Ò³
-	private int pageSize; // Ã¿Ò³¼ÇÂ¼Êı
-	private int start;  // ÆğÊ¼Ò³
-	
-	
+	private int page; // ç¬¬å‡ é¡µ
+	private int pageSize; // æ¯é¡µè®°å½•æ•°
+	private int start;  // èµ·å§‹é¡µ
+
+
 	public PageBean(int page, int pageSize) {
 		super();
 		this.page = page;
 		this.pageSize = pageSize;
 	}
-	
+
 	public int getPage() {
 		return page;
 	}
 	public void setPage(int page) {
 		this.page = page;
 	}
-	
+
 	public int getPageSize() {
 		return pageSize;
 	}
@@ -36,6 +36,6 @@ public class PageBean {
 	public int getStart() {
 		return (page-1)*pageSize;
 	}
-	
-	
+
+
 }
