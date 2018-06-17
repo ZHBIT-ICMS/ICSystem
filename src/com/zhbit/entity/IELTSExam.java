@@ -13,6 +13,7 @@ import java.util.Date;
 @Table(name="tb_ielts_exam")
 public class IELTSExam {
     private int id;
+    private  String examId;//考试的编号
     private Date examTime;//雅思考试时间
     private String examPlace;//雅思考试地点
     private int score;//分数
@@ -31,6 +32,14 @@ public class IELTSExam {
 
     public Date getExamTime() {
         return examTime;
+    }
+    @Column(length = 50,unique = true)
+    public String getExamId() {
+        return examId;
+    }
+
+    public void setExamId(String examId) {
+        this.examId = examId;
     }
 
     public void setExamTime(Date examTime) {

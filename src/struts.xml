@@ -3,14 +3,46 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
     "http://struts.apache.org/dtds/struts-2.3.dtd">  
       
-<struts>  
+<struts>
+    <!-- 指定由spring负责action对象的创建 -->
+    <constant name="struts.objectFactory" value="spring" />
     <constant name="struts.i18n.encoding" value="UTF-8" />  
     <constant name="struts.action.extension" value="action" />
+    <!-- 让struts2支持动态方法调用 -->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <!-- 每次HTTP请求系统都重新加载资源文件，有助于开发 -->
+    <constant name="struts.i18n.reload" value="true"/>
     <!-- 定义登录拦截器 -->
-
-
 	<package name="ics" namespace="/" extends="struts-default">
+         <interceptors>
+             <!--定义session拦截器-->
+             <interceptor name="sessionInterceptor" class="com.zhbit.interceptor.SessionInterceptor"/>
+             <interceptor-stack name="sessionStack">
+                 <interceptor-ref name="defaultStack"></interceptor-ref>
+                 <interceptor-ref name="sessionInterceptor">
+                     <param name="excludeMethods">doNotNeedSession_*</param>
+                 </interceptor-ref>
+             </interceptor-stack>
+             <!-- 定义权限拦截器 -->
+             <interceptor name="authInterceptor" class="com.zhbit.interceptor.AuthInterceptor" />
+             <interceptor-stack name="authStack">
+                 <interceptor-ref name="sessionStack"></interceptor-ref>
+                 <interceptor-ref name="authInterceptor">
+                     <param name="excludeMethods">doNotNeedSession_*,doNotNeedAuth_*</param>
+                 </interceptor-ref>
+             </interceptor-stack>
+         </interceptors>
 
+        <!-- 全局拦截器栈 -->
+        <default-interceptor-ref name="authStack"></default-interceptor-ref>
+        <global-results>
+            <result name="noAuth">/error/noAuth.jsp</result>
+            <result name="noSession">/error/noSession.jsp</result>
+            <result name="strutsException">/error/strutsException.jsp</result>
+        </global-results>
+        <global-exception-mappings>
+            <exception-mapping result="strutsException" exception="java.lang.Exception"></exception-mapping>
+        </global-exception-mappings>
         <!--新闻-->
         <action name="news_*" class="com.zhbit.action.NewsAction" method="{1}">
             <result name="success">morenews.jsp</result>
@@ -18,7 +50,7 @@
 
         <!--政策法规-->
         <action name="policy_*" class="com.zhbit.action.PolicyAction" method="{1}">
-            <result name="success">main.jsp</result>
+            <result name="success">mainwby.jsp</result>
         </action>
 
         <!--公告-->
@@ -26,7 +58,34 @@
             <result name="success">morenotice.jsp</result>
         </action>
 
-
+        <action name="user" class="com.zhbit.action.UserAction">
+            <result name="doNotNeedAuth_index">/general/index.jsp</result>
+            <result name="login">/general/user/login.jsp</result>
+            <result name="user">/general/admin/user.jsp</result>
+            <result name="userAdd">/general/admin/userAdd.jsp</result>
+            <result name="userEdit">/general/admin/userEdit.jsp</result>
+            <result name="userRoleEdit">/general/admin/userRoleEdit.jsp</result>
+            <result name="doNotNeedAuth_userInfo">/general/user/userInfo.jsp</result>
+            <result name="doNotNeedAuth_studentIndex">/general/student/studentIndex.jsp</result>
+        </action>
+        <action name="menu" class="com.zhbit.action.MenuAction">
+            <result name="menu">/general/admin/menu.jsp</result>
+            <result name="menuAdd">/general/admin/menuAdd.jsp</result>
+            <result name="menuEdit">/general/admin/menuEdit.jsp</result>
+        </action>
+        <action name="auth" class="com.zhbit.action.AuthAction">
+            <result name="auth">/general/admin/auth.jsp</result>
+            <result name="authAdd">/general/admin/authAdd.jsp</result>
+            <result name="authEdit">/general/admin/authAdd.jsp</result>
+        </action>
+        <action name="role" class="com.zhbit.action.RoleAction">
+            <result name="role">/general/admin/role.jsp</result>
+            <result name="roleAdd">/general/admin/roleAdd.jsp</result>
+            <result name="roleEdit">/general/admin/roleEdit.jsp</result>
+        </action>
+        <action name="collegeInfo" class="com.zhbit.action.CollegeInfoAction">
+            <result name="input"></result>
+        </action>
 
     </package>  
 </struts>   

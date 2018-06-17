@@ -4,12 +4,14 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by wby on 2018/6/3.
  */
-//用户表
+//管理员用户表
 @Entity
 @Table(name="tb_admin_user")
 public class AdminUser {
@@ -26,7 +28,7 @@ public class AdminUser {
     private String email;//邮箱
     private Date birthday;//生日
     private int gender;//性别 性别 0不详 1男  2女
-    private int collegeId;//部门id
+    private int collegeId;//学院id
     private int locked;// DEFAULT'0' COMMENT 是否锁定 1锁定 0未锁定',
     private String remark;//描述
     private String status;//DEFAULT '1' COMMENT '1正常  0删除 -1全部'
@@ -34,7 +36,7 @@ public class AdminUser {
     private Date updateDate;//更新时间
     private int creator;//创建者
     private int updater;//更新者
-    private List<UserRole>userRoleList;
+    private Set<AdminUserRole> adminUserRoles=new HashSet<AdminUserRole>(0);
     @Id
     @GeneratedValue(generator="_native")
     @GenericGenerator(name="_native",strategy="native")
@@ -205,13 +207,12 @@ public class AdminUser {
     public void setUpdater(int updater) {
         this.updater = updater;
     }
-    @OneToMany(mappedBy = "adminUser",targetEntity = UserRole.class)
-    public List <UserRole> getUserRoleList() {
-        return userRoleList;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "adminUser")
+    public Set<AdminUserRole> getAdminUserRoles() {
+        return adminUserRoles;
     }
 
-    public void setUserRoleList(List <UserRole> userRoleList) {
-        this.userRoleList = userRoleList;
+    public void setAdminUserRoles(Set<AdminUserRole> adminUserRoles) {
+        this.adminUserRoles = adminUserRoles;
     }
-
 }

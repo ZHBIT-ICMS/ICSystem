@@ -14,4 +14,11 @@ public class ResponseUtil {
 		out.flush();
 		out.close();
 	}
+	public static void write(HttpServletResponse response,String json)throws Exception{
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out=response.getWriter();
+		out.println(json);
+		out.flush();
+		out.close();
+	}
 }
