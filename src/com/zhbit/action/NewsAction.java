@@ -2,9 +2,8 @@ package com.zhbit.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.zhbit.entity.News;
-import com.zhbit.entity.PageBean;
+import com.zhbit.entity.base.PageBean;
 import com.zhbit.service.NewsService;
-import com.zhbit.util.NavUtil;
 import com.zhbit.util.PageUtil;
 import com.zhbit.util.StringUtil;
 import org.apache.struts2.interceptor.ServletRequestAware;

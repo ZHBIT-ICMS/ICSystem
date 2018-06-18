@@ -15,14 +15,13 @@ public class InternationalStudent {
     private int id;//学生标识号
     private long stuId;//学号
     private String name;//姓名
-    private String password;//密码
     private String status;//状态
     private String major;//专业
     private ClassesInfo classInfo;//班级信息
     private SummerCamp summerCamp;//夏令营活动
     private OverSeasStudent overSeasStudent;//出国生
     private ExchangeStudent exchangeStudent;//交换生
-    private StudentUser studentUser;
+    private User user;
     @Id
     @GeneratedValue(generator="_native")
     @GenericGenerator(name="_native",strategy="native")
@@ -31,14 +30,6 @@ public class InternationalStudent {
     }
     public void setId(int id) {
         this.id = id;
-    }
-    @Column(length=20)
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     @Column(length=20)
@@ -118,14 +109,14 @@ public class InternationalStudent {
         this.exchangeStudent = exchangeStudent;
     }
 
-
+    /*国际班学生与用户一对一的配置*/
     @ManyToOne
-    @JoinColumn(name = "studentUserId")
-    public StudentUser getStudentUser() {
-        return studentUser;
+    @JoinColumn(name = "userId",unique = true)
+    public User getUser() {
+        return user;
     }
 
-    public void setStudentUser(StudentUser studentUser) {
-        this.studentUser = studentUser;
+    public void setUser(User studentUser) {
+        this.user = studentUser;
     }
 }

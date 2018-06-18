@@ -9,17 +9,17 @@ import java.util.List;
 /**
  * Created by wby on 2018/4/6.
  */
-/*ÑÅË¼ÅàÑµ*/
+/*é›…æ€åŸ¹è®­*/
 @Entity
 @Table(name="tb_ielts_train")
 public class IELTSTrain {
-    private int id;//×ÔÔö±àºÅ
-    private String ieltsTrainId;//ÑÅË¼»ú¹¹±àºÅ
-    private String trainName;//ÑÅË¼»ú¹¹Ãû³Æ
-    private String trainTerm;//ÅàÑµµÄÑ§ÆÚ
-    private Date trainTime;//ÅàÑµµÄÊ±ÆÚ
-    private String trainClassHours;//ÑÅË¼¿Î³ÌÑ§Ê±
-    private List<IELTSExam> examList;//ÑÅË¼¿¼ÊÔ
+    private int id;//è‡ªå¢ç¼–å·
+    private String ieltsTrainId;//é›…æ€æœºæ„ç¼–å·
+    private String trainName;//é›…æ€æœºæ„åç§°
+    private String trainTerm;//åŸ¹è®­çš„å­¦æœŸ
+    private Date trainTime;//åŸ¹è®­çš„æ—¶æœŸ
+    private String trainClassHours;//é›…æ€è¯¾ç¨‹å­¦æ—¶
+    private List<IELTSExam> examList;//é›…æ€è€ƒè¯•
     @Id
     @GeneratedValue(generator="_native")
     @GenericGenerator(name="_native",strategy="native")
@@ -72,7 +72,7 @@ public class IELTSTrain {
         this.trainClassHours = trainClassHours;
     }
 
-    /*ÑÅË¼ÅàÑµ¾Ù°ìÑÅË¼¿¼ÊÔ1->n*/
+    /*é›…æ€åŸ¹è®­ä¸¾åŠé›…æ€è€ƒè¯•1->n*/
     @OneToMany(mappedBy="ieltsTrain", targetEntity = IELTSExam.class)
     public List <IELTSExam> getExamList() {
         return examList;

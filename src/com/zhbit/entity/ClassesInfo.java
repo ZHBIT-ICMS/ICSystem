@@ -30,6 +30,7 @@ public class ClassesInfo {
     public void setId(int id) {
         this.id = id;
     }
+
     @Column(length=10)
     public String getClassNo() {
         return classNo;

@@ -146,4 +146,5 @@ public class RoleAction extends ActionSupport implements ModelDriven<VoRole> {
         config.registerJsonValueProcessor(java.util.Date.class,new JsonDateFormatUtil("yyyy-MM-dd"));
         return config;
     }
+
 }

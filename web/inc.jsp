@@ -15,10 +15,13 @@
 <meta http-equiv="description" content="seal">
 <!-- jquery库 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/easyUI/jquery-1.8.2.min.js" charset="utf-8"></script>
+<%--<script src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/easyUI/jquery-migrate-1.4.1.js" charset="utf-8"></script>--%>
 <!-- jquery Cookie插件 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/easyUI/jquery.cookie.js" charset="utf-8"></script>
 <!-- easyui相关库 -->
-<link id="easyuiTheme" rel="stylesheet" href="${pageContext.request.contextPath}/easyUI/themes/<c:out value="default" default="default"/>/easyui.css" type="text/css"></link>
+<%--<link id="easyuiTheme" rel="stylesheet" href="${pageContext.request.contextPath}/easyUI/themes/<c:out value="${cookie.easyuiThemeName.value}" default="default"/>/easyui.css" type="text/css"></link>--%>
+<link id="easyuiTheme" rel="stylesheet" href="${pageContext.request.contextPath}/easyUI/themes/<c:out value="bootstrap" default="default"/>/easyui.css" type="text/css"></link>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/easyUI/themes/icon.css" type="text/css"></link>
 <script type="text/javascript" src="${pageContext.request.contextPath}/easyUI/jquery.easyui.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/easyUI/locale/easyui-lang-zh_CN.js" charset="utf-8"></script>
@@ -28,6 +31,10 @@
 <!-- 自定义库 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/style/djCss.css" type="text/css"></link>
 <script type="text/javascript" src="${pageContext.request.contextPath}/easyUI/djUtil.js" charset="utf-8"></script>
+
+
 <!-- xhEditor插件库 -->
-<%--
-<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/xheditor-1.1.14/xheditor-1.1.14-zh-cn.min.js" charset="utf-8"></script>--%>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/xheditor-1.1.14/xheditor-1.1.14-zh-cn.min.js" charset="utf-8"></script>
+
+

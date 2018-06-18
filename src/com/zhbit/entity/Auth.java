@@ -8,7 +8,8 @@ import java.util.Set;
 /**
  * @Author zhangrun 【macmanboy@foxmail.com】
  * @Date 2018/6/6
- * @Time:22:12 描述：
+ * @Time:22:12
+ * 描述：
  */
 @Entity
 @Table(name="tb_auth")
@@ -100,7 +101,7 @@ public class Auth implements java.io.Serializable {
     public void setRoleAuths(Set<RoleAuth> roleAuths) {
         this.roleAuths = roleAuths;
     }
-   @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "auth")
+   @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "auth")
     public Set<Auth> getAuths() {
         return auths;
     }

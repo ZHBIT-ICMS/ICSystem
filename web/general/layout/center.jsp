@@ -6,6 +6,20 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<style>
+    /*bootstrap兼容问题和easyui的bug*/
+    .panel-header, .panel-body {
+        border-width: 0px;
+    }
+    .datagrid,.combo-p{
+        border:solid 1px #D4D4D4;
+    }
+    .datagrid *{
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+    }
+</style>
 <script type="text/javascript" charset="utf-8">
     var centerTabs;
     var tabsMenu;

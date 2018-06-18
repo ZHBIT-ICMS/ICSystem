@@ -10,8 +10,12 @@
     <constant name="struts.action.extension" value="action" />
     <!-- 让struts2支持动态方法调用 -->
     <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <!-- 设置浏览器是否缓存静态内容 -->
+    <constant name="struts.serve.static.browserCache" value="false" />
     <!-- 每次HTTP请求系统都重新加载资源文件，有助于开发 -->
     <constant name="struts.i18n.reload" value="true"/>
+    <!-- 文件上传最大值 -->
+    <constant name="struts.multipart.maxSize" value="104857600" />
     <!-- 定义登录拦截器 -->
 	<package name="ics" namespace="/" extends="struts-default">
          <interceptors>
@@ -86,6 +90,11 @@
         <action name="collegeInfo" class="com.zhbit.action.CollegeInfoAction">
             <result name="input"></result>
         </action>
-
+       <action name="pubNews" class="com.zhbit.action.PubNewsAction">
+           <result name="news">/general/admin/news.jsp</result>
+           <result name="newsAdd">/general/admin/newsAdd.jsp</result>
+           <result name="newsEdit">/general/admin/newsEdit.jsp</result>
+           <result name="showContent">/general/admin/newsShow.jsp</result>
+       </action>
     </package>  
 </struts>   

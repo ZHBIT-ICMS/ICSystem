@@ -1,8 +1,6 @@
 package com.zhbit.service;
 
-import com.zhbit.entity.News;
-import com.zhbit.entity.Notice;
-import com.zhbit.entity.PageBean;
+import com.zhbit.entity.base.PageBean;
 import com.zhbit.entity.Policy;
 
 import java.util.List;
@@ -10,10 +8,10 @@ import java.util.List;
 /**
  * Created by wby on 2018/5/28.
  */
-//Õþ²ß·¨¹æ
+//ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½
 public interface PolicyService {
     /**
-     * Õ¹Ê¾ËùÓÐ¹«¸æ£¬ÕâÀïÕ¹Ê¾1-8Ìõ×îÐÂ¹«¸æ
+     * Õ¹Ê¾ï¿½ï¿½ï¿½Ð¹ï¿½ï¿½æ£¬ï¿½ï¿½ï¿½ï¿½Õ¹Ê¾1-8ï¿½ï¿½ï¿½ï¿½ï¿½Â¹ï¿½ï¿½ï¿½
      * @param s_policy
      * @param pageBean
      * @return
@@ -21,13 +19,13 @@ public interface PolicyService {
     public List<Policy>showPolicyList (Policy s_policy,PageBean pageBean);
 
     /**
-     * ¸ù¾Ýid ²é³öÕþ²ß·¨¹æÏêÇé
+     * ï¿½ï¿½ï¿½ï¿½id ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param policyId
      * @return
      */
     public Policy getPolicyById(int policyId);
     /**
-     * ¼ÆËã×Ü¼ÇÂ¼Êý
+     * ï¿½ï¿½ï¿½ï¿½ï¿½Ü¼ï¿½Â¼ï¿½ï¿½
      * @param s_policy
      * @return
      */

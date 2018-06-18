@@ -5,7 +5,8 @@ import javax.persistence.*;
 /**
  * @Author zhangrun 【macmanboy@foxmail.com】
  * @Date 2018/6/7
- * @Time:10:10 描述：
+ * @Time:10:10
+ * 描述：
  */
 @Entity
 @Table(name = "tb_role_auth")

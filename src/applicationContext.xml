@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
     <!-- 引入属性文件 -->
-    <context:property-placeholder location="classpath:resources/config.properties" />
+    <!--<context:property-placeholder location="classpath:resources/config.properties" />-->
     <bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"

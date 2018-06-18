@@ -73,11 +73,11 @@
 <div id="sessionInfoDiv" style="overflow: hidden; height: 30px;
         background: #7f99be repeat-x center 50%;
         line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体">
-    <span style="padding-left:10px; font-size: 20px; text-align: inherit;" ><strong style="color: white;">国际合作交流管理系统</strong></span>
+    <span style="padding-left:10px; font-size: 20px; text-align: inherit; " ><strong style="color: white;">国际合作交流管理系统</strong></span>
     <span style="position: absolute; right: 0px; bottom: 0px; "><c:if test="${sessionInfo.userId != null}"><strong style="color: white;">[${sessionInfo.loginName}]，欢迎您！您使用[${sessionInfo.ip}]IP登录！</strong></c:if>
-	<a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_pfMenu',iconCls:'icon-theme'"><strong style="color: white;">更换皮肤</strong></a>
-	<a href="javascript:void(0);" class="easyui-menubutton" data-options="iconCls:'icon-blank'" onclick="showUserInfo();"><strong style="color: white;">个人信息</strong></a>
-	<a href="javascript:void(0);" class="easyui-menubutton" data-options="iconCls:'icon-quit'" onclick="$.messager.confirm('注销','您确定要退出么?',function(r){logout(true);});"><strong style="color: white;">注销</strong></a></span>
+	<a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_pfMenu',iconCls:'icon-themes'"><strong style="color: white;">更换皮肤</strong></a>
+	<a href="javascript:void(0);" class="easyui-menubutton" data-options="iconCls:'icon-personalInfo'" onclick="showUserInfo();"><strong style="color: white;">个人信息</strong></a>
+	<a href="javascript:void(0);" class="easyui-menubutton" data-options="iconCls:'icon-loginout'" onclick="$.messager.confirm('注销','您确定要退出么?',function(r){logout(true);});"><strong style="color: white;">注销</strong></a></span>
 </div>
 <div id="layout_north_pfMenu" style="width: 120px; display: none;">
     <div onclick="dj.changeTheme('default');">默认</div>

@@ -9,14 +9,14 @@ import java.util.List;
 /**
  * Created by wby on 2018/6/2.
  */
-//Ñ§ÔºĞÅÏ¢
+//å­¦é™¢ä¿¡æ¯
 @Entity
 @Table(name="tb_college_info")
 public class CollegeInfo {
-    private int id;//Ö÷¼ü
-    private String collegeName;//Ñ§ÔºÃû³Æ
-    private String descInfo;//Ñ§ÔºÃèÊö
-    private List<ProfessionInfo> classesInfoList=new ArrayList<ProfessionInfo>();//Ò»¸öÑ§Ôº°üÀ¨¶à¸ö×¨Òµ
+    private int id;//ä¸»é”®
+    private String collegeName;//å­¦é™¢åç§°
+    private String descInfo;//å­¦é™¢æè¿°
+    private List<ProfessionInfo> classesInfoList=new ArrayList<ProfessionInfo>();//ä¸€ä¸ªå­¦é™¢åŒ…æ‹¬å¤šä¸ªä¸“ä¸š
 
 
     @Id
@@ -46,7 +46,7 @@ public class CollegeInfo {
     public void setDescInfo(String descInfo) {
         this.descInfo = descInfo;
     }
-   @OneToMany(mappedBy = "collegeInfo",targetEntity = ProfessionInfo.class)
+    @OneToMany(mappedBy = "collegeInfo",targetEntity = ProfessionInfo.class)
     public List <ProfessionInfo> getClassesInfoList() {
         return classesInfoList;
     }
