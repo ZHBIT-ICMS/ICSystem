@@ -1,6 +1,6 @@
 package com.zhbit.dao.impl;
 
-import com.zhbit.entity.PageBean;
+import com.zhbit.entity.base.PageBean;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -31,7 +31,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 * ±£´æ
+	 * ä¿å­˜
 	 * @param o
 	 * @return
 	 */
@@ -40,7 +40,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 * É¾³ı
+	 * åˆ é™¤
 	 * @param o
 	 */
 	public void delete(T o) {
@@ -48,7 +48,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 * ¸üĞÂ
+	 * æ›´æ–°
 	 * @param o
 	 */
 	public void update(T o) {
@@ -56,7 +56,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 * ±£´æ&¸üĞÂ
+	 * ä¿å­˜&æ›´æ–°
 	 * @param o
 	 */
 	public void saveOrUpdate(T o) {
@@ -64,7 +64,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 * ´øhqlÓï¾äµÄ²éÑ¯
+	 * å¸¦hqlè¯­å¥çš„æŸ¥è¯¢
 	 * @param hql
 	 * @return
 	 */
@@ -73,7 +73,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 * ´øsql&²ÎÊıµÄ²éÑ¯
+	 * å¸¦sql&å‚æ•°çš„æŸ¥è¯¢
 	 * @param hql
 	 * @param param
 	 * @return
@@ -89,7 +89,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 * ´øsql&²ÎÊı(¼¯ºÏ)µÄ²éÑ¯
+	 * å¸¦sql&å‚æ•°(é›†åˆ)çš„æŸ¥è¯¢
 	 * @param hql
 	 * @param param
 	 * @return
@@ -105,7 +105,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 * ´øsql&²ÎÊıµÄ²éÑ¯&¸½¼ÓÉÏ·ÖÒ³
+	 * å¸¦sql&å‚æ•°çš„æŸ¥è¯¢&é™„åŠ ä¸Šåˆ†é¡µ
 	 * @param hql
 	 * @param param
 	 * @param pageBean
@@ -122,7 +122,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 * ´øsql&²ÎÊı(¼¯ºÏ)µÄ²éÑ¯&¸½¼ÓÉÏ·ÖÒ³
+	 * å¸¦sql&å‚æ•°(é›†åˆ)çš„æŸ¥è¯¢&é™„åŠ ä¸Šåˆ†é¡µ
 	 * @param hql
 	 * @param param
 	 * @param pageBean
@@ -139,7 +139,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 * »ñÈ¡Ò»Ìõ¼ÇÂ¼
+	 * è·å–ä¸€æ¡è®°å½•
 	 * @param c
 	 * @param id
 	 * @return
@@ -158,7 +158,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 * »ñÈ¡Ò»Ìõ¼ÇÂ¼´ø²Î
+	 * è·å–ä¸€æ¡è®°å½•å¸¦å‚
 	 * @param hql
 	 * @param param
 	 * @return
@@ -173,7 +173,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 * »ñÈ¡×ÜµÄ¼ÇÂ¼Êı
+	 * è·å–æ€»çš„è®°å½•æ•°
 	 * @param hql
 	 * @return
 	 */
@@ -192,7 +192,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 *  »ñÈ¡×ÜµÄ¼ÇÂ¼Êı´ø²ÎÊı
+	 *  è·å–æ€»çš„è®°å½•æ•°å¸¦å‚æ•°
 	 * @param hql
 	 * @param param
 	 * @return
@@ -208,7 +208,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 * Ö´ĞĞhqlÓï¾ä
+	 * æ‰§è¡Œhqlè¯­å¥
 	 * @param hql
 	 * @return
 	 */
@@ -227,7 +227,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 * Ö´ĞĞ´ø²ÎÊıµÄhqlÓï¾ä
+	 * æ‰§è¡Œå¸¦å‚æ•°çš„hqlè¯­å¥
 	 * @param hql
 	 * @param param
 	 * @return
@@ -243,7 +243,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 * ºÏ²¢
+	 * åˆå¹¶
 	 * @param o
 	 */
 	public void merge(T o) {
@@ -252,7 +252,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	/**
-	 * ÊµĞĞsqlÓï¾ä
+	 * å®è¡Œsqlè¯­å¥
 	 * @param sql
 	 * @return
 	 */

@@ -1,9 +1,8 @@
 package com.zhbit.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.zhbit.entity.News;
 import com.zhbit.entity.Notice;
-import com.zhbit.entity.PageBean;
+import com.zhbit.entity.base.PageBean;
 import com.zhbit.service.NoticeService;
 import com.zhbit.util.PageUtil;
 import com.zhbit.util.StringUtil;
@@ -21,9 +20,9 @@ public class NoticeAction extends ActionSupport implements ServletRequestAware {
     private NoticeService noticeService;
     private int noticeId;
     private Notice notice;
-    private String page;//µ±Ç°Ò³Ãæ
-    private Notice s_notice;//·ÖÒ³ÓÃµ½µÄ¶ÔÏó
-    private Long total;//×Ü¼ÇÂ¼Êý
+    private String page;//ï¿½ï¿½Ç°Ò³ï¿½ï¿½
+    private Notice s_notice;//ï¿½ï¿½Ò³ï¿½Ãµï¿½ï¿½Ä¶ï¿½ï¿½ï¿½
+    private Long total;//ï¿½Ü¼ï¿½Â¼ï¿½ï¿½
     private List<Notice> noticeList;
     private HttpServletRequest request;
     private String pageCode;
@@ -77,7 +76,7 @@ public class NoticeAction extends ActionSupport implements ServletRequestAware {
     }
 
     /**
-     * Ç°Ì¨Ò³Ãæ·ÖÒ³Õ¹Ê¾
+     * Ç°Ì¨Ò³ï¿½ï¿½ï¿½Ò³Õ¹Ê¾
      * @return
      * @throws Exception
      */
@@ -93,7 +92,7 @@ public class NoticeAction extends ActionSupport implements ServletRequestAware {
         return super.execute();
     }
     /**
-     * Õ¹ÏÖ¹«¸æÏêÇé
+     * Õ¹ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @return
      */
     public String showNotice(){

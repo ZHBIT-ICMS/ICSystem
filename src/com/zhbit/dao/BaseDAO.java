@@ -2,7 +2,7 @@ package com.zhbit.dao;
 
 
 
-import com.zhbit.entity.PageBean;
+import com.zhbit.entity.base.PageBean;
 
 import java.io.Serializable;
 import java.util.List;

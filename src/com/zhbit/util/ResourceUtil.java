@@ -7,9 +7,10 @@ import java.util.ResourceBundle;
  * @Date 2018/6/10
  * @Time:15:54
  * 描述：
+ * 获取config.properties
  */
 public class ResourceUtil {
-   // private static final ResourceBundle bundle=ResourceBundle.getBundle("config");
+    private static final ResourceBundle bundle=ResourceBundle.getBundle("config");
     private void ResourceUtil(){
 
     }
@@ -19,8 +20,8 @@ public class ResourceUtil {
      * @return
      */
     public static final String getSessionInfoName() {
-       // return bundle.getString("sessionInfoName");
-        return "sessionInfo";
+        return bundle.getString("sessionInfoName");
+       // return "sessionInfo";
     }
 
     /**
@@ -28,35 +29,37 @@ public class ResourceUtil {
      *
      * @return
      */
-    /*public static final String getUploadFieldName() {
+    public static final String getUploadFieldName() {
         return bundle.getString("uploadFieldName");
-    }*/
+    }
 
     /**
      * 获得上传文件的最大大小限制
      *
      * @return
      */
-   /* public static final long getUploadFileMaxSize() {
+    public static final long getUploadFileMaxSize() {
         return Long.valueOf(bundle.getString("uploadFileMaxSize"));
-    }*/
+    }
 
     /**
      * 获得允许上传文件的扩展名
      *
      * @return
      */
-   /* public static final String getUploadFileExts() {
+    public static final String getUploadFileExts() {
         return bundle.getString("uploadFileExts");
-    }*/
+    }
 
     /**
      * 获得上传文件要放到那个目录
      *
      * @return
      */
-    /*public static final String getUploadDirectory() {
+    public static final String getUploadDirectory() {
         return bundle.getString("uploadDirectory");
-    }*/
-
+    }
+   public static void main(String []args){
+        System.out.println("sessionInfoName:"+getSessionInfoName());
+   }
 }

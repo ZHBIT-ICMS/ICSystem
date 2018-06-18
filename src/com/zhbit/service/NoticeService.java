@@ -1,31 +1,30 @@
 package com.zhbit.service;
 
-import com.zhbit.entity.News;
 import com.zhbit.entity.Notice;
-import com.zhbit.entity.PageBean;
+import com.zhbit.entity.base.PageBean;
 
 import java.util.List;
 
 /**
  * Created by wby on 2018/5/28.
  */
-//¹«¸æ
+//ï¿½ï¿½ï¿½ï¿½
 public interface NoticeService {
     /**
-     * Õ¹Ê¾ËùÓÐ¹«¸æ£¬ÕâÀïÕ¹Ê¾1-8Ìõ×îÐÂÐÂÎÅ
+     * Õ¹Ê¾ï¿½ï¿½ï¿½Ð¹ï¿½ï¿½æ£¬ï¿½ï¿½ï¿½ï¿½Õ¹Ê¾1-8ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param s_notice
      * @param pageBean
      * @return
      */
     public List<Notice> showNoticeList(Notice s_notice, PageBean pageBean);
     /**
-     * ¸ù¾Ýid ²é³ö¹«¸æÏêÇé
+     * ï¿½ï¿½ï¿½ï¿½id ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param noticeId
      * @return
      */
     public Notice getNoticeById(int noticeId);
     /**
-     * ¼ÆËã×Ü¼ÇÂ¼Êý
+     * ï¿½ï¿½ï¿½ï¿½ï¿½Ü¼ï¿½Â¼ï¿½ï¿½
      * @param s_notice
      * @return
      */

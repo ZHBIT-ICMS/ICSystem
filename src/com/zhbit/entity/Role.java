@@ -19,7 +19,7 @@ public class Role implements java.io.Serializable{
     private String cdesc;
     private String cname;
     private Set<RoleAuth> roleAuths = new HashSet<RoleAuth>(0);
-    private Set<AdminUserRole> adminUserRoles = new HashSet<AdminUserRole>(0);
+    private Set<UserRole> userRoles = new HashSet<UserRole>(0);
     public Role(){}
 
     public Role(String cid, String cname) {
@@ -27,12 +27,12 @@ public class Role implements java.io.Serializable{
         this.cname = cname;
     }
 
-    public Role(String cid, String cdesc, String cname, Set<RoleAuth> roleAuths, Set<AdminUserRole> adminUserRoles) {
+    public Role(String cid, String cdesc, String cname, Set<RoleAuth> roleAuths, Set<UserRole> userRoles) {
         this.cid = cid;
         this.cdesc = cdesc;
         this.cname = cname;
         this.roleAuths = roleAuths;
-        this.adminUserRoles = adminUserRoles;
+        this.userRoles = userRoles;
     }
 
     public static long getSerialVersionUID() {
@@ -71,12 +71,13 @@ public class Role implements java.io.Serializable{
     public void setRoleAuths(Set<RoleAuth> roleAuths) {
         this.roleAuths = roleAuths;
     }
+
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "role")
-    public Set<AdminUserRole> getAdminUserRoles() {
-        return adminUserRoles;
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
     }
 
-    public void setAdminUserRoles(Set<AdminUserRole> adminUserRoles) {
-        this.adminUserRoles = adminUserRoles;
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 }

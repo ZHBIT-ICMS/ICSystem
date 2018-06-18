@@ -8,10 +8,10 @@
 	background:url('icons/权限.png') no-repeat center center;
 }
 .icon-auth{
-	background:url('icons/资源设置.png') no-repeat center center;
+	background:url('icons/权限.png') no-repeat center center;
 }
 .icon-role{
-	background:url('icons/角色.png') no-repeat center center;
+	background:url('icons/角色变更.png') no-repeat center center;
 }
 .icon-exchange{
 	background:url('icons/交换.png') no-repeat center center;
@@ -22,8 +22,23 @@
 .icon-user{
 	background:url('icons/用户.png') no-repeat center center;
 }
+.icon-publish{
+	background:url('icons/发布.png') no-repeat center center;
+}
+.icon-newsPub{
+	background:url('icons/新闻.png') no-repeat center center;
+}
 .icon-collegeInfo{
-	background:url('icons/ic_college_graduate.png') no-repeat center center;
+	background:url('icons/学院.png') no-repeat center center;
+}
+.icon-themes{
+	background:url('icons/主题.png') no-repeat center center;
+}
+.icon-personalInfo{
+	background:url('icons/个人信息.png') no-repeat center center;
+}
+.icon-loginout{
+	background:url('icons/退出.png') no-repeat center center;
 }
 .icon-blank{
 	background:url('icons/blank.gif') no-repeat center center;

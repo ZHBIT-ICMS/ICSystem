@@ -1,6 +1,6 @@
 package com.zhbit.service;
 
-import com.zhbit.entity.AdminUser;
+import com.zhbit.entity.User;
 
 /**
  * @Author zhangrun 【macmanboy@foxmail.com】
@@ -11,5 +11,5 @@ public interface LoginForAdminService {
     /**
      * 验证用户登录账户和密码
      */
-    public AdminUser validateUser(String lusername, String lpassword);
+    public User validateUser(String lusername, String lpassword);
 }

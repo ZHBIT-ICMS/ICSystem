@@ -1,10 +1,10 @@
 package com.zhbit.service;
 
 import com.zhbit.entity.News;
-import com.zhbit.entity.PageBean;
-import com.zhbit.util.StringUtil;
+import com.zhbit.entity.base.DataGrid;
+import com.zhbit.entity.base.PageBean;
+import com.zhbit.entity.vo.VoNews;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -35,4 +35,34 @@ public interface NewsService {
     public Long getNewsCount(News s_news);
 
 
+    /**
+     * 获得数据表格
+     *
+     * @param voNews
+     * @return
+     */
+    public DataGrid datagrid(VoNews voNews);
+
+    /**
+     * 删除
+     *
+     * @param ids
+     */
+    public void delete(String ids);
+
+    /**
+     * 添加
+     *
+     * @param voNews
+     */
+    public void add(VoNews voNews);
+
+    /**
+     * 获得新闻内容
+     * @param id
+     * @return
+     */
+    public String getContentById(int id);
+
+    public void update(VoNews voNews);
 }
