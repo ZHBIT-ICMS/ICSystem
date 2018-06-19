@@ -1,11 +1,11 @@
 package com.zhbit.action;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.zhbit.entity.CollegeInfo;
 import com.zhbit.entity.base.Json;
-import com.zhbit.entity.vo.VoCollegeInfo;
+import com.zhbit.entity.vo.VoClassesInfo;
+import com.zhbit.service.ClassesInfoService;
 import com.zhbit.service.CollegeInfoService;
 import com.zhbit.util.JsonDateFormatUtil;
 import com.zhbit.util.ResponseUtil;
@@ -13,46 +13,38 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.StrutsStatics;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Author zhangrun 【macmanboy@foxmail.com】
- * @Date 2018/6/13
- * @Time:9:44
- * 描述：
+ * @Date 2018/6/19
+ * @Time:23:55 描述：
  */
-public class CollegeInfoAction extends ActionSupport implements ModelDriven<VoCollegeInfo> {
-    @Resource
+public class ClassesInfoAction extends ActionSupport implements ModelDriven<VoClassesInfo> {
+   @Resource
+    private ClassesInfoService classesInfoService;
+   @Resource
     private CollegeInfoService collegeInfoService;
 
-    private VoCollegeInfo voCollegeInfo = new VoCollegeInfo();
-
+    private VoClassesInfo voClassesInfo = new VoClassesInfo();
     @Override
-    public VoCollegeInfo getModel() {
-        return voCollegeInfo;
+    public VoClassesInfo getModel() {
+        return voClassesInfo;
     }
-
-
-    public String collegeInfos(){
-        return  "collegeInfos";
+    public String classesInfos(){
+        return  "classesInfos";
     }
-    public String collegeInfosAdd(){
-        return  "collegeInfosAdd";
+    public String classesInfosAdd(){
+        return  "classesInfosAdd";
     }
-    public String collegeInfosEdit(){
-        return "collegeInfosEdit";
+    public String classesInfosEdit(){
+        return "classesInfosEdit";
     }
-
-    /**
-     *返回easyUI的datagrid
-     */
     public void datagrid(){
-     JSONArray rows = JSONArray.fromObject(collegeInfoService.datagrid(voCollegeInfo).getRows(),this.getJsonConfig());
-     long total = collegeInfoService.datagrid(voCollegeInfo).getTotal();
-     JSONObject result = new JSONObject();
+        JSONArray rows = JSONArray.fromObject(classesInfoService.dataGrid(voClassesInfo).getRows(),this.getJsonConfig());
+        long total = classesInfoService.dataGrid(voClassesInfo).getTotal();
+        JSONObject result = new JSONObject();
         result.put("rows",rows);
         result.put("total",total);
         try {
@@ -64,17 +56,17 @@ public class CollegeInfoAction extends ActionSupport implements ModelDriven<VoCo
     }
 
     /**
-     * 学院删除
+     *班级删除
      */
     public void delete(){
         Json j = new Json();
         try {
-            collegeInfoService.delete(voCollegeInfo.getIds());
+            classesInfoService.delete(voClassesInfo.getIds());
             j.setSuccess(true);
             j.setMsg("删除成功！");
         }catch (Exception ex){
             j.setMsg("删除失败！");
-            System.out.println("学院删除失败！");
+            System.out.println("班级删除失败！");
             ex.printStackTrace();
         }finally {
             try {
@@ -88,17 +80,18 @@ public class CollegeInfoAction extends ActionSupport implements ModelDriven<VoCo
     }
 
     /**
-     * 学院添加
+     * 班级添加
      */
     public void add(){
         Json j = new Json();
+        System.out.println("classNo: "+ voClassesInfo.getClassNo()+" className:"+voClassesInfo.getDescInfo()+" collegeId:"+voClassesInfo.getCollegeId());
         try {
-            collegeInfoService.add(voCollegeInfo);
+            classesInfoService.add(voClassesInfo);
             j.setSuccess(true);
             j.setMsg("添加成功！");
         }catch (Exception ex){
             j.setMsg("添加失败！");
-            System.out.println("学院添加失败！");
+            System.out.println("班级添加失败！");
             ex.printStackTrace();
         }finally {
             try {
@@ -112,17 +105,17 @@ public class CollegeInfoAction extends ActionSupport implements ModelDriven<VoCo
     }
 
     /**
-     * 学院信息编辑
+     * 班级信息编辑
      */
     public void edit(){
         Json j = new Json();
         try {
-            collegeInfoService.edit(voCollegeInfo);
+            classesInfoService.edit(voClassesInfo);
             j.setSuccess(true);
             j.setMsg("修改成功！");
         }catch (Exception ex){
             j.setMsg("修改失败！");
-            System.out.println("学院信息修改失败！");
+            System.out.println("班级信息修改失败！");
             ex.printStackTrace();
         }finally {
             try {
@@ -134,18 +127,7 @@ public class CollegeInfoAction extends ActionSupport implements ModelDriven<VoCo
         }
     }
 
-    /**
-     *获取学院下拉列表
-     */
-    public void doNotNeedSession_combobox() {
-        String json= JSONArray.fromObject(collegeInfoService.combobox(),this.getJsonConfig()).toString();
-        try {
-            ResponseUtil.write(ServletActionContext.getResponse(),json);
-        }catch (Exception ex){
-            System.out.println("ResponseUtil异常！");
-            ex.printStackTrace();
-        }
-    }
+
     public JsonConfig getJsonConfig(){
         JsonConfig config = new JsonConfig();
         config.setIgnoreDefaultExcludes(false);

@@ -39,34 +39,7 @@ public class UserAction extends ActionSupport implements ModelDriven<VoUser> {
     @Resource
     private MenuService menuService;
     private VoUser voUser = new VoUser();
-/*    private  int page;
-    private  int rows*/;
 
-
-    /*public UserService getUserService() {
-        return userService;
-    }
-    @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
-    @Autowired
-    public MenuService getMenuService() {
-        return menuService;
-    }
-
-    public void setMenuService(MenuService menuService) {
-        this.menuService = menuService;
-    }*/
-
-   /* public VoUser getVoUser() {
-        return voUser;
-    }
-
-    public void setVoUser(VoUser voUser) {
-        this.voUser = voUser;
-    }
-    */
     public String user() {
         return "user";
     }

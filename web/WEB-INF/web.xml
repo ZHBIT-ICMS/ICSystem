@@ -49,6 +49,6 @@
         <url-pattern>*.action</url-pattern>
     </filter-mapping>
     <welcome-file-list>
-        <welcome-file>general/user/login.jsp</welcome-file>
+        <welcome-file>general/user/newLogin.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

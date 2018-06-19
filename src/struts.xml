@@ -61,10 +61,10 @@
         <action name="notice_*" class="com.zhbit.action.NoticeAction" method="{1}">
             <result name="success">morenotice.jsp</result>
         </action>
-
+        <!-- 用户 -->
         <action name="user" class="com.zhbit.action.UserAction">
             <result name="doNotNeedAuth_index">/general/index.jsp</result>
-            <result name="login">/general/user/login.jsp</result>
+            <result name="login">/general/user/newLogin.jsp</result>
             <result name="user">/general/admin/user.jsp</result>
             <result name="userAdd">/general/admin/userAdd.jsp</result>
             <result name="userEdit">/general/admin/userEdit.jsp</result>
@@ -72,29 +72,44 @@
             <result name="doNotNeedAuth_userInfo">/general/user/userInfo.jsp</result>
             <result name="doNotNeedAuth_studentIndex">/general/student/studentIndex.jsp</result>
         </action>
+        <!-- 菜单 -->
         <action name="menu" class="com.zhbit.action.MenuAction">
             <result name="menu">/general/admin/menu.jsp</result>
             <result name="menuAdd">/general/admin/menuAdd.jsp</result>
             <result name="menuEdit">/general/admin/menuEdit.jsp</result>
         </action>
+        <!-- 权限 -->
         <action name="auth" class="com.zhbit.action.AuthAction">
             <result name="auth">/general/admin/auth.jsp</result>
             <result name="authAdd">/general/admin/authAdd.jsp</result>
             <result name="authEdit">/general/admin/authAdd.jsp</result>
         </action>
+        <!-- 角色 -->
         <action name="role" class="com.zhbit.action.RoleAction">
             <result name="role">/general/admin/role.jsp</result>
             <result name="roleAdd">/general/admin/roleAdd.jsp</result>
             <result name="roleEdit">/general/admin/roleEdit.jsp</result>
         </action>
+        <!-- 学院信息 -->
         <action name="collegeInfo" class="com.zhbit.action.CollegeInfoAction">
-            <result name="input"></result>
+            <result name="collegeInfos">/general/admin/collegeInfo.jsp</result>
+            <result name="collegeInfosAdd">/general/admin/collegeInfoAdd.jsp</result>
+            <result name="collegeInfosEdit">/general/admin/collegeInfoEdit.jsp</result>
         </action>
+        <!-- 新闻发布 -->
        <action name="pubNews" class="com.zhbit.action.PubNewsAction">
            <result name="news">/general/admin/news.jsp</result>
            <result name="newsAdd">/general/admin/newsAdd.jsp</result>
            <result name="newsEdit">/general/admin/newsEdit.jsp</result>
            <result name="showContent">/general/admin/newsShow.jsp</result>
        </action>
+
+        <!-- 班级信息 -->
+        <action name="classesInfo" class="com.zhbit.action.ClassesInfoAction">
+            <result name="classesInfos">/general/admin/classInfo.jsp</result>
+            <result name="classesInfosAdd">/general/admin/classInfoAdd.jsp</result>
+            <result name="classesInfosEdit">/general/admin/classInfoEdit.jsp</result>
+
+        </action>
     </package>  
 </struts>   

@@ -35,6 +35,7 @@ public interface NewsService {
     public Long getNewsCount(News s_news);
 
 
+//以下方法由组长张润添加
     /**
      * 获得数据表格
      *

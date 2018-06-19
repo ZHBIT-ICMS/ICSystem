@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: zhangrun
-  Date: 2018/6/11
-  Time: 22:39
+  Date: 2018/6/20
+  Time: 0:46
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -15,7 +15,7 @@
         var datagrid;
         $(function() {
             datagrid = $('#datagrid').datagrid({
-                url : 'collegeInfo!datagrid.action',
+                url : 'classesInfo!datagrid.action',
                 iconCls : 'icon-save',
                 pagination : true,
                 pagePosition : 'bottom',
@@ -26,7 +26,7 @@
                 nowrap : false,
                 border : false,
                 idField : 'id',
-                sortName : 'collegeName',
+                sortName : 'descInfo',
                 sortOrder : 'desc',
                 frozenColumns : [ [ {
                     title : '编号',
@@ -35,14 +35,24 @@
                     sortable : true,
                     checkbox : true
                 }, {
-                    title : '学院名称',
-                    field : 'collegeName',
+                    title : '班级编号',
+                    field : 'classNo',
                     width : 150,
                     sortable : true
                 } ] ],
                 columns : [ [ {
-                    title : '学院描述',
+                    title : '班级名称',
                     field : 'descInfo',
+                    sortable : true,
+                    width : 150
+                }, {
+                    title : '所属学院',
+                    field : 'collegeName',
+                    sortable : true,
+                    width : 150
+                    },{
+                    title : '班级人数',
+                    field : 'studentTotal',
                     sortable : true,
                     width : 150
                 }
@@ -87,8 +97,8 @@
             var rows = datagrid.datagrid('getSelections');
             if (rows.length == 1) {
                 var p = parent.dj.dialog({
-                    title : '修改新闻',
-                    href : '${pageContext.request.contextPath}/collegeInfo!collegeInfosEdit.action?id=' + rows[0].id,
+                    title : '修改班级信息',
+                    href : '${pageContext.request.contextPath}/classesInfo!classesInfosEdit.action?id=' + rows[0].id,
                     width : 500,
                     height : 300,
                     buttons : [ {
@@ -96,7 +106,7 @@
                         handler : function() {
                             var f = p.find('form');
                             f.form({
-                                url : '${pageContext.request.contextPath}/collegeInfo!edit.action',
+                                url : '${pageContext.request.contextPath}/classesInfo!edit.action',
                                 success : function(d) {
                                     var json = $.parseJSON(d);
                                     if (json.success) {
@@ -114,10 +124,22 @@
                     } ],
                     onLoad : function() {
                         var f = p.find('form');
+                        var collegeId = f.find('input[name=collegeId]');
+                        var collegeIdComboboxTree = collegeId.combobox({
+                            url : '${pageContext.request.contextPath}/collegeInfo!doNotNeedSession_combobox.action',
+                            valueField : 'id',
+                            textField : 'collegeName',
+                            multiple : false,
+                            editable : false,
+                            panelHeight : 'auto',
+                            onLoadSuccess : function() {
+                                parent.$.messager.progress('close');
+                            }
+                        });
                         f.find('input[name=id]').val(rows[0].id);
-                        f.find('input[name=collegeName]').val(rows[0].collegeName);
+                        f.find('input[name=classNo]').val(rows[0].classNo);
                         f.find('input[name=descInfo]').val(rows[0].descInfo);
-
+                        f.find('input[name=collegeId]').val(rows[0].collegeId);
                     }
                 });
             } else if (rows.length > 1) {
@@ -128,8 +150,8 @@
         }
         function append() {
             var p = parent.dj.dialog({
-                title : '增加学院',
-                href : '${pageContext.request.contextPath}/collegeInfo!collegeInfosAdd.action',
+                title : '增加班级',
+                href : '${pageContext.request.contextPath}/classesInfo!classesInfosAdd.action',
                 width : 500,
                 height : 450,
                 buttons : [ {
@@ -137,7 +159,7 @@
                     handler : function() {
                         var f = p.find('form');
                         f.form({
-                            url : '${pageContext.request.contextPath}/collegeInfo!add.action',
+                            url : '${pageContext.request.contextPath}/classesInfo!add.action',
                             success : function(d) {
                                 var json = $.parseJSON(d);
                                 if (json.success) {
@@ -155,6 +177,15 @@
                 } ],
                 onLoad : function() {
                     var f = p.find('form');
+                    var collegeId = f.find('input[name=collegeId]');
+                    var collegeIdComboboxTree = collegeId.combobox({
+                        url : '${pageContext.request.contextPath}/collegeInfo!doNotNeedSession_combobox.action',
+                        valueField : 'id',
+                        textField : 'collegeName',
+                        multiple : false,
+                        editable : false,
+                        panelHeight : 'auto'
+                    });
                 }
             });
         }
@@ -168,7 +199,7 @@
                             ids.push(rows[i].id);
                         }
                         $.ajax({
-                            url : '${pageContext.request.contextPath}/collegeInfo!delete.action',
+                            url : '${pageContext.request.contextPath}/classesInfo!delete.action',
                             data : {
                                 ids : ids.join(',')
                             },

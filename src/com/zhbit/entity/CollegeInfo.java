@@ -16,7 +16,7 @@ public class CollegeInfo {
     private int id;//主键
     private String collegeName;//学院名称
     private String descInfo;//学院描述
-    private List<ProfessionInfo> classesInfoList=new ArrayList<ProfessionInfo>();//一个学院包括多个专业
+    private List<ClassesInfo> classesInfoList=new ArrayList<ClassesInfo>();//一个学院包括多个班级
 
 
     @Id
@@ -46,12 +46,12 @@ public class CollegeInfo {
     public void setDescInfo(String descInfo) {
         this.descInfo = descInfo;
     }
-    @OneToMany(mappedBy = "collegeInfo",targetEntity = ProfessionInfo.class)
-    public List <ProfessionInfo> getClassesInfoList() {
+    @OneToMany(mappedBy = "collegeInfo",targetEntity = ClassesInfo.class ,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    public List<ClassesInfo> getClassesInfoList() {
         return classesInfoList;
     }
 
-    public void setClassesInfoList(List <ProfessionInfo> classesInfoList) {
+    public void setClassesInfoList(List<ClassesInfo> classesInfoList) {
         this.classesInfoList = classesInfoList;
     }
 }

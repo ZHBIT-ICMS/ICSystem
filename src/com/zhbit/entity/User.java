@@ -24,7 +24,6 @@ public class User {
     private String email;//邮箱
     private Date birthday;//生日
     private int gender;//性别 性别 0不详 1男  2女
-    //private int collegeId;//学院id
     private int locked;// DEFAULT'0' COMMENT 是否锁定 1锁定 0未锁定',
     private String remark;//描述
     private Date createDate;//创建时间

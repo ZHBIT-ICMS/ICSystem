@@ -17,7 +17,7 @@
 	background:url('icons/交换.png') no-repeat center center;
 }
 .icon-classInfo{
-	background:url('icons/班级管理.png') no-repeat center center;
+	background:url('icons/专业.png') no-repeat center center;
 }
 .icon-user{
 	background:url('icons/用户.png') no-repeat center center;
@@ -40,6 +40,7 @@
 .icon-loginout{
 	background:url('icons/退出.png') no-repeat center center;
 }
+
 .icon-blank{
 	background:url('icons/blank.gif') no-repeat center center;
 }
