@@ -1,16 +1,13 @@
 package com.zhbit.service.impl;
 
 import com.zhbit.dao.BaseDAO;
-import com.zhbit.entity.News;
 import com.zhbit.entity.Notice;
-import com.zhbit.entity.PageBean;
+import com.zhbit.entity.base.PageBean;
 import com.zhbit.service.NoticeService;
 import com.zhbit.util.StringUtil;
-import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,7 +19,7 @@ public class NoticeServiceImpl implements NoticeService  {
     @Resource
     private BaseDAO<Notice> baseDAO;
     /**
-     * Õ¹Ê¾ËùÓÐ¹«¸æ£¬ÕâÀïÕ¹Ê¾1-8Ìõ×îÐÂ¹«¸æ
+     * Õ¹Ê¾ï¿½ï¿½ï¿½Ð¹ï¿½ï¿½æ£¬ï¿½ï¿½ï¿½ï¿½Õ¹Ê¾1-8ï¿½ï¿½ï¿½ï¿½ï¿½Â¹ï¿½ï¿½ï¿½
      * @param s_notice
      * @param pageBean
      * @return
@@ -48,7 +45,7 @@ public class NoticeServiceImpl implements NoticeService  {
 
     }
     /**
-     * ¸ù¾Ýid ²é³ö¹«¸æÏêÇé
+     * ï¿½ï¿½ï¿½ï¿½id ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param noticeId
      * @return
      */
@@ -57,7 +54,7 @@ public class NoticeServiceImpl implements NoticeService  {
         return baseDAO.get(Notice.class,noticeId);
     }
     /**
-     * ¼ÆËã¹«¸æ×ÜµÄ¼ÇÂ¼Êý
+     * ï¿½ï¿½ï¿½ã¹«ï¿½ï¿½ï¿½ÜµÄ¼ï¿½Â¼ï¿½ï¿½
      * @param s_notice
      * @return
      */

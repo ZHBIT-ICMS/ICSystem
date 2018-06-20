@@ -18,7 +18,7 @@ public class ClassesInfo {
     private String classNo;//班级号
     private String descInfo;//班级描述
     private List<InternationalStudent>studentList=new ArrayList <InternationalStudent>();//一个班级信息包括多个国际班学生
-    private ProfessionInfo professionInfo;//一个专业包括多个班
+    private CollegeInfo collegeInfo;//一个学院包括多个班
 
     @Id
     @GeneratedValue(generator="_native")
@@ -30,6 +30,7 @@ public class ClassesInfo {
     public void setId(int id) {
         this.id = id;
     }
+
     @Column(length=10)
     public String getClassNo() {
         return classNo;
@@ -65,16 +66,16 @@ public class ClassesInfo {
     public void setStudentList(List <InternationalStudent> studentList) {
         this.studentList = studentList;
     }
-    //多个班对应一个专业
+
+
+    //多个班对应一个学院
     @ManyToOne
-    @JoinColumn(name="professionInfoId")
-    public ProfessionInfo getProfessionInfo() {
-        return professionInfo;
+    @JoinColumn(name="CollegeInfoId")
+    public CollegeInfo getCollegeInfo() {
+        return collegeInfo;
     }
 
-    public void setProfessionInfo(ProfessionInfo professionInfo) {
-        this.professionInfo = professionInfo;
+    public void setCollegeInfo(CollegeInfo collegeInfo) {
+        this.collegeInfo = collegeInfo;
     }
-
-
 }

@@ -21,6 +21,25 @@ public class News {
     private Date createTime;//发布时间
     private String people;//发通知的人
 
+    public News(){
+
+    }
+
+    public News(int id, String title, Date createTime, String people) {
+        this.id = id;
+        this.title = title;
+        this.createTime = createTime;
+        this.people = people;
+    }
+
+    public News(int id, String title, String content, Date createTime, String people) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.createTime = createTime;
+        this.people = people;
+    }
+
     @Id
     @GeneratedValue(generator="_native")
     @GenericGenerator(name="_native",strategy="native")

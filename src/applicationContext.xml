@@ -6,11 +6,11 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">    
-  
-  
+    <!-- 引入属性文件 -->
+    <!--<context:property-placeholder location="classpath:resources/config.properties" />-->
     <bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
@@ -21,6 +21,7 @@
 		</property>
 		<property name="username" value="root"></property>
 		<property name="password" value="run19970621"></property>
+
 	</bean>
       
     <!-- session工厂 -->  
@@ -73,6 +74,6 @@
     </aop:config>
     <!--https://www.oschina.net/question/659202_86641-->
 
-    <!-- 自动加载构建bean -->  
+    <!-- 自动加载构建bean 自动扫描dao和service包(自动注入) -->
     <context:component-scan base-package="com.zhbit" />
 </beans>  

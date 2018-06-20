@@ -11,17 +11,17 @@ import java.util.List;
  * Created by wby on 2018/4/6.
  */
 
-//½»»»Éú
+//äº¤æ¢ç”Ÿ
 @Entity
 @Table(name="tb_exchange_student")
 public class ExchangeStudent {
     private int id;
-    private String schoolName;//³ö¹úµÄÑ§Ğ£
-    private String schoolType;//³ö¹úÀàĞÍ
-    private String replaceCourse;//Ìæ»»¿Î³Ì
-    private String replaceCredit;//Ìæ»»Ñ§·Ö
-    private Date goAbroadTime;//³ö¹úÊ±¼ä
-    private List<InternationalStudent> studentList = new ArrayList<InternationalStudent>();//½»»»ÉúÓë¹ú¼Ê°àÑ§ÉúÒ»¶ÔÒ»
+    private String schoolName;//å‡ºå›½çš„å­¦æ ¡
+    private String schoolType;//å‡ºå›½ç±»å‹
+    private String replaceCourse;//æ›¿æ¢è¯¾ç¨‹
+    private String replaceCredit;//æ›¿æ¢å­¦åˆ†
+    private Date goAbroadTime;//å‡ºå›½æ—¶é—´
+    private List<InternationalStudent> studentList = new ArrayList<InternationalStudent>();//äº¤æ¢ç”Ÿä¸å›½é™…ç­å­¦ç”Ÿä¸€å¯¹ä¸€
 
     @Id
     @GeneratedValue(generator = "_native")
@@ -78,9 +78,9 @@ public class ExchangeStudent {
         this.goAbroadTime = goAbroadTime;
     }
 
-    /* ½»»»ÉúÓë¹ú¼Ê°àÑ§ÉúÒ»¶ÔÒ»
-     *   targetEntity£º¶ÔÓ¦µÄÄ¿±êÊµÌåÀà(¹ú¼Ê°àÑ§Éú)
-     *   mappedBy£º¶ÔÓ¦µ½¶Ô·½µÄÊôĞÔ×Ö¶Î
+    /* äº¤æ¢ç”Ÿä¸å›½é™…ç­å­¦ç”Ÿä¸€å¯¹ä¸€
+     *   targetEntityï¼šå¯¹åº”çš„ç›®æ ‡å®ä½“ç±»(å›½é™…ç­å­¦ç”Ÿ)
+     *   mappedByï¼šå¯¹åº”åˆ°å¯¹æ–¹çš„å±æ€§å­—æ®µ
    * */
     @OneToMany(mappedBy="exchangeStudent", targetEntity = InternationalStudent.class)
     public List <InternationalStudent> getStudentList() {
