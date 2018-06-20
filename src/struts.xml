@@ -109,7 +109,6 @@
             <result name="classesInfos">/general/admin/classInfo.jsp</result>
             <result name="classesInfosAdd">/general/admin/classInfoAdd.jsp</result>
             <result name="classesInfosEdit">/general/admin/classInfoEdit.jsp</result>
-
         </action>
     </package>  
 </struts>   

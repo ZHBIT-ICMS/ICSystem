@@ -20,6 +20,6 @@ public interface UserService {
     public DataGrid dataGrid(VoUser voUser);
     public void delete(String ids);
     public void update(VoUser voUser)throws ValidateFieldsException;
-    public void roleEdit(VoUser voUser);
+    public void editRole(VoUser voUser);
     public void editUserInfo(VoUser voUser);
 }

@@ -24,7 +24,7 @@ public class VoCollegeInfo implements Serializable {
     private int id;//主键
     private String collegeName;//学院名称
     private String descInfo;//学院描述
-    private List<ClassesInfo> classesInfoList = new ArrayList<ClassesInfo>();//一个学院包括多个专业
+    //private List<ClassesInfo> classesInfoList = new ArrayList<ClassesInfo>();//一个学院包括多个专业
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -53,13 +53,13 @@ public class VoCollegeInfo implements Serializable {
         this.descInfo = descInfo;
     }
 
-    public List<ClassesInfo> getClassesInfoList() {
+  /*  public List<ClassesInfo> getClassesInfoList() {
         return classesInfoList;
     }
 
     public void setClassesInfoList(List<ClassesInfo> classesInfoList) {
         this.classesInfoList = classesInfoList;
-    }
+    }*/
 
     public int getPage() {
         return page;

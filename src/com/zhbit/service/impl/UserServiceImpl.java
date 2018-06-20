@@ -292,7 +292,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
     }
 
     /**
-     *
+     *用户删除
      * @param ids
      */
     @Override
@@ -312,7 +312,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
     }
 
     /**
-     *
+     *更新用户信息
      * @param voUser
      * @throws ValidateFieldsException
      */
@@ -349,29 +349,32 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
              u.setPhone(voUser.getPhone());
          }
         u.setSign(voUser.getSign());//修改用户身份
-     }else
-     {
+     }else {
          throw new ValidateFieldsException("用户名已经存在，请重新输入！");
-     }
+      }
        /* if(StringUtil.isNotEmpty()){}
         if(StringUtil.isNotEmpty()){}*/
        this.saveUserRole(voUser,u);
     }
 
     /**
-     *
+     *用户角色关系批量编辑
      * @param voUser
      */
     @Override
-    public void roleEdit(VoUser voUser) {
+    public void editRole(VoUser voUser) {
        if(voUser.getIds()!=null){
            for (String id:voUser.getIds().split(",")){
-               User u = userDao.get(User.class,id);
+               User u = userDao.get(User.class,Integer.parseInt(id));
                this.saveUserRole(voUser,u);
            }
        }
     }
 
+    /**
+     * 编辑用户信息
+     * @param voUser
+     */
     @Override
     public void editUserInfo(VoUser voUser) {
         if(StringUtil.isNotEmpty(voUser.getPassword())){
@@ -402,6 +405,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
      * @param u
      */
     private void saveUserRole(VoUser user,User u){
+        System.out.println("userId:"+u.getId());
         userRoleDAO.executeHql("delete UserRole ur where ur.user = ? ",new Object[]{u});
         if(user.getRoleIds()!=null){
             for(String id:user.getRoleIds().split(",")){

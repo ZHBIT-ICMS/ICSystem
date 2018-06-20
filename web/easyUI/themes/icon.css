@@ -45,16 +45,16 @@
 	background:url('icons/blank.gif') no-repeat center center;
 }
 .icon-add{
-	background:url('icons/edit_add.png') no-repeat center center;
+	background:url('icons/增加.png') no-repeat center center;
 }
 .icon-edit{
-	background:url('icons/pencil.png') no-repeat center center;
+	background:url('icons/修改.png') no-repeat center center;
 }
 .icon-clear{
 	background:url('icons/clear.png') no-repeat center center;
 }
 .icon-remove{
-	background:url('icons/edit_remove.png') no-repeat center center;
+	background:url('icons/删除.png') no-repeat center center;
 }
 .icon-save{
 	background:url('icons/filesave.png') no-repeat center center;
@@ -84,7 +84,7 @@
 	background:url('icons/help.png') no-repeat center center;
 }
 .icon-undo{
-	background:url('icons/undo.png') no-repeat center center;
+	background:url('icons/取消选中.png') no-repeat center center;
 }
 .icon-redo{
 	background:url('icons/redo.png') no-repeat center center;
