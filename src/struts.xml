@@ -110,5 +110,11 @@
             <result name="classesInfosAdd">/general/admin/classInfoAdd.jsp</result>
             <result name="classesInfosEdit">/general/admin/classInfoEdit.jsp</result>
         </action>
+
+        <action name="foreignCollege" class="com.zhbit.action.ForeignCollegeAction">
+            <result name="foreignColleges">/general/admin/foreignCollege.jsp</result>
+            <result name="foreignCollegesAdd">/general/admin/foreignCollegeAdd.jsp</result>
+            <result name="foreignCollegesEdit">/general/admin/foreignCollegeEdit.jsp</result>
+        </action>
     </package>  
 </struts>   

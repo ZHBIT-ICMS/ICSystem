@@ -12,7 +12,7 @@ import java.util.Date;
  */
 //讲座
 @Entity
-@Table(name="tb_foreign_college")
+@Table(name="tb_chair")
 public class Chair {
     private int id;
     private String title;

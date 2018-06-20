@@ -59,6 +59,11 @@ public class ResourceUtil {
     public static final String getUploadDirectory() {
         return bundle.getString("uploadDirectory");
     }
+
+    /**
+     *
+     * @param args
+     */
    public static void main(String []args){
         System.out.println("sessionInfoName:"+getSessionInfoName());
    }

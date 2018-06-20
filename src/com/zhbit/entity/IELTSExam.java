@@ -18,7 +18,7 @@ public class IELTSExam {
     private String examPlace;//雅思考试地点
     private int score;//分数
     private IELTSTrain ieltsTrain;//培训机构
-
+   private  int sign;//0是正式考试，1是模拟考试
     @Id
     @GeneratedValue(generator="_native")
     @GenericGenerator(name="_native",strategy="native")
@@ -61,6 +61,15 @@ public class IELTSExam {
     public void setScore(int score) {
         this.score = score;
     }
+
+    public int getSign() {
+        return sign;
+    }
+
+    public void setSign(int sign) {
+        this.sign = sign;
+    }
+
     @ManyToOne
     @JoinColumn(name="ieltsTrainId")
     public IELTSTrain getIeltsTrain() {

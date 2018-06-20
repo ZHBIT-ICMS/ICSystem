@@ -46,9 +46,6 @@
                 </td>
             </tr>
             <tr>
-              <%--  <th>邮箱</th>
-                <td><input name="email" type="text" />
-                </td>--%>
                 <th>身份</th>
                 <td><select name="sign" data-options="required:'true',missingMessage:'请选择用户身份'" >
                     <option value="0">管理员</option>

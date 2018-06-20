@@ -7,16 +7,16 @@ import javax.persistence.*;
 /**
  * Created by wby on 2018/4/6.
  */
-/* ¹ú¼Ê°àÑ§Éú²Î¼ÓÑÅË¼ÅàÑµ
+/* å›½é™…ç­å­¦ç”Ÿå‚åŠ é›…æ€åŸ¹è®­
 *
-*  ¹ú¼Ê°àÑ§Éú±íºÍÑÅË¼ÅàÑµ±íµÄÖĞ¼ä±í
+*  å›½é™…ç­å­¦ç”Ÿè¡¨å’Œé›…æ€åŸ¹è®­è¡¨çš„ä¸­é—´è¡¨
 * */
 @Entity
 @Table(name="tb_interstu_train")
 public class InterStuTrain {
     private int id;
-    private IELTSTrain ieltsTrain;//ÑÅË¼ÅàÑµµÄ±àºÅ
-    private InternationalStudent internationalStudent;//¹ú¼Ê°àÑ§ÉúµÄÑ§ºÅ
+    private IELTSTrain ieltsTrain;//é›…æ€åŸ¹è®­çš„ç¼–å·
+    private InternationalStudent internationalStudent;//å›½é™…ç­å­¦ç”Ÿçš„å­¦å·
     @Id
     @GeneratedValue(generator="_native")
     @GenericGenerator(name="_native",strategy="native")

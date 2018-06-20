@@ -1,28 +1,29 @@
 package com.zhbit.entity.vo;
 
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  * @Author zhangrun 【macmanboy@foxmail.com】
- * @Date 2018/6/15
- * @Time:10:17
- * 描述：
- * 视图层模型VoNews（对应持久化模型News）
+ * @Date 2018/6/20
+ * @Time:22:18
+ * 描述：ForeignCollege的pageModel
  */
-public class VoNews  {
-    //easyUI的datagrid所用到的属性
+public class VoForeignCollege implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int page;// 当前页
     private int rows;// 每页显示记录数
     private String sort;// 排序字段名
     private String order;// 按什么排序(asc,desc)
     private String ids;
+    //以下属性来自ForeignCollege
+    private int id;//
+    private String foreignName;//名称
+    private String foreignType;//类型
+    private String stat;//状态
 
-     //以下属性来自News实体
-    private int id;//标号
-    private String title;//标题题目
-    private String content;//具体内容
-    private Date createTime;//发布时间
-    private String people;//发通知的人
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public int getPage() {
         return page;
@@ -72,35 +73,27 @@ public class VoNews  {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getForeignName() {
+        return foreignName;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setForeignName(String foreignName) {
+        this.foreignName = foreignName;
     }
 
-    public String getContent() {
-        return content;
+    public String getForeignType() {
+        return foreignType;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setForeignType(String foreignType) {
+        this.foreignType = foreignType;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public String getStat() {
+        return stat;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getPeople() {
-        return people;
-    }
-
-    public void setPeople(String people) {
-        this.people = people;
+    public void setStat(String stat) {
+        this.stat = stat;
     }
 }

@@ -40,7 +40,21 @@
 .icon-loginout{
 	background:url('icons/退出.png') no-repeat center center;
 }
-
+.icon-foreignCollege{
+	background:url('icons/国外院校.png') no-repeat center center;
+}
+.icon-university{
+	background:url('icons/大学.png') no-repeat center center;
+}
+.icon-summerCamp{
+	background:url('icons/活动.png') no-repeat center center;
+}
+.icon-agreement{
+	background:url('icons/协议.png') no-repeat center center;
+}
+.icon-chair{
+	background:url('icons/讲座.png') no-repeat center center;
+}
 .icon-blank{
 	background:url('icons/blank.gif') no-repeat center center;
 }
