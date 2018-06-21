@@ -121,11 +121,20 @@
             <result name="policyEdit">/general/admin/policy/policyEdit.jsp</result>
             <result name="showContent">/general/admin/policy/policyShow.jsp</result>
         </action>
+
+        <!-- 交换生管理 -->
         <action name="exchangeStu" class="com.zhbit.action.ExchangeStuAction">
             <result name="exchangeStu">/general/admin/exchangeStu/exchangeStu.jsp</result>
             <result name="exchangeStuAdd">/general/admin/exchangeStu/exchangeStuEdit.jsp</result>
             <result name="exchangeStuEdit">/general/admin/exchangeStu/exchangeStuEdit.jsp</result>
+        </action>
 
+        <!-- 出国生管理 -->
+        <action name="overseasStu" class="com.zhbit.action.OverseasStuAction">
+            <result name="overseasStu">/general/admin/overseasStu/overseasStu.jsp</result>
+            <result name="overseasStuAdd">/general/admin/overseasStu/overseasStuEdit.jsp</result>
+            <result name="overseasStuEdit">/general/admin/overseasStu/overseasStuEdit.jsp</result>
+        </action>
 
         <!-- 班级信息 -->
         <action name="classesInfo" class="com.zhbit.action.ClassesInfoAction">
