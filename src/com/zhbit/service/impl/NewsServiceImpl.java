@@ -74,10 +74,13 @@ public class NewsServiceImpl implements NewsService{
         }
         return (Long)baseDAO.count(hql.toString().replaceFirst("and", "where"), param);
     }
+
+    //
+    //
     //以下接口方法的实现由组长：张润添加
 
     /**
-     *
+     *返回easyUI所需的datagrid
      * @param voNews
      * @return
      */
@@ -137,7 +140,7 @@ public class NewsServiceImpl implements NewsService{
     }
 
     /**
-     * 新闻过滤条件
+     * 新闻条件查询
      * @param voNews
      * @param hql
      * @param values

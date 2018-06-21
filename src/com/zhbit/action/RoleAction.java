@@ -25,14 +25,6 @@ public class RoleAction extends ActionSupport implements ModelDriven<VoRole> {
     @Resource
     private RoleService roleService;
 
- /*   public VoRole getVoRole() {
-        return voRole;
-    }
-
-    public void setVoRole(VoRole voRole) {
-        this.voRole = voRole;
-    }*/
-
     @Override
     public VoRole getModel() {
         return voRole;

@@ -48,11 +48,14 @@
         clear: left;
     }
     -->
+    #eastContent{
+        font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+    }
 </style>
 <script type="text/javascript" charset="utf-8">
 
 </script>
-<div class="easyui-accordion" data-options="fit:true,border:false">
+<div class="easyui-accordion" data-options="fit:true,border:false" id="eastContent">
     <c:forEach var="item" items="${sessionInfo.menus}">
         <c:if test="${item.pid==null}">
             <div title="${item.cname}" data-options="iconCls:'${item.ciconcls}'">

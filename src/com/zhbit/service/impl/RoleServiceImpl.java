@@ -154,7 +154,6 @@ public class RoleServiceImpl extends BaseServiceImpl implements RoleService {
     public void edit(VoRole voRole) {
         Role r = roleDao.get(Role.class, voRole.getCid());
         BeanUtils.copyProperties(voRole, r, new String[] { "cid" });
-
         this.saveRoleAuth(voRole, r);
     }
     public void delete(String ids) {
