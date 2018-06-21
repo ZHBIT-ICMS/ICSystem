@@ -52,6 +52,11 @@
             <result name="success">morenews.jsp</result>
         </action>
 
+        <!--交换生-->
+        <action name="exchangeStu_*" class="com.zhbit.action.ExchangeStuAction" method="{1}">
+            <result name="success">moreexchangestu.jsp</result>
+        </action>
+
         <!--政策法规-->
         <action name="policy_*" class="com.zhbit.action.PolicyAction" method="{1}">
             <result name="success">mainwby.jsp</result>
@@ -96,5 +101,22 @@
            <result name="newsEdit">/general/admin/newsEdit.jsp</result>
            <result name="showContent">/general/admin/newsShow.jsp</result>
        </action>
+        <action name="pubNotice" class="com.zhbit.action.PubNoticeAction">
+            <result name="notice">/general/admin/notice/notice.jsp</result>
+            <result name="noticeAdd">/general/admin/notice/noticeEdit.jsp</result>
+            <result name="noticeEdit">/general/admin/notice/noticeEdit.jsp</result>
+            <result name="showContent">/general/admin/notice/noticeShow.jsp</result>
+        </action>
+        <action name="pubPolicy" class="com.zhbit.action.PubPolicyAction">
+            <result name="policy">/general/admin/policy/policy.jsp</result>
+            <result name="policyAdd">/general/admin/policy/policyEdit.jsp</result>
+            <result name="policyEdit">/general/admin/policy/policyEdit.jsp</result>
+            <result name="showContent">/general/admin/policy/policyShow.jsp</result>
+        </action>
+        <action name="exchangeStu" class="com.zhbit.action.ExchangeStuAction">
+            <result name="exchangeStu">/general/admin/exchangeStu/exchangeStu.jsp</result>
+            <result name="exchangeStuAdd">/general/admin/exchangeStu/exchangeStuEdit.jsp</result>
+            <result name="exchangeStuEdit">/general/admin/exchangeStu/exchangeStuEdit.jsp</result>
+        </action>
     </package>  
 </struts>   
