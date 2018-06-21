@@ -65,7 +65,6 @@
                     align: 'center',
                     sortable : true,
                     width : 100,
-                    editor: { type: 'datetimebox' }
                 } ] ],
                 toolbar : [ {
                     text : '增加',
@@ -139,7 +138,7 @@
                         f.find('input[name=replaceCredit]').val(rows[0].replaceCredit);
                         f.find('input[name=schoolName]').val(rows[0].schoolName);
                         f.find('input[name=schoolType]').val(rows[0].schoolType);
-                        f.find('input[name=goAbroadTime]').datetimebox(rows[0].goAbroadTime);
+                        f.find('input[name=goAbroadTime]').datebox('setValue',rows[0].goAbroadTime);
                     }
                 });
             } else if (rows.length > 1) {

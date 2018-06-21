@@ -140,7 +140,7 @@ public class ExchangeStuAction extends ActionSupport implements ModelDriven<VoEx
     public JsonConfig getJsonConfig(){
         JsonConfig config = new JsonConfig();
         config.setIgnoreDefaultExcludes(false);
-        config.registerJsonValueProcessor(java.util.Date.class,new JsonDateFormatUtil("yyyy-MM-dd HH:mm:ss"));
+        config.registerJsonValueProcessor(java.util.Date.class,new JsonDateFormatUtil("yyyy-MM-dd"));
         return config;
     }
 }

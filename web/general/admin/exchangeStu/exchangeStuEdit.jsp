@@ -33,7 +33,7 @@
             </tr>
             <tr>
                 <th style="width:50px;">出国的时间</th>
-                <td><input name="goAbroadTime" class="easyui-datetimebox" data-options="required:true,missingMessage:'请填写出国的时间'" style="width: 97%;" />
+                <td><input name="goAbroadTime" id="goAbroadTime" class="easyui-datebox" data-options="required:true,missingMessage:'请填写出国的时间'" style="width: 97%;" />
                 </td>
             </tr>
 

@@ -125,7 +125,7 @@
             <result name="exchangeStu">/general/admin/exchangeStu/exchangeStu.jsp</result>
             <result name="exchangeStuAdd">/general/admin/exchangeStu/exchangeStuEdit.jsp</result>
             <result name="exchangeStuEdit">/general/admin/exchangeStu/exchangeStuEdit.jsp</result>
-
+        </action>
 
         <!-- 班级信息 -->
         <action name="classesInfo" class="com.zhbit.action.ClassesInfoAction">

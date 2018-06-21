@@ -55,6 +55,18 @@
 .icon-chair{
 	background:url('icons/讲座.png') no-repeat center center;
 }
+.icon-policy{
+	background:url('icons/政策法规.png') no-repeat center center;
+}
+.icon-notice{
+	background:url('icons/通知.png') no-repeat center center;
+}
+.icon-exchangeInfo{
+	background:url('icons/交换生信息管理.png') no-repeat center center;
+}
+.icon-exchangeStudent{
+	background:url('icons/交换生.png') no-repeat center center;
+}
 .icon-blank{
 	background:url('icons/blank.gif') no-repeat center center;
 }
@@ -70,6 +82,7 @@
 .icon-remove{
 	background:url('icons/删除.png') no-repeat center center;
 }
+
 .icon-save{
 	background:url('icons/filesave.png') no-repeat center center;
 }
