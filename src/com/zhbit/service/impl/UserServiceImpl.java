@@ -277,7 +277,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
     }
     private String addWhere(VoUser voUser,String hql,List<Object> values){
         if(StringUtil.isNotEmpty(voUser.getUserNo())){
-            hql+="and u.userNo like ? ";
+            hql+=" and u.userNo like ? ";
             values.add("%%"+voUser.getUserNo().trim()+"%%");
         }
         if(StringUtil.isNotEmpty(voUser.getUserName())){

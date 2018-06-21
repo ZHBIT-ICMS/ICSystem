@@ -133,12 +133,18 @@
             <result name="classesInfosAdd">/general/admin/classInfoAdd.jsp</result>
             <result name="classesInfosEdit">/general/admin/classInfoEdit.jsp</result>
         </action>
-
+      <!-- 国外院校 -->
         <action name="foreignCollege" class="com.zhbit.action.ForeignCollegeAction">
             <result name="foreignColleges">/general/admin/foreignCollege.jsp</result>
             <result name="foreignCollegesAdd">/general/admin/foreignCollegeAdd.jsp</result>
             <result name="foreignCollegesEdit">/general/admin/foreignCollegeEdit.jsp</result>
 
+        </action>
+        <!-- 国外院校讲座 -->
+        <action name="chair" class="com.zhbit.action.ChairAction">
+            <result name="chairs">/general/admin/chairs.jsp</result>
+            <result name="chairsAdd">/general/admin/chairsAdd.jsp</result>
+            <result name="chairsEdit">/general/admin/chairsEdit.jsp</result>
         </action>
     </package>  
 </struts>   
