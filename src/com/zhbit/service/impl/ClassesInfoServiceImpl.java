@@ -51,7 +51,7 @@ public class ClassesInfoServiceImpl extends BaseServiceImpl implements ClassesIn
     public void delete(String ids) {
         if (ids != null) {
             for (String id : ids.split(",")) {
-                ClassesInfo t = classesInfoDAO.get(ClassesInfo.class, Integer.parseInt(id));
+                ClassesInfo t = classesInfoDAO.get(ClassesInfo.class,Integer.parseInt(id));
                 System.out.println("```````````````````````````````删除班级id为"+id);
                 if (t != null) {
                     classesInfoDAO.delete(t);

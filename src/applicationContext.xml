@@ -17,10 +17,10 @@
 			value="com.mysql.jdbc.Driver">
 		</property>
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/db_ics">
+			value="jdbc:mysql://localhost:3306/db_isc">
 		</property>
 		<property name="username" value="root"></property>
-		<property name="password" value="run19970621"></property>
+		<property name="password" value="root"></property>
 
 	</bean>
       
