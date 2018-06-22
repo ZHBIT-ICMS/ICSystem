@@ -22,4 +22,5 @@ public interface UserService {
     public void update(VoUser voUser)throws ValidateFieldsException;
     public void editRole(VoUser voUser);
     public void editUserInfo(VoUser voUser);
+    public void addLoginLog(String userNo);
 }

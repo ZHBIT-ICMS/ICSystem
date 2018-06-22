@@ -64,7 +64,7 @@
                     field : 'goAbroadTime',
                     align: 'center',
                     sortable : true,
-                    width : 100,
+                    width : 100
                 } ] ],
                 toolbar : [ {
                     text : '增加',
@@ -133,12 +133,8 @@
                     } ],
                     onLoad : function() {
                         var f = p.find('form');
-                        f.find('input[name=id]').val(rows[0].id);
-                        f.find('input[name=replaceCourse]').val(rows[0].replaceCourse);
-                        f.find('input[name=replaceCredit]').val(rows[0].replaceCredit);
-                        f.find('input[name=schoolName]').val(rows[0].schoolName);
-                        f.find('input[name=schoolType]').val(rows[0].schoolType);
-                        f.find('input[name=goAbroadTime]').datebox('setValue',rows[0].goAbroadTime);
+                        f.form("reset");
+                        f.form("load",rows[0]);
                     }
                 });
             } else if (rows.length > 1) {
