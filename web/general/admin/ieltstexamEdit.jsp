@@ -21,28 +21,28 @@
                     <table class="tableForm">
                         <tr>
                             <th style="width:80px;">考试的编号</th>
-                            <td><input name="examId" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写学院名称'" style="width: 97%;" />
+                            <td><input name="examId" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写考试的编号'" style="width: 97%;" />
                             </td>
                         </tr>
                         <tr>
                             <th style="width:50px;">雅思考试时间</th>
-                            <td><input name="examTime" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写学院描述'" style="width: 97%;" />
+                            <td><input name="examTime" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写雅思考试时间'" style="width: 97%;" />
                             </td>
                         </tr>
                         <tr>
                             <th style="width:50px;">雅思考试地点</th>
-                            <td><input name="examPlace" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写学院描述'" style="width: 97%;" />
+                            <td><input name="examPlace" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写雅思考试地点'" style="width: 97%;" />
                             </td>
                         </tr>
                         <tr>
                             <th style="width:50px;">分数</th>
-                            <td><input name="score" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写学院描述'" style="width: 97%;" />
+                            <td><input name="score" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写分数'" style="width: 97%;" />
                             </td>
                         </tr>
 
                         <tr>
                             <th style="width:50px;">所属机构</th>
-                            <td><input type="text" name="ieltsTrainId" style="width: 145px;" data-options="required:'true',missingMessage:'请选择所属学院'"/>
+                            <td><input type="text" name="ieltsTrainId" style="width: 145px;" data-options="required:'true',missingMessage:'请选择所属所属机构'"/>
                             </td>
                         </tr>
                     </table>
