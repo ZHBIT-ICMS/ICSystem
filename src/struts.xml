@@ -149,6 +149,12 @@
             <result name="foreignCollegesEdit">/general/admin/foreignCollegeEdit.jsp</result>
 
         </action>
+
+        <!-- 登录记录 -->
+        <action name="loginLog" class="com.zhbit.action.LoginLogAction">
+            <result name="loginLog">/general/admin/log/loginLog.jsp</result>
+        </action>
+
         <!-- 国外院校讲座 -->
         <action name="chair" class="com.zhbit.action.ChairAction">
             <result name="chairs">/general/admin/chairs.jsp</result>

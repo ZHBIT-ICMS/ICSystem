@@ -110,6 +110,7 @@ public class UserAction extends ActionSupport implements ModelDriven<VoUser> {
         }
         VoUser u = userService.login(voUser);
         if (u != null) {
+            userService.addLoginLog(u.getUserNo());
             //放入到sessionInfo中
             SessionInfo sessionInfo = new SessionInfo();
             sessionInfo.setUserId(Integer.toString(u.getId()));

@@ -1,18 +1,25 @@
 package com.zhbit.service.impl;
 
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 import com.zhbit.dao.BaseDAO;
 import com.zhbit.entity.*;
 import com.zhbit.entity.base.DataGrid;
 import com.zhbit.entity.base.PageBean;
+import com.zhbit.entity.vo.VoLoginLog;
 import com.zhbit.entity.vo.VoUser;
 import com.zhbit.exception.ValidateFieldsException;
 import com.zhbit.service.UserService;
 import com.zhbit.util.Encrypt;
+import com.zhbit.util.IpUtil;
 import com.zhbit.util.StringUtil;
+import com.zhbit.util.UserAgentKit;
+import org.apache.struts2.StrutsStatics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import javax.servlet.http.HttpServletRequest;
 
 import javax.annotation.Resource;
 import javax.xml.bind.ValidationException;
@@ -29,10 +36,19 @@ import java.util.*;
 public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
    private BaseDAO<User> userDao;
+   private BaseDAO<LoginLog> loginLogBaseDAO;
    private BaseDAO<Role> roleDao;
    private BaseDAO<InternationalStudent> internationalStudentDAO;
    private BaseDAO<UserRole> userRoleDAO;
    private BaseDAO<CollegeInfo> collegeInfoDAO;
+
+    public BaseDAO<LoginLog> getLoginLogBaseDAO() {
+        return loginLogBaseDAO;
+    }
+    @Autowired
+    public void setLoginLogBaseDAO(BaseDAO<LoginLog> loginLogBaseDAO) {
+        this.loginLogBaseDAO = loginLogBaseDAO;
+    }
 
     public BaseDAO<CollegeInfo> getCollegeInfoDAO() {
         return collegeInfoDAO;
@@ -85,6 +101,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
     public VoUser login(VoUser voUser) {
        User tbUser=userDao.get("from User u where u.userNo = ? and u.password = ? and u.sign = ?",new Object[]{voUser.getUserNo(), Encrypt.e(voUser.getPassword()),voUser.getSign()});
        if(tbUser!=null){
+           //this.addLoginLog();
            voUser.setId(tbUser.getId());
            voUser.setUserNo(tbUser.getUserNo());
            voUser.setUserName(tbUser.getUserName());
@@ -159,6 +176,16 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
            return  voUser;
        }
         return null;
+    }
+
+    public void addLoginLog(String userNo){
+        HttpServletRequest request= (HttpServletRequest) ActionContext.getContext().get(StrutsStatics.HTTP_REQUEST);
+        LoginLog loginLog=new LoginLog();
+        loginLog.setUserNo(userNo);
+        loginLog.setUserAgent(UserAgentKit.getUserAgent(request).toString());
+        loginLog.setLoginTime(new Date());
+        loginLog.setLoginIp(IpUtil.getIpAddr(request));
+        loginLogBaseDAO.save(loginLog);
     }
 
     /**
