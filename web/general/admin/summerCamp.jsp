@@ -140,7 +140,7 @@
                         f.find('input[name=activityName]').val(rows[0].activityName);
                         f.find('input[name=activityDesc]').val(rows[0].activityDesc);
                         f.find('input[name=activityTime]').val(rows[0].activityTime);
-                        f.find('input[name=foreCollegeId]').val(rows[0].foreCollegeId);
+                        f.find('input[name=foreignCollegeId]').val(rows[0].foreignCollegeId);
                     }
                 });
             } else if (rows.length > 1) {
@@ -152,7 +152,7 @@
         function append() {
             var p = parent.dj.dialog({
                 title : '增加班级',
-                href : '${pageContext.request.contextPath}/summcamp!summcampsAdd.action',
+                href : '${pageContext.request.contextPath}/summerCamp!summerCampsAdd.action',
                 width : 500,
                 height : 450,
                 buttons : [ {
@@ -160,7 +160,7 @@
                     handler : function() {
                         var f = p.find('form');
                         f.form({
-                            url : '${pageContext.request.contextPath}/summcamp!add.action',
+                            url : '${pageContext.request.contextPath}/summerCamp!add.action',
                             success : function(d) {
                                 var json = $.parseJSON(d);
                                 if (json.success) {
@@ -178,9 +178,9 @@
                 } ],
                 onLoad : function() {
                     var f = p.find('form');
-                    var foreCollegeId = f.find('input[name=foreCollegeId]');
-                    var foreCollegeIdComboboxTree = foreCollegeId.combobox({
-                        url : '${pageContext.request.contextPath}/summerCamp!doNotNeedSession_combobox.action',
+                    var foreignCollegeId = f.find('input[name=foreignCollegeId]');
+                    var foreCollegeIdComboboxTree = foreignCollegeId.combobox({
+                        url : '${pageContext.request.contextPath}/foreignCollege!doNotNeedSession_combobox.action',
                         valueField : 'id',
                         textField : 'foreignName',
                         multiple : false,
@@ -200,7 +200,7 @@
                             ids.push(rows[i].id);
                         }
                         $.ajax({
-                            url : '${pageContext.request.contextPath}/classesInfo!delete.action',
+                            url : '${pageContext.request.contextPath}/summerCamp!delete.action',
                             data : {
                                 ids : ids.join(',')
                             },

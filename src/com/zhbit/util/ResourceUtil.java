@@ -61,10 +61,44 @@ public class ResourceUtil {
     }
 
     /**
+     * 获取政策法规上传目录
+     * @return
+     */
+    public static final String getPolicyUploadDirectory(){
+
+        return bundle.getString("uploadPolicyDirectory");
+    }
+
+    /**
+     * 获取新闻上传目录
+     * @return
+     */
+    public static final String getNewsUploadDirectory(){
+        return bundle.getString("uploadNewsDirectory");
+    }
+
+    /**
+     * 获得通知公告上传目录
+     * @return
+     */
+    public static  final String getNoticeUploadDirectory(){
+        return bundle.getString("uploadNoticeDirectory");
+    }
+
+    /**
+     * 获得协议上传目录
+     * @return
+     */
+    public static  final String getAgreementUploadDirectory(){
+        return bundle.getString("uploadAgreementDirectory");
+    }
+    /**
      *
      * @param args
      */
    public static void main(String []args){
-        System.out.println("sessionInfoName:"+getSessionInfoName());
+
+       System.out.println("sessionInfoName:"+getSessionInfoName());
+       System.out.println("协议上传："+getAgreementUploadDirectory());
    }
 }

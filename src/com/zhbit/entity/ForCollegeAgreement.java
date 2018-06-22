@@ -12,7 +12,7 @@ import javax.persistence.*;
 //国外院校和协议的中间表
 @Entity
 @Table(name="tb_foreign_college_agreement")
-public class FroCollegeAgreement {
+public class ForCollegeAgreement {
     private int id;
     private Agreement agreement;
     private ForeignCollege foreignCollege;

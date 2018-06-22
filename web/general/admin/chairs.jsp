@@ -254,7 +254,7 @@
              <th>截止到访时间</th><td><input name="visitTime"  class="easyui-datebox" id="visitTime" style="width: 120px;"/></td>
              <th>截止活动时间</th><td><input name="activityTime"  class="easyui-datebox" id="activityTime"style="width: 120px;"/> </td>
              <th>所属国外院校</th>
-             <td><input class="easyui-combobox" id="foreignCollegeId" name="foreignCollegeId" style="width: 100px;" data-options="panelHeight:'auto',editable:false,valueField:'id',textField:'foreignCollegeName',url:'${pageContext.request.contextPath}/foreignCollege!doNotNeedSession_combobox.action'"/>
+             <td><input class="easyui-combobox"  name="foreignCollegeId" style="width: 100px;" data-options="panelHeight:'auto',editable:false,valueField:'id',textField:'foreignName',url:'${pageContext.request.contextPath}/foreignCollege!doNotNeedSession_combobox.action'"/>
                  <a href="javascript:void(0);" class="easyui-linkbutton" onclick="_search();">过滤</a><a href="javascript:void(0);" class="easyui-linkbutton" onclick="cleanSearch();">取消</a>
              </td>
          </tr>

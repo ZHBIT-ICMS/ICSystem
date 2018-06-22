@@ -82,7 +82,12 @@
 .icon-remove{
 	background:url('icons/删除.png') no-repeat center center;
 }
-
+.icon-overseaStudent{
+	background:url('icons/出国生管理.png') no-repeat center center;
+}
+.icon-overseaInfo{
+	background:url('icons/出国生信息管理.png') no-repeat center center;
+}
 .icon-save{
 	background:url('icons/filesave.png') no-repeat center center;
 }

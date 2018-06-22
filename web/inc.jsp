@@ -15,7 +15,9 @@
 <meta http-equiv="description" content="seal">
 <!-- jquery库 -->
 <%--<script type="text/javascript" src="${pageContext.request.contextPath}/easyUI/jquery-1.8.2.min.js" charset="utf-8"></script>--%>
-<script src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery.min.js"></script>
+<%--<script src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery.min.js"></script>--%>
+<%-- --%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/easyUI/jquery.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/easyUI/jquery-migrate-1.4.1.js" charset="utf-8"></script>
 <!-- jquery Cookie插件 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/easyUI/jquery.cookie.js" charset="utf-8"></script>

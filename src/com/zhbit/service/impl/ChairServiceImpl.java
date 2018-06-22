@@ -116,6 +116,7 @@ public class ChairServiceImpl implements ChairService {
         if (voChair.getSort() != null && voChair.getOrder() != null) {
             hql += " order by " + voChair.getSort() + " " + voChair.getOrder();
         }
+        System.out.println("HQL`````````````````````````````:"+hql);
         PageBean pageBean = new PageBean(voChair.getPage(),voChair.getRows());
         return chairDAO.find(hql, values,  pageBean);
     }
@@ -131,14 +132,15 @@ public class ChairServiceImpl implements ChairService {
 
         if (voChair.getForeignCollegeId()>0){
            hql+=" and t.foreignCollege.id = ? ";
-           values.add(" "+voChair.getForeignCollegeId());
-        }
-        if(voChair.getActivityTime()!=null){
-           hql+=" and TO_DAYS(t.activityTime)<=TO_DAYS('"+new SimpleDateFormat("yyyy-MM-dd").format(voChair.getActivityTime())+ "') " ;
+           values.add(new Integer(voChair.getForeignCollegeId()));
         }
         if(voChair.getVisitTime()!=null){
             hql+=" and TO_DAYS(t.visitTime)<=TO_DAYS('"+new SimpleDateFormat("yyyy-MM-dd").format(voChair.getVisitTime())+ "') " ;
         }
+        if(voChair.getActivityTime()!=null){
+            hql+=" and TO_DAYS(t.activityTime)<=TO_DAYS('"+new SimpleDateFormat("yyyy-MM-dd").format(voChair.getActivityTime())+ "') " ;
+        }
+        System.out.println("HQL`````````````````````````````:"+hql);
         return hql;
     }
     private Long total(VoChair voChair) {
