@@ -65,6 +65,7 @@
                     sortable : true,
                     width : 150
                 },
+
                     {
                         title : '所属机构名称',
                         field : 'trainName',
@@ -115,7 +116,7 @@
             var rows = datagrid.datagrid('getSelections');
             if (rows.length == 1) {
                 var p = parent.dj.dialog({
-                    title : '修改班级信息',
+                    title : '修改雅思考试信息',
                     href : '${pageContext.request.contextPath}/ieltstExam!ieltstExamEdit.action?id=' + rows[0].id,
                     width : 500,
                     height : 300,

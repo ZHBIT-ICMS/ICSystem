@@ -19,6 +19,8 @@ public class IELTSExam {
     private int score;//分数
     private IELTSTrain ieltsTrain;//培训机构
 
+    private int state;
+
     @Id
     @GeneratedValue(generator="_native")
     @GenericGenerator(name="_native",strategy="native")
@@ -69,5 +71,14 @@ public class IELTSExam {
 
     public void setIeltsTrain(IELTSTrain ieltsTrain) {
         this.ieltsTrain = ieltsTrain;
+    }
+
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 }

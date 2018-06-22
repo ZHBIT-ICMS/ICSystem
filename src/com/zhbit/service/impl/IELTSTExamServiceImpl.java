@@ -164,7 +164,7 @@ public class IELTSTExamServiceImpl extends BaseServiceImpl implements IELTSTExam
                 VoIELTSExam vc= new VoIELTSExam();
                 BeanUtils.copyProperties(tc, vc);
                 vc.setIeltsTrainId(tc.getIeltsTrain().getId());
-               vc.getTrainName(tc.getIeltsTrain().getTrainName());
+               vc.setTrainName(tc.getIeltsTrain().getTrainName());
 
                 voIELTSExams.add(vc);
             }

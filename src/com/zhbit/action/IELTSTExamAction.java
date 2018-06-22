@@ -62,6 +62,7 @@ public class IELTSTExamAction extends ActionSupport implements ModelDriven<VoIEL
         long total = ieltstExamService.dataGrid(voIELTSExam).getTotal();
         System.out.println("11111111111111111111111111111111111222222222");
         JSONObject result = new JSONObject();
+        System.out.println(voIELTSExam.getTrainName()+"777777777777");
         result.put("rows",rows);
         result.put("total",total);
         try {

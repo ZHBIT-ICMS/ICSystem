@@ -109,7 +109,7 @@
             var rows = datagrid.datagrid('getSelections');
             if (rows.length == 1) {
                 var p = parent.dj.dialog({
-                    title : '修改雅思',
+                    title : '修改机构信息',
                     href : '${pageContext.request.contextPath}/ieltstInfo!ieltstEdit.action?id=' + rows[0].id,
                     width : 1000,
                     height : 700,
@@ -153,7 +153,7 @@
         }
         function append() {
             var p = parent.dj.dialog({
-                title : '发布新闻',
+                title : '发布机构信息',
                 href : '${pageContext.request.contextPath}/ieltstInfo!ieltstAdd.action',
                 width : 500,
                 height : 450,

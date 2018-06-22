@@ -20,11 +20,7 @@
         <%--private int ieltsTrainId;//雅思机构编号--%>
         <%--private String trainName;//雅思机构名称--%>
         <table class="tableForm">
-            <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-            <%--//  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>--%>
-            <div style="padding: 5px;">
-                <form method="post">
-                    <table class="tableForm">
+
                         <tr>
                             <th style="width:80px;">考试的编号</th>
                             <td><input name="examId" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写考试的编号'" style="width: 97%;" />
@@ -54,6 +50,3 @@
                     </table>
                 </form>
             </div>
-        </table>
-    </form>
-</div>

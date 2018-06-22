@@ -22,6 +22,10 @@ public class VoIELTSExam {
     private Date examTime;//雅思考试时间
     private String examPlace;//雅思考试地点
     private int score;//分数
+
+
+    private int state;
+
 //    private IELTSTrain ieltsTrain;//培训机构
     //一个雅思培训可以举办多个考试
     private int ieltsTrainId;//雅思机构编号
@@ -130,10 +134,6 @@ public class VoIELTSExam {
         return trainName;
     }
 
-    public String getTrainName(String trainName) {
-        return this.trainName;
-    }
-
     public void setTrainName(String trainName) {
         this.trainName = trainName;
     }
@@ -145,5 +145,14 @@ public class VoIELTSExam {
 //    public void setStudentTotal(int studentTotal) {
 //        StudentTotal = studentTotal;
 //    }
+
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
 }
 
