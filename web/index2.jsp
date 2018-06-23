@@ -433,7 +433,6 @@ jQuery(document).ready(function($) {
 				<c:forEach items="${noticeList }" var="n">
 					<li>
 
-
 						<a href="news_getNoticeById.action"? newsId=${n.id} target="_blank">${n.title }</a>
 					</li>
 				</c:forEach>
