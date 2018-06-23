@@ -16,10 +16,12 @@ import java.util.List;
 @Table(name="tb_agreement")
 public class Agreement {
     private int id;
+    private String title;
     private String type;
     private Date agreementTime;
     private String content;
-    private List<FroCollegeAgreement>froCollegeAgreementList;
+    private ForeignCollege foreignCollege;//国外院校
+
     @Id
     @GeneratedValue(generator = "_native")
     @GenericGenerator(name = "_native", strategy = "native")
@@ -46,6 +48,15 @@ public class Agreement {
     public void setAgreementTime(Date agreementTime) {
         this.agreementTime = agreementTime;
     }
+    @Column(length = 50)
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     @Lob
     @Column(columnDefinition="TEXT")
     public String getContent() {
@@ -55,12 +66,14 @@ public class Agreement {
     public void setContent(String conyent) {
         this.content = conyent;
     }
-    @OneToMany(mappedBy = "agreement",targetEntity = FroCollegeAgreement.class)
-    public List<FroCollegeAgreement> getFroCollegeAgreementList() {
-        return froCollegeAgreementList;
+
+    @ManyToOne
+    @JoinColumn(name="foreignCollegeId")
+    public ForeignCollege getForeignCollege() {
+        return foreignCollege;
     }
 
-    public void setFroCollegeAgreementList(List<FroCollegeAgreement> froCollegeAgreementList) {
-        this.froCollegeAgreementList = froCollegeAgreementList;
+    public void setForeignCollege(ForeignCollege foreignCollege) {
+        this.foreignCollege = foreignCollege;
     }
 }

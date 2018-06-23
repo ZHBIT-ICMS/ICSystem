@@ -11,7 +11,7 @@
  Target Server Version : 50712
  File Encoding         : 65001
 
- Date: 18/06/2018 15:22:43
+ Date: 20/06/2018 20:37:41
 */
 
 SET NAMES utf8mb4;
@@ -49,7 +49,14 @@ CREATE TABLE `tb_auth`  (
 -- Records of tb_auth
 -- ----------------------------
 INSERT INTO `tb_auth` VALUES ('0', '国际合作交流管理系统', '首页', 1, NULL, NULL);
-INSERT INTO `tb_auth` VALUES ('df9bbdc6-a055-461c-b44b-26d82e6979eb', '哈哈', '王博越', 10, '', 'icms');
+INSERT INTO `tb_auth` VALUES ('bjgl', NULL, '班级管理', 2, '', 'gjxxgl');
+INSERT INTO `tb_auth` VALUES ('bjglym', NULL, '班级管理页面', 1, '/classesInfo!classesInfo.action', 'bjgl');
+INSERT INTO `tb_auth` VALUES ('bjsc', NULL, '班级删除', 6, '/classesInfo!delete.action', 'bjgl');
+INSERT INTO `tb_auth` VALUES ('bjtj', NULL, '班级添加', 2, '/classesInfo!add.action', 'bjgl');
+INSERT INTO `tb_auth` VALUES ('bjtjym', NULL, '添加班级页面', 3, '/classesInfo!classesInfoAdd.action', 'bjgl');
+INSERT INTO `tb_auth` VALUES ('bjxg', NULL, '班级修改', 4, '/classesInfo!edit.action', 'bjgl');
+INSERT INTO `tb_auth` VALUES ('bjxgym', NULL, '修改班级页面', 5, '/classesInfo!classesEdit.action', 'bjgl');
+INSERT INTO `tb_auth` VALUES ('gjxxgl', NULL, '国际信息管理', 2, NULL, '0');
 INSERT INTO `tb_auth` VALUES ('icms', NULL, '系统管理', 2, NULL, '0');
 INSERT INTO `tb_auth` VALUES ('jsbj', '修改角色', '角色编辑', 6, '/role!edit.action', 'jsgl');
 INSERT INTO `tb_auth` VALUES ('jsbjym', '修改角色', '编辑角色页面', 5, '/role!roleEdit.action', 'jsgl');
@@ -70,7 +77,7 @@ INSERT INTO `tb_auth` VALUES ('qxsc', NULL, '权限删除', 7, '/auth!edit.actio
 INSERT INTO `tb_auth` VALUES ('qxtj', NULL, '权限添加', 4, '/auth!add.action', 'qxgl');
 INSERT INTO `tb_auth` VALUES ('qxtjym', NULL, '添加权限页面', 3, '/auth!authAdd.action', 'qxgl');
 INSERT INTO `tb_auth` VALUES ('xwcx', NULL, '新闻查询', 2, '/pubNews!datagrid.action', 'xwgl');
-INSERT INTO `tb_auth` VALUES ('xwgl', NULL, '新闻管理', 3, '', '0');
+INSERT INTO `tb_auth` VALUES ('xwgl', NULL, '新闻管理', 3, '', 'xxfbgl');
 INSERT INTO `tb_auth` VALUES ('xwglym', NULL, '新闻管理页面', 1, '/pubNews!news.action', 'xwgl');
 INSERT INTO `tb_auth` VALUES ('xwsc', NULL, '新闻删除', 7, '/pubNews!delete.action', 'xwgl');
 INSERT INTO `tb_auth` VALUES ('xwtj', NULL, '新闻添加', 3, '/pubNews!add.action', 'xwgl');
@@ -78,8 +85,15 @@ INSERT INTO `tb_auth` VALUES ('xwtjym', NULL, '添加新闻页面', 4, '/pubNews
 INSERT INTO `tb_auth` VALUES ('xwxg', NULL, '新闻修改', 5, '/pubNews!edit.action', 'xwgl');
 INSERT INTO `tb_auth` VALUES ('xwxgym', NULL, '修改新闻页面', 6, '/pubNews!newsEdit.action', 'xwgl');
 INSERT INTO `tb_auth` VALUES ('xwyl', NULL, '新闻预览', 8, 'pubNews!showContent.action', 'xwgl');
-INSERT INTO `tb_auth` VALUES ('xygl', NULL, '学院管理', 5, '', 'icms');
-INSERT INTO `tb_auth` VALUES ('xyglym', '', '学院管理页面', 1, '/college!college.action', 'xygl');
+INSERT INTO `tb_auth` VALUES ('xxfbgl', NULL, '信息发布管理', 3, '', '0');
+INSERT INTO `tb_auth` VALUES ('xycx', NULL, '学院查询', 3, '/collegeInfo!datagrid.action', 'xygl');
+INSERT INTO `tb_auth` VALUES ('xygl', NULL, '学院管理', 5, '', 'gjxxgl');
+INSERT INTO `tb_auth` VALUES ('xyglym', '', '学院管理页面', 1, '/collegeInfo!collegeInfos.action', 'xygl');
+INSERT INTO `tb_auth` VALUES ('xysc', NULL, '学院删除', 8, '/collegeInfo!delete.action', 'xygl');
+INSERT INTO `tb_auth` VALUES ('xytj', NULL, '学院添加', 4, '/collegeInfo!add.action', 'xygl');
+INSERT INTO `tb_auth` VALUES ('xytjym', NULL, '添加学院页面', 5, '/collegeInfo!collegeInfosAdd.action', 'xygl');
+INSERT INTO `tb_auth` VALUES ('xyxg', NULL, '学院修改', 6, '/collegeInfo!edit.action', 'xygl');
+INSERT INTO `tb_auth` VALUES ('xyxgym', NULL, '修改学院页面', 7, '/collegeInfo!collegeInfosEdit.action', 'xygl');
 INSERT INTO `tb_auth` VALUES ('yhcx', NULL, '用户查询', 2, '/user!datagrid.action', 'yhgl');
 INSERT INTO `tb_auth` VALUES ('yhgl', NULL, '用户管理', 1, NULL, 'icms');
 INSERT INTO `tb_auth` VALUES ('yhglym', NULL, '用户管理页面', 1, '/user!user.action', 'yhgl');
@@ -97,11 +111,16 @@ CREATE TABLE `tb_classes_info`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `classNo` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `descInfo` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `professionInfoId` int(11) NULL DEFAULT NULL,
+  `CollegeInfoId` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `FK_c9q7q1byvar49dc3oj8otjf68`(`professionInfoId`) USING BTREE,
-  CONSTRAINT `FK_c9q7q1byvar49dc3oj8otjf68` FOREIGN KEY (`professionInfoId`) REFERENCES `tb_profession_info` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  INDEX `FK_l059pkgmkgh760vq3cq61nnhf`(`CollegeInfoId`) USING BTREE,
+  CONSTRAINT `FK_l059pkgmkgh760vq3cq61nnhf` FOREIGN KEY (`CollegeInfoId`) REFERENCES `tb_college_info` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tb_classes_info
+-- ----------------------------
+INSERT INTO `tb_classes_info` VALUES (2, '1002', '软件工程12班', 1);
 
 -- ----------------------------
 -- Table structure for tb_college_info
@@ -112,12 +131,13 @@ CREATE TABLE `tb_college_info`  (
   `collegeName` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `descInfo` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_college_info
 -- ----------------------------
-INSERT INTO `tb_college_info` VALUES (1, '计算机学院', '计算机学院');
+INSERT INTO `tb_college_info` VALUES (1, '计算机学院', '计算机学院啊安安');
+INSERT INTO `tb_college_info` VALUES (2, '你麻痹学院', '傻逼');
 
 -- ----------------------------
 -- Table structure for tb_exchange_student
@@ -193,6 +213,7 @@ CREATE TABLE `tb_ielts_exam`  (
   `examTime` datetime(0) NULL DEFAULT NULL,
   `score` int(11) NOT NULL,
   `ieltsTrainId` int(11) NULL DEFAULT NULL,
+  `sign` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `UK_1eu9oyfwcl783qd368vks51vs`(`examId`) USING BTREE,
   INDEX `FK_228jrw1ghf61vrxm5tnnv8i3x`(`ieltsTrainId`) USING BTREE,
@@ -291,13 +312,14 @@ CREATE TABLE `tb_menu`  (
 -- ----------------------------
 -- Records of tb_menu
 -- ----------------------------
+INSERT INTO `tb_menu` VALUES ('bjgl', 'icon-classInfo', '班级管理', 2, '/classesInfo!classesInfos.action', 'gjxxgl');
 INSERT INTO `tb_menu` VALUES ('gjxxgl', 'icon-international', '国际信息管理', 1, '', NULL);
-INSERT INTO `tb_menu` VALUES ('icms', 'icon-system', '系统管理', 1, '', NULL);
+INSERT INTO `tb_menu` VALUES ('icms', 'icon-system', '系统信息管理', 1, '', NULL);
 INSERT INTO `tb_menu` VALUES ('jsgl', 'icon-role', '角色管理', 2, '/role!role.action', 'icms');
 INSERT INTO `tb_menu` VALUES ('qxgl', 'icon-auth', '权限管理', 3, '/auth!auth.action', 'icms');
 INSERT INTO `tb_menu` VALUES ('xwgl', 'icon-newsPub', '新闻管理', 1, '/pubNews!news.action', 'xxfb');
-INSERT INTO `tb_menu` VALUES ('xxfb', 'icon-publish', '信息发布', 3, NULL, NULL);
-INSERT INTO `tb_menu` VALUES ('xygl', 'icon-collegeInfo', '学院管理', 2, '/college!college.action', 'gjxxgl');
+INSERT INTO `tb_menu` VALUES ('xxfb', 'icon-publish', '信息发布管理', 3, NULL, NULL);
+INSERT INTO `tb_menu` VALUES ('xygl', 'icon-collegeInfo', '学院管理', 2, '/collegeInfo!collegeInfos.action', 'gjxxgl');
 INSERT INTO `tb_menu` VALUES ('yhgl', 'icon-user', '用户管理', 1, '/user!user.action', 'icms');
 
 -- ----------------------------
@@ -311,15 +333,7 @@ CREATE TABLE `tb_news`  (
   `people` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of tb_news
--- ----------------------------
-INSERT INTO `tb_news` VALUES (3, '<p>搜索</p><p><img src=\"/ICSystem/attached/jpg/2018/06/18/11d2498587a7417791ed6487402464c2.jpg\" alt=\"\" /><br /></p>', '2018-06-18 14:11:25', '是', '是');
-INSERT INTO `tb_news` VALUES (4, '<p>搜索</p><p><br /></p>', '2018-06-18 13:51:58', '是', '是');
-INSERT INTO `tb_news` VALUES (5, '搜索', '2018-06-18 14:10:58', '搜索', '的');
-INSERT INTO `tb_news` VALUES (6, '<img src=\"/ICSystem/attached/jpg/2018/06/18/9257f6cff73b4048a078266fa7fbe870.jpg\" alt=\"\" />', '2018-06-18 14:12:21', '张润', '北理珠');
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for tb_notice
@@ -362,20 +376,6 @@ CREATE TABLE `tb_policy`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Table structure for tb_profession_info
--- ----------------------------
-DROP TABLE IF EXISTS `tb_profession_info`;
-CREATE TABLE `tb_profession_info`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descInfo` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `professionName` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `collegeInfoId` int(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `FK_pos1l1ob0u8bei6il6ew50uqa`(`collegeInfoId`) USING BTREE,
-  CONSTRAINT `FK_pos1l1ob0u8bei6il6ew50uqa` FOREIGN KEY (`collegeInfoId`) REFERENCES `tb_college_info` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
 -- Table structure for tb_role
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_role`;
@@ -413,6 +413,7 @@ CREATE TABLE `tb_role_auth`  (
 -- Records of tb_role_auth
 -- ----------------------------
 INSERT INTO `tb_role_auth` VALUES ('00d72c04-aed2-4d52-8a44-0175c3b10af7', 'yhxg', '0');
+INSERT INTO `tb_role_auth` VALUES ('01248c9a-b78f-4c02-a870-941ae7df31b8', 'bjsc', '0');
 INSERT INTO `tb_role_auth` VALUES ('01578e7d-d813-46c3-9fee-2e71552126e4', 'xwtjym', '0');
 INSERT INTO `tb_role_auth` VALUES ('02cdc2ea-7a32-4226-9dde-23536f0c1514', 'xwsc', '0');
 INSERT INTO `tb_role_auth` VALUES ('05ac312e-c3a0-4dce-bce4-8c692d80805d', 'jsbjym', '5d0a1a22-06df-4e03-bfda-0480eeed24b3');
@@ -420,6 +421,9 @@ INSERT INTO `tb_role_auth` VALUES ('07307761-7922-4a37-8985-4d274948c4c2', 'jstj
 INSERT INTO `tb_role_auth` VALUES ('0c7c02aa-5296-497b-9f65-afd611abb00d', 'jssc', '5d0a1a22-06df-4e03-bfda-0480eeed24b3');
 INSERT INTO `tb_role_auth` VALUES ('0f570a09-c49a-4943-8e6c-64e02f167200', 'qxcx', '0');
 INSERT INTO `tb_role_auth` VALUES ('18322aba-444a-4aaf-b1ed-4d65207edc19', 'qxtj', '0');
+INSERT INTO `tb_role_auth` VALUES ('1b8819d5-548c-4684-b0b4-8116dea6c421', 'xyglym', '0');
+INSERT INTO `tb_role_auth` VALUES ('1d6f761c-2b95-4b6a-b022-2e9393c2759f', 'bjtj', '0');
+INSERT INTO `tb_role_auth` VALUES ('239899cc-7187-4c88-8b22-72c714c868ed', 'xytj', '0');
 INSERT INTO `tb_role_auth` VALUES ('25fe34ef-b7bf-4bad-808c-77c1818233b6', 'qxsc', '0');
 INSERT INTO `tb_role_auth` VALUES ('2ce0b9fc-f832-46a9-b4f1-70b8fd1ba46e', 'xwgl', '0');
 INSERT INTO `tb_role_auth` VALUES ('2e08115f-76ad-4c97-be31-0e18c9b97603', 'jsglym', '0');
@@ -438,23 +442,30 @@ INSERT INTO `tb_role_auth` VALUES ('5c8f8f38-f1a7-470c-a7b1-c8ff45b384aa', 'jstj
 INSERT INTO `tb_role_auth` VALUES ('5e700ea3-4a47-4691-9404-3ec345da07f7', 'jstjym', '0');
 INSERT INTO `tb_role_auth` VALUES ('5f08a6a8-5055-47a1-a3f6-6eeda697ba42', 'xwsc', '4b110571-a61c-4e00-b3d8-e4e875278a13');
 INSERT INTO `tb_role_auth` VALUES ('60408790-b187-4136-8462-33c95f6000d4', 'yhsc', '0');
+INSERT INTO `tb_role_auth` VALUES ('65b0c993-2bf5-4bc2-a360-818996e3d56c', 'xysc', '0');
 INSERT INTO `tb_role_auth` VALUES ('65f567bd-a12e-4c06-89ac-a97a1a79d2f3', 'jsglym', '5d0a1a22-06df-4e03-bfda-0480eeed24b3');
 INSERT INTO `tb_role_auth` VALUES ('667191ec-9009-4bf8-ac1c-7f7deb8523e1', 'jscx', '0');
 INSERT INTO `tb_role_auth` VALUES ('67b00ec8-9460-451f-8bac-7ad3c48b9dea', 'jsbj', '0');
 INSERT INTO `tb_role_auth` VALUES ('69641440-e559-4557-b39b-091c9b5599dc', 'qxbj', '0');
 INSERT INTO `tb_role_auth` VALUES ('6df44ddd-853d-481b-b842-51cfebc7810d', 'jsbjym', '0');
 INSERT INTO `tb_role_auth` VALUES ('71754550-7b0c-4368-9694-2f4b8cc6f0aa', 'jssc', '0');
+INSERT INTO `tb_role_auth` VALUES ('7380ad23-4f1a-46d6-a536-f29bcbf05d94', 'bjglym', '0');
 INSERT INTO `tb_role_auth` VALUES ('7398ea2e-1803-4952-a918-fd2c4e9931ae', 'xwgl', '4b110571-a61c-4e00-b3d8-e4e875278a13');
 INSERT INTO `tb_role_auth` VALUES ('748a70f0-250d-4d57-ab2f-d8930e9567ae', 'xwxgym', '0');
 INSERT INTO `tb_role_auth` VALUES ('7f972a4d-5261-4dd9-84f2-2e15d70ffaeb', 'jsgl', '0');
 INSERT INTO `tb_role_auth` VALUES ('7fdf4fa9-ca32-44df-8ae0-157330bba46c', 'xwcx', '0');
 INSERT INTO `tb_role_auth` VALUES ('80ef2f64-3baf-474a-ae2c-93628b463dfd', 'yhglym', '0');
+INSERT INTO `tb_role_auth` VALUES ('8490c363-95f0-499b-b311-5d83c520538c', 'gjxxgl', '0');
 INSERT INTO `tb_role_auth` VALUES ('8607bf9b-5f86-4238-83e9-f9e8d0126c61', 'yhxgym', '0');
+INSERT INTO `tb_role_auth` VALUES ('89d5bfcb-cc02-4bf9-bf0a-b4dde2c7ffa9', 'bjxg', '0');
 INSERT INTO `tb_role_auth` VALUES ('8a000a4d-61bd-4a25-8d3d-0e1c9e659a56', 'qxtjym', '0');
 INSERT INTO `tb_role_auth` VALUES ('9965bf9e-7924-473e-9b0d-d9105869c670', 'jsbj', '5d0a1a22-06df-4e03-bfda-0480eeed24b3');
 INSERT INTO `tb_role_auth` VALUES ('9ab5fc8d-df06-4cea-883f-d449d66b9d8f', 'xwtj', '0');
 INSERT INTO `tb_role_auth` VALUES ('a02b6227-b3d0-4dbc-a0a3-d90e2de7dfe3', 'yhtjym', '0');
+INSERT INTO `tb_role_auth` VALUES ('a78e5189-c59b-4625-a997-f166efd49577', 'bjxgym', '0');
+INSERT INTO `tb_role_auth` VALUES ('a8523356-b73b-4641-ac59-4c28241ab904', 'xycx', '0');
 INSERT INTO `tb_role_auth` VALUES ('a8571f56-0331-403a-a93f-b62101ad522d', 'jsgl', '5d0a1a22-06df-4e03-bfda-0480eeed24b3');
+INSERT INTO `tb_role_auth` VALUES ('a8cdadd9-c2c6-44ba-b7fa-081c6fd8843b', 'xytjym', '0');
 INSERT INTO `tb_role_auth` VALUES ('a9a5e212-be76-4278-985b-0319dbdb8edf', 'xwxgym', '4b110571-a61c-4e00-b3d8-e4e875278a13');
 INSERT INTO `tb_role_auth` VALUES ('ad75b61c-a7a3-4875-a50a-75fdae5f12a0', 'jscx', '5d0a1a22-06df-4e03-bfda-0480eeed24b3');
 INSERT INTO `tb_role_auth` VALUES ('b0858fdc-4b4d-4b49-8f95-5c5f5415f104', 'xwglym', '4b110571-a61c-4e00-b3d8-e4e875278a13');
@@ -463,10 +474,15 @@ INSERT INTO `tb_role_auth` VALUES ('b375aef2-602c-48c9-a3b9-bcf69c25cefd', 'xwxg
 INSERT INTO `tb_role_auth` VALUES ('be7032b2-7aa2-4219-a322-bad94b333006', 'xwcx', '4b110571-a61c-4e00-b3d8-e4e875278a13');
 INSERT INTO `tb_role_auth` VALUES ('beea24a6-f710-4fc2-8930-60fcbc0773ed', 'jsplbjym', '0');
 INSERT INTO `tb_role_auth` VALUES ('bf8f6d74-b29b-4924-8dfb-7478c645b3ad', 'qxbjym', '0');
+INSERT INTO `tb_role_auth` VALUES ('c6b3d729-5a28-4e6c-93aa-4fc669a46991', 'xxfbgl', '0');
 INSERT INTO `tb_role_auth` VALUES ('c765e846-268e-426b-89aa-4a9bc35ed02d', 'yhcx', '0');
+INSERT INTO `tb_role_auth` VALUES ('c8377489-fe23-4403-8278-7e8e390aeb1c', 'xyxg', '0');
 INSERT INTO `tb_role_auth` VALUES ('ca196969-a6c6-4894-b905-66e85e9b6ebf', 'qxglym', '0');
+INSERT INTO `tb_role_auth` VALUES ('e5fbf063-d501-4fe2-88ab-85ce739edd0d', 'xyxgym', '0');
 INSERT INTO `tb_role_auth` VALUES ('ed78265f-6cc4-435d-83c8-e30a03e139b9', 'xwglym', '0');
 INSERT INTO `tb_role_auth` VALUES ('efe70709-0377-4b38-9e11-625665418534', 'xwtjym', '4b110571-a61c-4e00-b3d8-e4e875278a13');
+INSERT INTO `tb_role_auth` VALUES ('f43e8a64-bfca-42a4-963f-db1d1ce5aa9c', 'bjtjym', '0');
+INSERT INTO `tb_role_auth` VALUES ('f8d447a8-a47a-4b30-bac9-5b2f0b8ef86e', 'bjgl', '0');
 
 -- ----------------------------
 -- Table structure for tb_summer_camp
@@ -536,11 +552,11 @@ CREATE TABLE `tb_user_role`  (
 -- ----------------------------
 -- Records of tb_user_role
 -- ----------------------------
-INSERT INTO `tb_user_role` VALUES ('0d2be5da-551c-4ab8-a6f6-06df7e988e50', '1', 8);
-INSERT INTO `tb_user_role` VALUES ('4a062c54-8d4c-4ad0-8eae-de241fc6350a', '1', 6);
-INSERT INTO `tb_user_role` VALUES ('556fc65d-d6b5-49ff-ad92-39c13698eec2', '1', 7);
 INSERT INTO `tb_user_role` VALUES ('75901146-d5e9-4774-9c98-7baf3a2941eb', '0', 1);
 INSERT INTO `tb_user_role` VALUES ('941150c7-d706-4971-9b45-5c62356ec621', '1', 5);
+INSERT INTO `tb_user_role` VALUES ('966e1ab2-84a9-4762-8317-6a433a95abdc', '5d0a1a22-06df-4e03-bfda-0480eeed24b3', 7);
 INSERT INTO `tb_user_role` VALUES ('9c3e3dfd-dd7a-451f-aa80-48e4a4c516da', '4b110571-a61c-4e00-b3d8-e4e875278a13', 9);
+INSERT INTO `tb_user_role` VALUES ('ba05a31e-355e-4a67-9ccc-ba6bee9bf94d', '4b110571-a61c-4e00-b3d8-e4e875278a13', 6);
+INSERT INTO `tb_user_role` VALUES ('bebc2e5a-36d2-4cb1-b3e4-5ccc500e9c89', '5d0a1a22-06df-4e03-bfda-0480eeed24b3', 8);
 
 SET FOREIGN_KEY_CHECKS = 1;

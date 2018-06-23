@@ -19,7 +19,7 @@ public class IELTSExam {
     private int score;//分数
     private IELTSTrain ieltsTrain;//培训机构
 
-    private int state;
+   private  int sign;//0是正式考试，1是模拟考试
 
     @Id
     @GeneratedValue(generator="_native")
@@ -63,6 +63,15 @@ public class IELTSExam {
     public void setScore(int score) {
         this.score = score;
     }
+
+    public int getSign() {
+        return sign;
+    }
+
+    public void setSign(int sign) {
+        this.sign = sign;
+    }
+
     @ManyToOne
     @JoinColumn(name="ieltsTrainId")
     public IELTSTrain getIeltsTrain() {
@@ -73,12 +82,4 @@ public class IELTSExam {
         this.ieltsTrain = ieltsTrain;
     }
 
-
-    public int getState() {
-        return state;
-    }
-
-    public void setState(int state) {
-        this.state = state;
-    }
 }

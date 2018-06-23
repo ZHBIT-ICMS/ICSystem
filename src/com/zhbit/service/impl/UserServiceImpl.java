@@ -1,18 +1,25 @@
 package com.zhbit.service.impl;
 
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 import com.zhbit.dao.BaseDAO;
 import com.zhbit.entity.*;
 import com.zhbit.entity.base.DataGrid;
 import com.zhbit.entity.base.PageBean;
+import com.zhbit.entity.vo.VoLoginLog;
 import com.zhbit.entity.vo.VoUser;
 import com.zhbit.exception.ValidateFieldsException;
 import com.zhbit.service.UserService;
 import com.zhbit.util.Encrypt;
+import com.zhbit.util.IpUtil;
 import com.zhbit.util.StringUtil;
+import com.zhbit.util.UserAgentKit;
+import org.apache.struts2.StrutsStatics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import javax.servlet.http.HttpServletRequest;
 
 import javax.annotation.Resource;
 import javax.xml.bind.ValidationException;
@@ -29,10 +36,19 @@ import java.util.*;
 public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
    private BaseDAO<User> userDao;
+   private BaseDAO<LoginLog> loginLogBaseDAO;
    private BaseDAO<Role> roleDao;
    private BaseDAO<InternationalStudent> internationalStudentDAO;
    private BaseDAO<UserRole> userRoleDAO;
    private BaseDAO<CollegeInfo> collegeInfoDAO;
+
+    public BaseDAO<LoginLog> getLoginLogBaseDAO() {
+        return loginLogBaseDAO;
+    }
+    @Autowired
+    public void setLoginLogBaseDAO(BaseDAO<LoginLog> loginLogBaseDAO) {
+        this.loginLogBaseDAO = loginLogBaseDAO;
+    }
 
     public BaseDAO<CollegeInfo> getCollegeInfoDAO() {
         return collegeInfoDAO;
@@ -85,6 +101,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
     public VoUser login(VoUser voUser) {
        User tbUser=userDao.get("from User u where u.userNo = ? and u.password = ? and u.sign = ?",new Object[]{voUser.getUserNo(), Encrypt.e(voUser.getPassword()),voUser.getSign()});
        if(tbUser!=null){
+           //this.addLoginLog();
            voUser.setId(tbUser.getId());
            voUser.setUserNo(tbUser.getUserNo());
            voUser.setUserName(tbUser.getUserName());
@@ -159,6 +176,16 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
            return  voUser;
        }
         return null;
+    }
+
+    public void addLoginLog(String userNo){
+        HttpServletRequest request= (HttpServletRequest) ActionContext.getContext().get(StrutsStatics.HTTP_REQUEST);
+        LoginLog loginLog=new LoginLog();
+        loginLog.setUserNo(userNo);
+        loginLog.setUserAgent(UserAgentKit.getUserAgent(request).toString());
+        loginLog.setLoginTime(new Date());
+        loginLog.setLoginIp(IpUtil.getIpAddr(request));
+        loginLogBaseDAO.save(loginLog);
     }
 
     /**
@@ -277,7 +304,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
     }
     private String addWhere(VoUser voUser,String hql,List<Object> values){
         if(StringUtil.isNotEmpty(voUser.getUserNo())){
-            hql+="and u.userNo like ? ";
+            hql+=" and u.userNo like ? ";
             values.add("%%"+voUser.getUserNo().trim()+"%%");
         }
         if(StringUtil.isNotEmpty(voUser.getUserName())){
@@ -292,7 +319,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
     }
 
     /**
-     *
+     *用户删除
      * @param ids
      */
     @Override
@@ -312,7 +339,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
     }
 
     /**
-     *
+     *更新用户信息
      * @param voUser
      * @throws ValidateFieldsException
      */
@@ -349,29 +376,32 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
              u.setPhone(voUser.getPhone());
          }
         u.setSign(voUser.getSign());//修改用户身份
-     }else
-     {
+     }else {
          throw new ValidateFieldsException("用户名已经存在，请重新输入！");
-     }
+      }
        /* if(StringUtil.isNotEmpty()){}
         if(StringUtil.isNotEmpty()){}*/
        this.saveUserRole(voUser,u);
     }
 
     /**
-     *
+     *用户角色关系批量编辑
      * @param voUser
      */
     @Override
-    public void roleEdit(VoUser voUser) {
+    public void editRole(VoUser voUser) {
        if(voUser.getIds()!=null){
            for (String id:voUser.getIds().split(",")){
-               User u = userDao.get(User.class,id);
+               User u = userDao.get(User.class,Integer.parseInt(id));
                this.saveUserRole(voUser,u);
            }
        }
     }
 
+    /**
+     * 编辑用户信息
+     * @param voUser
+     */
     @Override
     public void editUserInfo(VoUser voUser) {
         if(StringUtil.isNotEmpty(voUser.getPassword())){
@@ -402,6 +432,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
      * @param u
      */
     private void saveUserRole(VoUser user,User u){
+        System.out.println("userId:"+u.getId());
         userRoleDAO.executeHql("delete UserRole ur where ur.user = ? ",new Object[]{u});
         if(user.getRoleIds()!=null){
             for(String id:user.getRoleIds().split(",")){

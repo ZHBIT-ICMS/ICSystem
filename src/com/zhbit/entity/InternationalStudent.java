@@ -3,6 +3,7 @@ package com.zhbit.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by wby on 2018/4/6.
@@ -18,10 +19,12 @@ public class InternationalStudent {
     private String status;//状态
     private String major;//专业
     private ClassesInfo classInfo;//班级信息
-    private SummerCamp summerCamp;//夏令营活动
+   // private SummerCamp summerCamp;//夏令营活动
     private OverSeasStudent overSeasStudent;//出国生
     private ExchangeStudent exchangeStudent;//交换生
     private User user;
+    private List<InterStuSummerCamp> interStuSummerCampList;
+
     @Id
     @GeneratedValue(generator="_native")
     @GenericGenerator(name="_native",strategy="native")
@@ -78,7 +81,7 @@ public class InternationalStudent {
     }
 
     /*国际生与夏令营活动多对一的配置*/
-    @ManyToOne
+   /* @ManyToOne
     @JoinColumn(name="summerCampId")
     public SummerCamp getSummerCamp() {
         return summerCamp;
@@ -86,6 +89,14 @@ public class InternationalStudent {
 
     public void setSummerCamp(SummerCamp summerCamp) {
         this.summerCamp = summerCamp;
+    }*/
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "internationalStudent")
+    public List<InterStuSummerCamp> getInterStuSummerCampList() {
+        return interStuSummerCampList;
+    }
+
+    public void setInterStuSummerCampList(List<InterStuSummerCamp> interStuSummerCampList) {
+        this.interStuSummerCampList = interStuSummerCampList;
     }
 
     /*国际生与出国生多对一的配置*/
