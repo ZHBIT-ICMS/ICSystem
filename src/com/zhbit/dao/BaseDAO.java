@@ -2,7 +2,7 @@ package com.zhbit.dao;
 
 
 
-import com.zhbit.entity.PageBean;
+import com.zhbit.entity.base.PageBean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,7 +19,7 @@ public interface BaseDAO<T> {
 
 
 	public void saveOrUpdate(T o);
-	
+
 
 	public void merge(T o);
 

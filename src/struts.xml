@@ -3,14 +3,50 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
     "http://struts.apache.org/dtds/struts-2.3.dtd">  
       
-<struts>  
+<struts>
+    <!-- 指定由spring负责action对象的创建 -->
+    <constant name="struts.objectFactory" value="spring" />
     <constant name="struts.i18n.encoding" value="UTF-8" />  
     <constant name="struts.action.extension" value="action" />
+    <!-- 让struts2支持动态方法调用 -->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <!-- 设置浏览器是否缓存静态内容 -->
+    <constant name="struts.serve.static.browserCache" value="false" />
+    <!-- 每次HTTP请求系统都重新加载资源文件，有助于开发 -->
+    <constant name="struts.i18n.reload" value="true"/>
+    <!-- 文件上传最大值 -->
+    <constant name="struts.multipart.maxSize" value="104857600" />
     <!-- 定义登录拦截器 -->
-
-
 	<package name="ics" namespace="/" extends="struts-default">
+         <interceptors>
+             <!--定义session拦截器-->
+             <interceptor name="sessionInterceptor" class="com.zhbit.interceptor.SessionInterceptor"/>
+             <interceptor-stack name="sessionStack">
+                 <interceptor-ref name="defaultStack"></interceptor-ref>
+                 <interceptor-ref name="sessionInterceptor">
+                     <param name="excludeMethods">doNotNeedSession_*</param>
+                 </interceptor-ref>
+             </interceptor-stack>
+             <!-- 定义权限拦截器 -->
+             <interceptor name="authInterceptor" class="com.zhbit.interceptor.AuthInterceptor" />
+             <interceptor-stack name="authStack">
+                 <interceptor-ref name="sessionStack"></interceptor-ref>
+                 <interceptor-ref name="authInterceptor">
+                     <param name="excludeMethods">doNotNeedSession_*,doNotNeedAuth_*</param>
+                 </interceptor-ref>
+             </interceptor-stack>
+         </interceptors>
 
+        <!-- 全局拦截器栈 -->
+        <default-interceptor-ref name="authStack"></default-interceptor-ref>
+        <global-results>
+            <result name="noAuth">/error/noAuth.jsp</result>
+            <result name="noSession">/error/noSession.jsp</result>
+            <result name="strutsException">/error/strutsException.jsp</result>
+        </global-results>
+        <global-exception-mappings>
+            <exception-mapping result="strutsException" exception="java.lang.Exception"></exception-mapping>
+        </global-exception-mappings>
         <!--新闻-->
         <action name="news_*" class="com.zhbit.action.NewsAction" method="{1}">
             <result name="success">morenews.jsp</result>
@@ -18,15 +54,75 @@
 
         <!--政策法规-->
         <action name="policy_*" class="com.zhbit.action.PolicyAction" method="{1}">
-            <result name="success">main.jsp</result>
+            <result name="success">mainwby.jsp</result>
         </action>
 
         <!--公告-->
         <action name="notice_*" class="com.zhbit.action.NoticeAction" method="{1}">
             <result name="success">morenotice.jsp</result>
         </action>
+        <!-- 用户 -->
+        <action name="user" class="com.zhbit.action.UserAction">
+            <result name="doNotNeedAuth_index">/general/index.jsp</result>
+            <result name="login">/general/user/newLogin.jsp</result>
+            <result name="user">/general/admin/user.jsp</result>
+            <result name="userAdd">/general/admin/userAdd.jsp</result>
+            <result name="userEdit">/general/admin/userEdit.jsp</result>
+            <result name="userRoleEdit">/general/admin/userRoleEdit.jsp</result>
+            <result name="doNotNeedAuth_userInfo">/general/user/userInfo.jsp</result>
+            <result name="doNotNeedAuth_studentIndex">/general/student/studentIndex.jsp</result>
+        </action>
+        <!-- 菜单 -->
+        <action name="menu" class="com.zhbit.action.MenuAction">
+            <result name="menu">/general/admin/menu.jsp</result>
+            <result name="menuAdd">/general/admin/menuAdd.jsp</result>
+            <result name="menuEdit">/general/admin/menuEdit.jsp</result>
+        </action>
+        <!-- 权限 -->
+        <action name="auth" class="com.zhbit.action.AuthAction">
+            <result name="auth">/general/admin/auth.jsp</result>
+            <result name="authAdd">/general/admin/authAdd.jsp</result>
+            <result name="authEdit">/general/admin/authAdd.jsp</result>
+        </action>
+        <!-- 角色 -->
+        <action name="role" class="com.zhbit.action.RoleAction">
+            <result name="role">/general/admin/role.jsp</result>
+            <result name="roleAdd">/general/admin/roleAdd.jsp</result>
+            <result name="roleEdit">/general/admin/roleEdit.jsp</result>
+        </action>
+        <!-- 学院信息 -->
+        <action name="collegeInfo" class="com.zhbit.action.CollegeInfoAction">
+            <result name="collegeInfos">/general/admin/collegeInfo.jsp</result>
+            <result name="collegeInfosAdd">/general/admin/collegeInfoAdd.jsp</result>
+            <result name="collegeInfosEdit">/general/admin/collegeInfoEdit.jsp</result>
+        </action>
+        <!-- 新闻发布 -->
+       <action name="pubNews" class="com.zhbit.action.PubNewsAction">
+           <result name="news">/general/admin/news.jsp</result>
+           <result name="newsAdd">/general/admin/newsAdd.jsp</result>
+           <result name="newsEdit">/general/admin/newsEdit.jsp</result>
+           <result name="showContent">/general/admin/newsShow.jsp</result>
+       </action>
 
+        <!-- 班级信息 -->
+        <action name="classesInfo" class="com.zhbit.action.ClassesInfoAction">
+            <result name="classesInfos">/general/admin/classInfo.jsp</result>
+            <result name="classesInfosAdd">/general/admin/classInfoAdd.jsp</result>
+            <result name="classesInfosEdit">/general/admin/classInfoEdit.jsp</result>
 
+        </action>
+        <!--雅思-->
+        <action name="ieltstInfo" class="com.zhbit.action.IELTSTInfoAction">
+            <result name="ieltstInfos">/general/admin/ieltst.jsp</result>
+            <result name="ieltstAdd">/general/admin/ieltstAdd.jsp</result>
+            <result name="ieltstEdit">/general/admin/ieltstEdit.jsp</result>
+        </action>
 
+        <!--雅思考试-->
+        <action name="ieltstExam" class="com.zhbit.action.IELTSTExamAction">
+            <result name="ieltstExam">/general/admin/ieltsexam.jsp</result>
+            <result name="ieltstExamAdd">/general/admin/ieltstexamAdd.jsp</result>
+            <result name="ieltstExamEdit">/general/admin/ieltstexamEdit.jsp</result>
+        </action>
     </package>  
 </struts>   

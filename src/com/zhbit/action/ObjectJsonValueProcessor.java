@@ -8,54 +8,54 @@ import net.sf.json.JsonConfig;
 import net.sf.json.processors.JsonValueProcessor;
 
 /**
- * ½â¾ö¶ÔÏó¼¶ÁªÎÊÌâ
+ * è§£å†³å¯¹è±¡çº§è”é—®é¢˜
  * @author Administrator
  *
  */
 public class ObjectJsonValueProcessor implements JsonValueProcessor{
 
 	/**
-	 * ±£ÁôµÄ×Ö¶Î
+	 * ä¿ç•™çš„å­—æ®µ
 	 */
-	private String[] properties;  
-	
+	private String[] properties;
+
 	/**
-	 * ´¦ÀíÀàĞÍ
+	 * å¤„ç†ç±»å‹
 	 */
-	private Class<?> clazz;  
-	
+	private Class<?> clazz;
+
 	/**
-	 * ¹¹Ôì·½·¨ 
+	 * æ„é€ æ–¹æ³•
 	 * @param properties
 	 * @param clazz
 	 */
-	public ObjectJsonValueProcessor(String[] properties,Class<?> clazz){  
-        this.properties = properties;  
-        this.clazz =clazz;  
-    }  
-	
+	public ObjectJsonValueProcessor(String[] properties,Class<?> clazz){
+		this.properties = properties;
+		this.clazz =clazz;
+	}
+
 	public Object processArrayValue(Object arg0, JsonConfig arg1) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public Object processObjectValue(String key, Object value, JsonConfig jsonConfig) {
-		PropertyDescriptor pd = null;  
-        Method method = null;  
-        StringBuffer json = new StringBuffer("{");  
-        try{  
-            for(int i=0;i<properties.length;i++){  
-                pd = new PropertyDescriptor(properties[i], clazz);  
-                method = pd.getReadMethod();  
-                String v = String.valueOf(method.invoke(value));  
-                json.append("'"+properties[i]+"':'"+v+"'");  
-                json.append(i != properties.length-1?",":"");  
-            }  
-            json.append("}");  
-        }catch (Exception e) {  
-            e.printStackTrace();  
-        }  
-        return JSONObject.fromObject(json.toString());  
+		PropertyDescriptor pd = null;
+		Method method = null;
+		StringBuffer json = new StringBuffer("{");
+		try{
+			for(int i=0;i<properties.length;i++){
+				pd = new PropertyDescriptor(properties[i], clazz);
+				method = pd.getReadMethod();
+				String v = String.valueOf(method.invoke(value));
+				json.append("'"+properties[i]+"':'"+v+"'");
+				json.append(i != properties.length-1?",":"");
+			}
+			json.append("}");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return JSONObject.fromObject(json.toString());
 	}
 
 }

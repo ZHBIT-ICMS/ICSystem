@@ -1,8 +1,7 @@
 package com.zhbit.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.zhbit.entity.Notice;
-import com.zhbit.entity.PageBean;
+import com.zhbit.entity.base.PageBean;
 import com.zhbit.entity.Policy;
 import com.zhbit.service.PolicyService;
 import com.zhbit.util.PageUtil;

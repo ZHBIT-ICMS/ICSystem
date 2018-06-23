@@ -8,15 +8,18 @@ import java.util.Date;
 /**
  * Created by wby on 2018/4/6.
  */
-/*ÑÅË¼¿¼ÊÔ*/
+/*é›…æ€è€ƒè¯•*/
 @Entity
 @Table(name="tb_ielts_exam")
 public class IELTSExam {
     private int id;
-    private Date examTime;//ÑÅË¼¿¼ÊÔÊ±¼ä
-    private String examPlace;//ÑÅË¼¿¼ÊÔµØµã
-    private int score;//·ÖÊı
-    private IELTSTrain ieltsTrain;//ÅàÑµ»ú¹¹
+    private  String examId;//è€ƒè¯•çš„ç¼–å·
+    private Date examTime;//é›…æ€è€ƒè¯•æ—¶é—´
+    private String examPlace;//é›…æ€è€ƒè¯•åœ°ç‚¹
+    private int score;//åˆ†æ•°
+    private IELTSTrain ieltsTrain;//åŸ¹è®­æœºæ„
+
+    private int state;
 
     @Id
     @GeneratedValue(generator="_native")
@@ -31,6 +34,14 @@ public class IELTSExam {
 
     public Date getExamTime() {
         return examTime;
+    }
+    @Column(length = 50,unique = true)
+    public String getExamId() {
+        return examId;
+    }
+
+    public void setExamId(String examId) {
+        this.examId = examId;
     }
 
     public void setExamTime(Date examTime) {
@@ -60,5 +71,14 @@ public class IELTSExam {
 
     public void setIeltsTrain(IELTSTrain ieltsTrain) {
         this.ieltsTrain = ieltsTrain;
+    }
+
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 }

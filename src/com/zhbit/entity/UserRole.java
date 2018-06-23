@@ -1,40 +1,48 @@
 package com.zhbit.entity;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
 /**
- * Created by wby on 2018/6/3.
+ * @Author zhangrun ã€macmanboy@foxmail.comã€‘
+ * @Date 2018/6/7
+ * @Time:10:28
+ * æè¿°ï¼šç®¡ç†å‘˜ç”¨æˆ·ä¸è§’è‰²çš„å…³ç³»å®ä½“
  */
-//ÓÃ»§-½ÇÉ«µÄÖĞ¼ä±í
 @Entity
-@Table(name="tb_user_role")
-public class UserRole {
-    private int id;
-    private AdminUser adminUser;
-    private Role role;
+@Table(name ="tb_user_role" )
+public class UserRole implements java.io.Serializable {
+    private static final long serialVersionUID = 1L;
+
+    private String cid;
+    private Role role ;
+    private User user;
+    public  UserRole(){
+    }
+
+    public UserRole(String cid) {
+        this.cid = cid;
+    }
+
+    public UserRole(String cid, Role role, User user) {
+        this.cid = cid;
+        this.role = role;
+        this.user = user;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
     @Id
-    @GeneratedValue(generator="_native")
-    @GenericGenerator(name="_native",strategy="native")
-    public int getId() {
-        return id;
+    @Column(name="CID",length = 36)
+    public String getCid() {
+        return cid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCid(String cid) {
+        this.cid = cid;
     }
-    @ManyToOne
-    @JoinColumn(name="user_id")//ÓÃ»§-½ÇÉ«µÄÖĞ¼ä±íºÍÓÃ»§±íµÄ¹ØÏµ
-    public AdminUser getAdminUser() {
-        return adminUser;
-    }
-
-    public void setAdminUser(AdminUser adminUser) {
-        this.adminUser = adminUser;
-    }
-    @ManyToOne//ÓÃ»§-½ÇÉ«µÄÖĞ¼ä±íºÍ½ÇÉ«±íµÄ¹ØÏµ
-    @JoinColumn(name="role_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CROLEID")
     public Role getRole() {
         return role;
     }
@@ -42,4 +50,14 @@ public class UserRole {
     public void setRole(Role role) {
         this.role = role;
     }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CUSERID")
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 }

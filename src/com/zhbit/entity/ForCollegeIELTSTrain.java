@@ -11,8 +11,8 @@ import javax.persistence.*;
 @Table(name="tb_forcollege_ieltstrain")
 public class ForCollegeIELTSTrain {
     private int id;
-    private IELTSTrain ieltsTrain;//ÑÅË¼ÅàÑµ±àºÅ
-    private ForeignCollege foreignCollege;//¹úÍâÔºĞ£±àºÅ
+    private IELTSTrain ieltsTrain;//é›…æ€åŸ¹è®­ç¼–å·
+    private ForeignCollege foreignCollege;//å›½å¤–é™¢æ ¡ç¼–å·
 
     @Id
     @GeneratedValue(generator = "_native")

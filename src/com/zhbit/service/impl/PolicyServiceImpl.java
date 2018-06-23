@@ -1,7 +1,7 @@
 package com.zhbit.service.impl;
 
 import com.zhbit.dao.BaseDAO;
-import com.zhbit.entity.PageBean;
+import com.zhbit.entity.base.PageBean;
 import com.zhbit.entity.Policy;
 import com.zhbit.service.PolicyService;
 import com.zhbit.util.StringUtil;
@@ -19,7 +19,7 @@ public class PolicyServiceImpl implements PolicyService {
     @Resource
     private BaseDAO<Policy> baseDAO;
     /**
-     * Õ¹Ê¾ËùÓÐÕþ²ß·¨¹æ£¬ÕâÀïÕ¹Ê¾1-8Ìõ×îÐÂÕþ²ß·¨¹æ
+     * Õ¹Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½ï¿½æ£¬ï¿½ï¿½ï¿½ï¿½Õ¹Ê¾1-8ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½
      * @param s_policy
      * @param pageBean
      * @return
@@ -43,7 +43,7 @@ public class PolicyServiceImpl implements PolicyService {
         }
     }
     /**
-     * ¸ù¾Ýid ²é³öÕþ²ß·¨¹æÏêÇé
+     * ï¿½ï¿½ï¿½ï¿½id ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param policyId
      * @return
      */
@@ -52,7 +52,7 @@ public class PolicyServiceImpl implements PolicyService {
         return baseDAO.get(Policy.class,policyId);
     }
     /**
-     * ¼ÆËã×Ü¼ÇÂ¼Êý
+     * ï¿½ï¿½ï¿½ï¿½ï¿½Ü¼ï¿½Â¼ï¿½ï¿½
      * @param s_policy
      * @return
      */

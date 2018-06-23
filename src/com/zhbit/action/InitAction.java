@@ -2,7 +2,7 @@ package com.zhbit.action;
 
 import com.zhbit.entity.News;
 import com.zhbit.entity.Notice;
-import com.zhbit.entity.PageBean;
+import com.zhbit.entity.base.PageBean;
 import com.zhbit.entity.Policy;
 import com.zhbit.service.NewsService;
 import javax.servlet.ServletContext;
@@ -20,29 +20,29 @@ import java.util.List;
 /**
  * Created by wby on 2018/5/28.
  */
-/*Õ¹ÏÖÖ÷Ò³ÃæÄÚÈÝµÄÐÅÏ¢*/
+/*Õ¹ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½Ï¢*/
 @Component
 public class InitAction implements ServletContextListener,ApplicationContextAware {
     /*
-    * ¼Ì³Ð ApplicationContextAware À´»ñÈ¡ springÈÝÆ÷
+    * ï¿½Ì³ï¿½ ApplicationContextAware ï¿½ï¿½ï¿½ï¿½È¡ springï¿½ï¿½ï¿½ï¿½
     * */
     private static ApplicationContext applicationContext;
-    /**¼Ì³Ð  ServletContextListener ÐèÒªÖØÐ´  contextDestroyed & contextInitialized
-     * ³õÊ¼»¯
+    /**ï¿½Ì³ï¿½  ServletContextListener ï¿½ï¿½Òªï¿½ï¿½Ð´  contextDestroyed & contextInitialized
+     * ï¿½ï¿½Ê¼ï¿½ï¿½
      * @param servletContextEvent
      */
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ServletContext application=servletContextEvent.getServletContext();
-        // ÐÂÎÅ
+        // ï¿½ï¿½ï¿½ï¿½
         NewsService newsService= (NewsService) applicationContext.getBean("newsService");
         List<News>newsList=newsService.showNewsList(null,new PageBean(1,7));
         application.setAttribute("newsList",newsList);
-        //¹«¸æ
+        //ï¿½ï¿½ï¿½ï¿½
         NoticeService noticeService= (NoticeService) applicationContext.getBean("noticeService");
         List<Notice>noticeList=noticeService.showNoticeList(null,new PageBean(1,7));
         application.setAttribute("noticeList",noticeList);
-        //Õþ²ß·¨¹æ
+        //ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½
         PolicyService policyService= (PolicyService) applicationContext.getBean("policyService");
         List<Policy> policyList=policyService.showPolicyList(null,new PageBean(1,7));
         application.setAttribute("policyList",policyList);
@@ -50,8 +50,8 @@ public class InitAction implements ServletContextListener,ApplicationContextAwar
 
     }
 
-    /**¼Ì³Ð  ServletContextListener ÐèÒªÖØÐ´  contextDestroyed & contextInitialized
-     * Ïú»Ù
+    /**ï¿½Ì³ï¿½  ServletContextListener ï¿½ï¿½Òªï¿½ï¿½Ð´  contextDestroyed & contextInitialized
+     * ï¿½ï¿½ï¿½ï¿½
      * @param servletContextEvent
      */
     @Override

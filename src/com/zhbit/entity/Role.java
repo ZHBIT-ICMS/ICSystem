@@ -1,118 +1,83 @@
 package com.zhbit.entity;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * Created by wby on 2018/6/3.
+ * @Author zhangrun „Äêmacmanboy@foxmail.com„Äë
+ * @Date 2018/6/7
+ * @Time:10:08
+ * ÊèèËø∞ÔºöËßíËâ≤ÂÆû‰ΩìÁ±ª
  */
-//Ω«…´
 @Entity
-@Table(name="tb_role")
-public class Role {
-    private int id;
-    private String roleName;//Ω«…´√˚≥∆
-    private String roleCode;//Ω«…´code
-    private int status;//1’˝≥£  0…æ≥˝ -1»´≤ø'
-    private String remark;
-    private Date createDate;
-    private Date updateDate;
-    private int creator;
-    private int updater;
-    private List<UserRole>userRoleList;
-    private List<RoleResource>roleResourceList;
+@Table(name = "tb_role")
+public class Role implements java.io.Serializable{
+    private static final long serialVersionUID = 1L;
+
+    private String cid;
+    private String cdesc;
+    private String cname;
+    private Set<RoleAuth> roleAuths = new HashSet<RoleAuth>(0);
+    private Set<UserRole> userRoles = new HashSet<UserRole>(0);
+    public Role(){}
+
+    public Role(String cid, String cname) {
+        this.cid = cid;
+        this.cname = cname;
+    }
+
+    public Role(String cid, String cdesc, String cname, Set<RoleAuth> roleAuths, Set<UserRole> userRoles) {
+        this.cid = cid;
+        this.cdesc = cdesc;
+        this.cname = cname;
+        this.roleAuths = roleAuths;
+        this.userRoles = userRoles;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
     @Id
-    @GeneratedValue(generator="_native")
-    @GenericGenerator(name="_native",strategy="native")
-    public int getId() {
-        return id;
+    @Column(name = "CID",nullable = false,length = 36)
+    public String getCid() {
+        return cid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCid(String cid) {
+        this.cid = cid;
     }
-    @Column(length=10)
-    public String getRoleName() {
-        return roleName;
-    }
-
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-    @Column(length=10)
-    public int getStatus() {
-        return status;
+    @Column(name = "CDESC",length = 200)
+    public String getCdesc() {
+        return cdesc;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setCdesc(String cdesc) {
+        this.cdesc = cdesc;
     }
-    @Column(length=10)
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
+    @Column(name = "CNAME",nullable = false,length = 100)
+    public String getCname() {
+        return cname;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public void setCname(String cname) {
+        this.cname = cname;
+    }
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "role")
+    public Set<RoleAuth> getRoleAuths() {
+        return roleAuths;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setRoleAuths(Set<RoleAuth> roleAuths) {
+        this.roleAuths = roleAuths;
     }
 
-    public Date getUpdateDate() {
-        return updateDate;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "role")
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
     }
 
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
-    }
-    @Column(length=10)
-    public int getCreator() {
-        return creator;
-    }
-
-    public void setCreator(int creator) {
-        this.creator = creator;
-    }
-    @Column(length=10)
-    public int getUpdater() {
-        return updater;
-    }
-
-    public void setUpdater(int updater) {
-        this.updater = updater;
-    }
-    @Column(length=10)
-    public String getRoleCode() {
-        return roleCode;
-    }
-
-    public void setRoleCode(String roleCode) {
-        this.roleCode = roleCode;
-    }
-
-    @OneToMany(mappedBy = "role",targetEntity = UserRole.class)
-    public List <UserRole> getUserRoleList() {
-        return userRoleList;
-    }
-
-    public void setUserRoleList(List <UserRole> userRoleList) {
-        this.userRoleList = userRoleList;
-    }
-    @OneToMany(mappedBy = "role",targetEntity = RoleResource.class)
-    public List <RoleResource> getRoleResourceList() {
-        return roleResourceList;
-    }
-
-    public void setRoleResourceList(List <RoleResource> roleResourceList) {
-        this.roleResourceList = roleResourceList;
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 }
