@@ -175,5 +175,18 @@
             <result name="agreementsEdit">/general/admin/agreementEdit.jsp</result>
             <result name="showContent">/general/admin/agreementShow.jsp</result>
         </action>
+        <!--雅思-->
+        <action name="ieltstInfo" class="com.zhbit.action.IELTSTInfoAction">
+            <result name="ieltstInfos">/general/admin/ieltst.jsp</result>
+            <result name="ieltstAdd">/general/admin/ieltstAdd.jsp</result>
+            <result name="ieltstEdit">/general/admin/ieltstEdit.jsp</result>
+        </action>
+
+        <!--雅思考试-->
+        <action name="ieltstExam" class="com.zhbit.action.IELTSTExamAction">
+            <result name="ieltstExam">/general/admin/ieltsexam.jsp</result>
+            <result name="ieltstExamAdd">/general/admin/ieltstexamAdd.jsp</result>
+            <result name="ieltstExamEdit">/general/admin/ieltstexamEdit.jsp</result>
+        </action>
     </package>  
 </struts>   

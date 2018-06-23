@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: zhangrun
-  Date: 2018/6/20
-  Time: 0:46
+  Date: 2018/6/17
+  Time: 17:09
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,19 +10,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%--private int id;//主键--%>
-    <%--private String classNo;//班级号--%>
-    <%--private String descInfo;//班级描述--%>
-    <%--// private CollegeInfo collegeInfo;//一个学院包括多个班--%>
-    <%--private String collegeName;//学院名称--%>
-    <%--private int collegeId;//学院id--%>
-    <%--private int StudentTotal;--%>
     <jsp:include page="../../inc.jsp"></jsp:include>
     <script type="text/javascript" charset="utf-8">
         var datagrid;
         $(function() {
             datagrid = $('#datagrid').datagrid({
-                url : 'classesInfo!datagrid.action',
+                url : 'ieltstInfo!datagrid.action',
                 iconCls : 'icon-save',
                 pagination : true,
                 pagePosition : 'bottom',
@@ -33,37 +26,49 @@
                 nowrap : false,
                 border : false,
                 idField : 'id',
-                sortName : 'descInfo',
-                sortOrder : 'desc',
+//                sortName : 'createTime',
+//                sortOrder : 'desc',
+//                private int id;//自增编号
+//            private String ieltsTrainId;//雅思机构编号
+//            private String trainName;//雅思机构名称
+//            private String trainTerm;//培训的学期
+//            private Date trainTime;//培训的时期
+//            private String trainClassHours;//雅思课程学时
                 frozenColumns : [ [ {
                     title : '编号',
                     field : 'id',
                     width : 150,
                     sortable : true,
                     checkbox : true
-                }, {
-                    title : '班级编号',
-                    field : 'classNo',
-                    width : 150,
-                    sortable : true
                 } ] ],
                 columns : [ [ {
-                    title : '班级名称',
-                    field : 'descInfo',
+                    title : '雅思机构编号',
+                    field : 'ieltsTrainId',
                     sortable : true,
                     width : 150
                 }, {
-                    title : '所属学院',
-                    field : 'collegeName',
+                    title : '雅思机构名称',
+                    field : 'trainName',
                     sortable : true,
                     width : 150
-                    },{
-                    title : '班级人数',
-                    field : 'studentTotal',
+                }, {
+                    title : '培训的学期',
+                    field : 'trainTerm',
                     sortable : true,
                     width : 150
-                }
-                ] ],
+                },{
+                    title : '培训的时期',
+                    field : 'trainTime',
+                    sortable : true,
+                    width : 150
+                },
+                    {
+                    title : '雅思课程学时',
+                    field : 'trainClassHours',
+                    width : 150,
+                        sortable : true
+
+                } ] ],
                 toolbar : [ {
                     text : '增加',
                     iconCls : 'icon-add',
@@ -104,16 +109,16 @@
             var rows = datagrid.datagrid('getSelections');
             if (rows.length == 1) {
                 var p = parent.dj.dialog({
-                    title : '修改班级信息',
-                    href : '${pageContext.request.contextPath}/classesInfo!classesInfosEdit.action?id=' + rows[0].id,
-                    width : 500,
-                    height : 300,
+                    title : '修改机构信息',
+                    href : '${pageContext.request.contextPath}/ieltstInfo!ieltstEdit.action?id=' + rows[0].id,
+                    width : 1000,
+                    height : 700,
                     buttons : [ {
                         text : '修改',
                         handler : function() {
                             var f = p.find('form');
                             f.form({
-                                url : '${pageContext.request.contextPath}/classesInfo!edit.action',
+                                url : '${pageContext.request.contextPath}/ieltstInfo!edit.action',
                                 success : function(d) {
                                     var json = $.parseJSON(d);
                                     if (json.success) {
@@ -131,22 +136,13 @@
                     } ],
                     onLoad : function() {
                         var f = p.find('form');
-                        var collegeId = f.find('input[name=collegeId]');
-                        var collegeIdComboboxTree = collegeId.combobox({
-                            url : '${pageContext.request.contextPath}/collegeInfo!doNotNeedSession_combobox.action',
-                            valueField : 'id',
-                            textField : 'collegeName',
-                            multiple : false,
-                            editable : false,
-                            panelHeight : 'auto',
-                            onLoadSuccess : function() {
-                                parent.$.messager.progress('close');
-                            }
-                        });
                         f.find('input[name=id]').val(rows[0].id);
-                        f.find('input[name=classNo]').val(rows[0].classNo);
-                        f.find('input[name=descInfo]').val(rows[0].descInfo);
-                        f.find('input[name=collegeId]').val(rows[0].collegeId);
+                        f.find('input[name=ieltsTrainId]').val(rows[0].ieltsTrainId);
+                        f.find('input[name=trainName]').val(rows[0].trainName);
+                        f.find('input[name=trainTerm]').val(rows[0].trainTerm);
+                        f.find('input[name=trainTime]').val(rows[0].trainTime);
+                        f.find('input[name=trainClassHours]').val(rows[0].trainClassHours);
+
                     }
                 });
             } else if (rows.length > 1) {
@@ -157,16 +153,16 @@
         }
         function append() {
             var p = parent.dj.dialog({
-                title : '增加班级',
-                href : '${pageContext.request.contextPath}/classesInfo!classesInfosAdd.action',
+                title : '发布机构信息',
+                href : '${pageContext.request.contextPath}/ieltstInfo!ieltstAdd.action',
                 width : 500,
                 height : 450,
                 buttons : [ {
-                    text : '增加',
+                    text : '发布',
                     handler : function() {
                         var f = p.find('form');
                         f.form({
-                            url : '${pageContext.request.contextPath}/classesInfo!add.action',
+                            url : '${pageContext.request.contextPath}/ieltstInfo!add.action',
                             success : function(d) {
                                 var json = $.parseJSON(d);
                                 if (json.success) {
@@ -184,14 +180,14 @@
                 } ],
                 onLoad : function() {
                     var f = p.find('form');
-                    var collegeId = f.find('input[name=collegeId]');
-                    var collegeIdComboboxTree = collegeId.combobox({
-                        url : '${pageContext.request.contextPath}/collegeInfo!doNotNeedSession_combobox.action',
-                        valueField : 'id',
-                        textField : 'collegeName',
-                        multiple : false,
-                        editable : false,
-                        panelHeight : 'auto'
+                    var editor = f.find('textarea[name=content]').xheditor({
+                        tools : 'full',
+                        html5Upload : true,
+                        upMultiple : 4,
+                        upLinkUrl : '${pageContext.request.contextPath}/ieltstInfo!upload.action',
+                        upLinkExt : 'zip,rar,txt,doc,docx,xls,xlsx',
+                        upImgUrl : '${pageContext.request.contextPath}/ieltstInfo!upload.action',
+                        upImgExt : 'jpg,jpeg,gif,png'
                     });
                 }
             });
@@ -206,7 +202,7 @@
                             ids.push(rows[i].id);
                         }
                         $.ajax({
-                            url : '${pageContext.request.contextPath}/classesInfo!delete.action',
+                            url : '${pageContext.request.contextPath}/ieltstInfo!delete.action',
                             data : {
                                 ids : ids.join(',')
                             },
@@ -225,6 +221,21 @@
             } else {
                 parent.dj.messagerAlert('提示', '请勾选要删除的记录！', 'error');
             }
+        }
+        function showCdesc(rowIndex) {
+            var rows = datagrid.datagrid('getRows');
+            var row = rows[rowIndex];
+
+            var p = parent.dj.dialog({
+                title : '新闻标题[' + row.title + ']',
+                modal : true,
+                maximizable : true,
+                width : 800,
+                height : 600,
+                content : '<iframe src="${pageContext.request.contextPath}/ieltstInfo!showContent.action?id=' + row.id + '" frameborder="0" style="border:0;width:100%;height:99.4%;"></iframe>'
+            });
+
+            datagrid.datagrid('unselectAll');
         }
     </script>
 </head>

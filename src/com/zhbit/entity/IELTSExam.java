@@ -18,7 +18,9 @@ public class IELTSExam {
     private String examPlace;//雅思考试地点
     private int score;//分数
     private IELTSTrain ieltsTrain;//培训机构
+
    private  int sign;//0是正式考试，1是模拟考试
+
     @Id
     @GeneratedValue(generator="_native")
     @GenericGenerator(name="_native",strategy="native")
@@ -79,4 +81,5 @@ public class IELTSExam {
     public void setIeltsTrain(IELTSTrain ieltsTrain) {
         this.ieltsTrain = ieltsTrain;
     }
+
 }

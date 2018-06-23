@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: zhangrun
-  Date: 2018/6/20
-  Time: 0:46
+  Date: 2018/6/17
+  Time: 17:09
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,19 +10,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%--private int id;//主键--%>
-    <%--private String classNo;//班级号--%>
-    <%--private String descInfo;//班级描述--%>
-    <%--// private CollegeInfo collegeInfo;//一个学院包括多个班--%>
-    <%--private String collegeName;//学院名称--%>
-    <%--private int collegeId;//学院id--%>
-    <%--private int StudentTotal;--%>
     <jsp:include page="../../inc.jsp"></jsp:include>
     <script type="text/javascript" charset="utf-8">
         var datagrid;
         $(function() {
             datagrid = $('#datagrid').datagrid({
-                url : 'classesInfo!datagrid.action',
+                url : 'ieltstExam!datagrid.action',
                 iconCls : 'icon-save',
                 pagination : true,
                 pagePosition : 'bottom',
@@ -33,37 +26,53 @@
                 nowrap : false,
                 border : false,
                 idField : 'id',
-                sortName : 'descInfo',
+//                sortName : 'createTime',
                 sortOrder : 'desc',
+//          private int id;//主键
+//                private  String examId;//考试的编号
+//            private Date examTime; //雅思考试时间
+//            private String examPlace;//雅思考试地点
+//            private int score;//分数
+//            private IELTSTrain ieltsTrain;//培训机构
+//            //一个雅思培训可以举办多个考试
+//            private int ieltsTrainId;//雅思机构编号
+//            private String trainName;//雅思机构名称
                 frozenColumns : [ [ {
                     title : '编号',
                     field : 'id',
                     width : 150,
                     sortable : true,
                     checkbox : true
-                }, {
-                    title : '班级编号',
-                    field : 'classNo',
-                    width : 150,
-                    sortable : true
                 } ] ],
                 columns : [ [ {
-                    title : '班级名称',
-                    field : 'descInfo',
+                    title : '考试的编号',
+                    field : 'examId',
                     sortable : true,
                     width : 150
                 }, {
-                    title : '所属学院',
-                    field : 'collegeName',
+                    title : '雅思考试时间',
+                    field : 'examTime',
                     sortable : true,
                     width : 150
-                    },{
-                    title : '班级人数',
-                    field : 'studentTotal',
+                }, {
+                    title : '雅思考试地点',
+                    field : 'examPlace',
                     sortable : true,
                     width : 150
-                }
-                ] ],
+                },{
+                    title : '分数',
+                    field : 'score',
+                    sortable : true,
+                    width : 150
+                },
+
+                    {
+                        title : '所属机构名称',
+                        field : 'trainName',
+                        sortable : true,
+                        width : 150
+                    }
+                    ] ],
                 toolbar : [ {
                     text : '增加',
                     iconCls : 'icon-add',
@@ -100,12 +109,15 @@
                 }
             });
         });
+
+
+
         function edit() {
             var rows = datagrid.datagrid('getSelections');
             if (rows.length == 1) {
                 var p = parent.dj.dialog({
-                    title : '修改班级信息',
-                    href : '${pageContext.request.contextPath}/classesInfo!classesInfosEdit.action?id=' + rows[0].id,
+                    title : '修改雅思考试信息',
+                    href : '${pageContext.request.contextPath}/ieltstExam!ieltstExamEdit.action?id=' + rows[0].id,
                     width : 500,
                     height : 300,
                     buttons : [ {
@@ -113,7 +125,7 @@
                         handler : function() {
                             var f = p.find('form');
                             f.form({
-                                url : '${pageContext.request.contextPath}/classesInfo!edit.action',
+                                url : '${pageContext.request.contextPath}/ieltstExam!edit.action',
                                 success : function(d) {
                                     var json = $.parseJSON(d);
                                     if (json.success) {
@@ -131,11 +143,11 @@
                     } ],
                     onLoad : function() {
                         var f = p.find('form');
-                        var collegeId = f.find('input[name=collegeId]');
-                        var collegeIdComboboxTree = collegeId.combobox({
-                            url : '${pageContext.request.contextPath}/collegeInfo!doNotNeedSession_combobox.action',
+                        var ieltsTrainId = f.find('input[name=ieltsTrainId]');
+                        var ieltsTrainIdComboboxTree = ieltsTrainId.combobox({
+                            url : '${pageContext.request.contextPath}/ieltstInfo!doNotNeedSession_combobox.action',
                             valueField : 'id',
-                            textField : 'collegeName',
+                            textField : 'trainName',
                             multiple : false,
                             editable : false,
                             panelHeight : 'auto',
@@ -144,9 +156,11 @@
                             }
                         });
                         f.find('input[name=id]').val(rows[0].id);
-                        f.find('input[name=classNo]').val(rows[0].classNo);
-                        f.find('input[name=descInfo]').val(rows[0].descInfo);
-                        f.find('input[name=collegeId]').val(rows[0].collegeId);
+                        f.find('input[name=examId]').val(rows[0].examId);
+                        f.find('input[name=examTime]').val(rows[0].examTime);
+                        f.find('input[name=examPlace]').val(rows[0].examPlace);
+                        f.find('input[name=score]').val(rows[0].score);
+                        f.find('input[name=ieltsTrainId]').val(rows[0].ieltsTrainId);
                     }
                 });
             } else if (rows.length > 1) {
@@ -158,7 +172,7 @@
         function append() {
             var p = parent.dj.dialog({
                 title : '增加班级',
-                href : '${pageContext.request.contextPath}/classesInfo!classesInfosAdd.action',
+                href : '${pageContext.request.contextPath}/ieltstExam!ieltstExamAdd.action',
                 width : 500,
                 height : 450,
                 buttons : [ {
@@ -166,7 +180,7 @@
                     handler : function() {
                         var f = p.find('form');
                         f.form({
-                            url : '${pageContext.request.contextPath}/classesInfo!add.action',
+                            url : '${pageContext.request.contextPath}/ieltstExam!add.action',
                             success : function(d) {
                                 var json = $.parseJSON(d);
                                 if (json.success) {
@@ -184,11 +198,11 @@
                 } ],
                 onLoad : function() {
                     var f = p.find('form');
-                    var collegeId = f.find('input[name=collegeId]');
-                    var collegeIdComboboxTree = collegeId.combobox({
-                        url : '${pageContext.request.contextPath}/collegeInfo!doNotNeedSession_combobox.action',
+                    var ieltsTrainId = f.find('input[name=ieltsTrainId]');
+                    var ieltsTrainIdComboboxTree = ieltsTrainId.combobox({
+                        url : '${pageContext.request.contextPath}/ieltstInfo!doNotNeedSession_combobox.action',
                         valueField : 'id',
-                        textField : 'collegeName',
+                        textField : 'trainName',
                         multiple : false,
                         editable : false,
                         panelHeight : 'auto'
@@ -206,7 +220,7 @@
                             ids.push(rows[i].id);
                         }
                         $.ajax({
-                            url : '${pageContext.request.contextPath}/classesInfo!delete.action',
+                            url : '${pageContext.request.contextPath}/ieltstExam!delete.action',
                             data : {
                                 ids : ids.join(',')
                             },
@@ -240,3 +254,31 @@
 </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
