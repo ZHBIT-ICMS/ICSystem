@@ -10,6 +10,7 @@ import java.util.Date;
  * 视图层模型VoNews（对应持久化模型News）
  */
 public class VoNews  {
+    //easyUI的datagrid所用到的属性
     private int page;// 当前页
     private int rows;// 每页显示记录数
     private String sort;// 排序字段名

@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <th>邮箱</th>
-                <td><input name="mail" type="text" />
+                <td><input name="email" type="text" />
                 </td>
                 <th>状态</th>
                 <td><select name="locked">

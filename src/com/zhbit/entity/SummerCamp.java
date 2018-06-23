@@ -10,15 +10,18 @@ import java.util.List;
 /**
  * Created by wby on 2018/4/6.
  */
-//ÏÄÁîÓª»î¶¯
+//å¤ä»¤è¥æ´»åŠ¨
 @Entity
 @Table(name="tb_summer_camp")
 public class SummerCamp {
     private int id;
+    private String activityName;
+    private String activityDesc;
     private Date activityTime;
-    private List<InternationalStudent> studentList=new ArrayList<InternationalStudent>();//Ò»¸ö°à¼¶ĞÅÏ¢°üÀ¨¶à¸ö¹ú¼Ê°àÑ§Éú
-
-    /* Ö÷¼ü²ÉÓÃ±¾µØ£¬mysqlµÄ±¾µØÊÇ×ÔÔö³¤
+   // private List<InternationalStudent> studentList=new ArrayList<InternationalStudent>();//ä¸€ä¸ªå¤ä»¤è¥æ´»åŠ¨åŒ…æ‹¬å¤šä¸ªå›½é™…ç­å­¦ç”Ÿ
+    private List<InterStuSummerCamp> interStuSummerCamps;
+    private ForeignCollege foreignCollege; //å¤šä¸ªå¤ä»¤è¥å¯å¯¹åº”ä¸€ä¸ªå›½å¤–é™¢æ ¡
+    /* ä¸»é”®é‡‡ç”¨æœ¬åœ°ï¼Œmysqlçš„æœ¬åœ°æ˜¯è‡ªå¢é•¿
     *
     * */
     @Id
@@ -37,17 +40,50 @@ public class SummerCamp {
     public void setActivityTime(Date activityTime) {
         this.activityTime = activityTime;
     }
+    @Column(length = 50)
+    public String getActivityName() {
+        return activityName;
+    }
 
-    /*  ÏÄÁîÓªºÍ¹ú¼Ê°àÑ§ÉúÊÇÒ»¶Ô¶àµÄ¶ÔÓ¦¹ØÏµ
-    *   targetEntity£º¶ÔÓ¦µÄÄ¿±êÊµÌåÀà(¹ú¼Ê°àÑ§Éú)
-    *   mappedBy£º¶ÔÓ¦µ½¶Ô·½µÄÊôĞÔ×Ö¶Î
-    * */
-    @OneToMany(mappedBy="summerCamp",targetEntity = InternationalStudent.class)
+    public void setActivityName(String activityName) {
+        this.activityName = activityName;
+    }
+
+    public String getActivityDesc() {
+        return activityDesc;
+    }
+
+    public void setActivityDesc(String activityDesc) {
+        this.activityDesc = activityDesc;
+    }
+
+    /*  å¤ä»¤è¥å’Œå›½é™…ç­å­¦ç”Ÿæ˜¯ä¸€å¯¹å¤šçš„å¯¹åº”å…³ç³»
+                *   targetEntityï¼šå¯¹åº”çš„ç›®æ ‡å®ä½“ç±»(å›½é™…ç­å­¦ç”Ÿ)
+                *   mappedByï¼šå¯¹åº”åˆ°å¯¹æ–¹çš„å±æ€§å­—æ®µ
+                * */
+   /* @OneToMany(mappedBy="summerCamp",targetEntity = InternationalStudent.class)
     public List <InternationalStudent> getStudentList() {
         return studentList;
     }
 
     public void setStudentList(List <InternationalStudent> studentList) {
         this.studentList = studentList;
+    }*/
+   @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "summerCamp")
+    public List<InterStuSummerCamp> getInterStuSummerCamps() {
+        return interStuSummerCamps;
+    }
+
+    public void setInterStuSummerCamps(List<InterStuSummerCamp> interStuSummerCamps) {
+        this.interStuSummerCamps = interStuSummerCamps;
+    }
+    @ManyToOne
+    @JoinColumn(name = "foreignCollegeId")
+    public ForeignCollege getForeignCollege() {
+        return foreignCollege;
+    }
+
+    public void setForeignCollege(ForeignCollege foreignCollege) {
+        this.foreignCollege = foreignCollege;
     }
 }

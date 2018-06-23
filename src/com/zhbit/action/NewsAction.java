@@ -19,9 +19,9 @@ public class NewsAction extends ActionSupport implements ServletRequestAware {
     @Resource
     private NewsService newsService;
     private int newsId;
-    private News news;//Õ¹Ê¾Ê±ÓÃµ½¶ÔÏó
+    private News news;//å±•ç¤ºæ—¶ç”¨åˆ°å¯¹è±¡
     private String page;
-    private News s_news;//·ÖÒ³ÓÃµ½¶ÔÏó
+    private News s_news;//åˆ†é¡µç”¨åˆ°å¯¹è±¡
     private List<News> newsList;
     private Long total;
     private HttpServletRequest request;
@@ -74,7 +74,7 @@ public class NewsAction extends ActionSupport implements ServletRequestAware {
         this.newsId = newsId;
     }
     /**
-     * Ç°Ì¨Ò³Ãæ·ÖÒ³Õ¹Ê¾
+     * å‰å°é¡µé¢åˆ†é¡µå±•ç¤º
      * @return
      * @throws Exception
      */
@@ -90,7 +90,7 @@ public class NewsAction extends ActionSupport implements ServletRequestAware {
         return super.execute();
     }
     /**
-     * Õ¹Ê¾ĞÂÎÅÏêÇé
+     * å±•ç¤ºæ–°é—»è¯¦æƒ…
      * @return
      */
     public String showNews(){
