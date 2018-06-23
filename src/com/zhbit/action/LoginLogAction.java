@@ -1,5 +1,6 @@
 package com.zhbit.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.zhbit.entity.base.Json;
@@ -10,14 +11,18 @@ import com.zhbit.util.ResponseUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.StrutsStatics;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @ProjectName: ICSystem
  * @ClassName: LoginLogAction
- * @Description: java类作用描述
+ * @Description: 登录记录管理Action
  * @Author: wenxuan
  * @CreateDate: 2018/6/22 8:04
  */
@@ -41,9 +46,10 @@ public class LoginLogAction extends ActionSupport implements ModelDriven<VoLogin
     public void datagrid() {
         //super.writeJson(bugService.datagrid(bug));
         // 提交Json
+        String userNo = voLoginLog.getUserNo();
         System.out.println("sort："+voLoginLog.getSort()+" order: "+voLoginLog.getOrder());
-        JSONArray rows = JSONArray.fromObject(loginLogService.datagrid(voLoginLog).getRows(),this.getJsonConfig());
-        long total = loginLogService.datagrid(voLoginLog).getTotal();
+        JSONArray rows = JSONArray.fromObject(loginLogService.datagrid(voLoginLog,userNo).getRows(),this.getJsonConfig());
+        long total = loginLogService.datagrid(voLoginLog,userNo).getTotal();
         JSONObject result = new JSONObject();
         result.put("rows",rows);
         result.put("total",total);
@@ -76,6 +82,15 @@ public class LoginLogAction extends ActionSupport implements ModelDriven<VoLogin
             }
         }
     }
+
+    //导出登录记录信息到excel中
+    public void exportExcel() {
+
+        HttpServletRequest request= (HttpServletRequest) ActionContext.getContext().get(StrutsStatics.HTTP_REQUEST);
+        HttpServletResponse response= (HttpServletResponse) ActionContext.getContext().get(StrutsStatics.HTTP_RESPONSE);
+        loginLogService.export(request,response);
+    }
+
     /**
      * json过滤器
      * @return
