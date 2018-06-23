@@ -11,7 +11,7 @@ import java.util.List;
  * Created by wby on 2018/5/28.
  * modified by wenxuan
  */
-//���߷���
+
 public interface PolicyService {
     /**
      * 展示所有政策法规信息，
@@ -32,7 +32,7 @@ public interface PolicyService {
     /**
      * 获得数据表格
      */
-    public DataGrid datagrid(VoPolicy voPolicy);
+    public DataGrid datagrid(VoPolicy voPolicy,String title);
 
     /**
      * 删除

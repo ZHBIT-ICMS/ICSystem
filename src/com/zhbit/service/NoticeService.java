@@ -11,7 +11,6 @@ import java.util.List;
  * Created by wby on 2018/5/28.
  * modified by wenxuan
  */
-//????
 public interface NoticeService {
     /**
      * 展示所有通知公告，
@@ -32,7 +31,7 @@ public interface NoticeService {
     /**
      * 获得数据表格
      */
-    public DataGrid datagrid(VoNotice voNotice);
+    public DataGrid datagrid(VoNotice voNotice,String title);
 
     /**
      * 删除

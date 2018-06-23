@@ -62,9 +62,10 @@ public class PubNoticeAction extends ActionSupport implements ModelDriven<VoNoti
     public void datagrid() {
         //super.writeJson(bugService.datagrid(bug));
         // 提交Json
+        String title = voNotice.getTitle();
         System.out.println("sort："+voNotice.getSort()+" order: "+voNotice.getOrder());
-        JSONArray rows = JSONArray.fromObject(noticeService.datagrid(voNotice).getRows(),this.getJsonConfig());
-        long total = noticeService.datagrid(voNotice).getTotal();
+        JSONArray rows = JSONArray.fromObject(noticeService.datagrid(voNotice,title).getRows(),this.getJsonConfig());
+        long total = noticeService.datagrid(voNotice,title).getTotal();
         JSONObject result = new JSONObject();
         result.put("rows",rows);
         result.put("total",total);

@@ -20,7 +20,7 @@
 			value="jdbc:mysql://localhost:3306/db_ics">
 		</property>
 		<property name="username" value="root"></property>
-		<property name="password" value="run19970621"></property>
+		<property name="password" value="123456"></property>
 
 	</bean>
       

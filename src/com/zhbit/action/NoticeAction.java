@@ -20,9 +20,9 @@ public class NoticeAction extends ActionSupport implements ServletRequestAware {
     private NoticeService noticeService;
     private int noticeId;
     private Notice notice;
-    private String page;//��ǰҳ��
-    private Notice s_notice;//��ҳ�õ��Ķ���
-    private Long total;//�ܼ�¼��
+    private String page;//??????
+    private Notice s_notice;//???????????
+    private Long total;//??????
     private List<Notice> noticeList;
     private HttpServletRequest request;
     private String pageCode;
@@ -76,7 +76,7 @@ public class NoticeAction extends ActionSupport implements ServletRequestAware {
     }
 
     /**
-     * ǰ̨ҳ���ҳչʾ
+     * ?????????
      * @return
      * @throws Exception
      */
@@ -92,7 +92,7 @@ public class NoticeAction extends ActionSupport implements ServletRequestAware {
         return super.execute();
     }
     /**
-     * չ�ֹ�������
+     * ??????????
      * @return
      */
     public String showNotice(){

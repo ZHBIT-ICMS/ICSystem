@@ -62,9 +62,10 @@ public class PubPolicyAction extends ActionSupport implements ModelDriven<VoPoli
     public void datagrid() {
         //super.writeJson(bugService.datagrid(bug));
         // 提交Json
+        String title = voPolicy.getTitle();
         System.out.println("sort："+voPolicy.getSort()+" order: "+voPolicy.getOrder());
-        JSONArray rows = JSONArray.fromObject(policyService.datagrid(voPolicy).getRows(),this.getJsonConfig());
-        long total = policyService.datagrid(voPolicy).getTotal();
+        JSONArray rows = JSONArray.fromObject(policyService.datagrid(voPolicy,title).getRows(),this.getJsonConfig());
+        long total = policyService.datagrid(voPolicy,title).getTotal();
         JSONObject result = new JSONObject();
         result.put("rows",rows);
         result.put("total",total);
