@@ -190,7 +190,7 @@ jQuery(document).ready(function($) {
 <!--//about-->
 </div>
 </div>
-<!--meet our management-->
+<!--meet our faculty-->
 <div class="team" id="management">
 	<div class="container">
 		<h3>meet our faculty</h3>
@@ -240,9 +240,9 @@ jQuery(document).ready(function($) {
 		<div class="clearfix"></div>
 	</div>
 </div>
-<!--//meet our management-->
+<!--//meet our faculty-->
 <div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >手机网站模板</a></div>
-<!--welcome-->
+<!--NEWS-->
 
 <div class="gallery" id="activities">
 	<div class="container">
@@ -357,7 +357,7 @@ jQuery(document).ready(function($) {
 		</div>
 	</div>
 </div>
-<!--//activities-->
+<!--//NEWS-->
 
 <!-- opening -->
 <div class="agile-open">
@@ -411,7 +411,7 @@ jQuery(document).ready(function($) {
 </div>	
 <!--// opening -->
 
-<!--faculty-->
+<!--NEWS&NOTICE-->
 <div class="w3-faculty" id="faculties">
 <div class="container">
 	<div class="center_detail clearfix">
@@ -441,7 +441,7 @@ jQuery(document).ready(function($) {
 		</div>
 	</div>
 </div>
-<!--//faculty-->
+<!--//NEWS&NOTICE-->
 
 <!--contact-->
 <div class="agile-contact" id="contact">
