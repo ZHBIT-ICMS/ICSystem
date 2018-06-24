@@ -72,6 +72,12 @@
                     handler : function() {
                         datagrid.datagrid('unselectAll');
                     }
+                }, '-', {
+                    text : '导出Excel',
+                    iconCls : 'icon-print',
+                    handler : function() {
+                        exportExcel();
+                    }
                 }, '-' ],
                 onRowContextMenu : function(e, rowIndex, rowData) {
                     e.preventDefault();
@@ -116,15 +122,56 @@
             }
         }
 
+        function exportExcel() {
+            window.location.href="loginLog!exportExcel.action";
+        }
+        //搜索实现
+        function searchLoginlog() {
+            datagrid.datagrid('load',$('#loginLogSearchForm').serializeJson());
+        }
+
+        /**
+         *
+         * @requires jQuery
+         *
+         * 将form表单元素的值序列化成对象
+         *
+         * @returns object
+         */
+        (function($){
+            $.fn.serializeJson=function(){
+                var serializeObj={};
+                var array=this.serializeArray();
+                var str=this.serialize();
+                $(array).each(function(){
+                    if(serializeObj[this.name]){
+                        if($.isArray(serializeObj[this.name])){
+                            serializeObj[this.name].push(this.value);
+                        }else{
+                            serializeObj[this.name]=[serializeObj[this.name],this.value];
+                        }
+                    }else{
+                        serializeObj[this.name]=this.value;
+                    }
+                });
+                return serializeObj;
+            };
+        })(jQuery);
     </script>
 </head>
 <body class="easyui-layout">
+<div data-options="region:'north',border:false,title:'查询'" style="height: 55px;overflow: hidden;" align="left">
+    <form id="loginLogSearchForm" style="display:inline;">
+        <span style="margin-left:2px;">登录账号: <input class="easyui-textbox" style="width:100px;" name="userNo"/></span>
+        <a onclick="searchLoginlog();" class="easyui-linkbutton" style="width:100px;" data-options="iconCls:'icon-search'">查询</a>
+    </form>
+</div>
 <div data-options="region:'center',border:false" style="overflow: hidden;">
     <table id="datagrid"></table>
 </div>
 
 <div id="menu" class="easyui-menu" style="width:120px;display: none;">
-    <div onclick="remove();" data-options="iconCls:'icon-remove'">删除</div>
+    <div onclick="searchLoginlog();" data-options="iconCls:'icon-remove'">删除</div>
 </div>
 </body>
 </html>
