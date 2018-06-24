@@ -88,7 +88,6 @@
             <div class="position">POSITION：<a href="index.html" title="网站首页">HOME</a> &gt; <a href="news.html">NEWS</a></div>
         </h3>
         <div class="clear"></div>
-
         <div class="active" id="newslist">
             <ul class='list-none metlist'>
                 <li class='list top'><span>[2012-07-17]</span><a href='shownews.html' title='如何选择网站关键词?' target='_self'>如何选择网站关键词?</a><img class='listhot' src='images/hot.gif' alt='图片关键词' /></li>
