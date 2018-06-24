@@ -21,9 +21,8 @@ public class VoIELTSExam {
     private  String examId;//考试的编号
     private Date examTime;//雅思考试时间
     private String examPlace;//雅思考试地点
-    private int score;//分数
-
-
+    private String duration; //考试时长
+    private int sign;
     private int state;
 
 //    private IELTSTrain ieltsTrain;//培训机构
@@ -32,6 +31,15 @@ public class VoIELTSExam {
     private String trainName;//雅思机构名称
 
 //    private int StudentTotal;
+
+
+    public int getSign() {
+        return sign;
+    }
+
+    public void setSign(int sign) {
+        this.sign = sign;
+    }
 
     public int getPage() {
         return page;
@@ -105,22 +113,13 @@ public class VoIELTSExam {
         this.examPlace = examPlace;
     }
 
-    public int getScore() {
-        return score;
+    public String getDuration() {
+        return duration;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
-//
-//    public IELTSTrain getIeltsTrain() {
-//        return ieltsTrain;
-//    }
-//
-//    public void setIeltsTrain(IELTSTrain ieltsTrain) {
-//        this.ieltsTrain = ieltsTrain;
-//    }
-
 
     public int getIeltsTrainId() {
         return ieltsTrainId;

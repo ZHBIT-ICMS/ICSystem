@@ -16,6 +16,8 @@ import com.zhbit.util.StringUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -66,26 +68,18 @@ public class IELTSTExamServiceImpl extends BaseServiceImpl implements IELTSTExam
 
     @Override
     public void edit(VoIELTSExam voIELTSExam) {
-//        private  String examId;//øº ‘µƒ±‡∫≈
-//        private Date examTime;//—≈Àºøº ‘ ±º‰
-//        private String examPlace;//—≈Àºøº ‘µÿµ„
-//        private int score;//∑÷ ˝
-//        private IELTSTrain ieltsTrain;//≈‡—µª˙ππ
         IELTSExam ieltsExam=ieltsExamBaseDAO.get(IELTSExam.class,voIELTSExam.getId());
 
         if(ieltsExam!=null){
             ieltsExam.setExamId(voIELTSExam.getExamId());
             ieltsExam.setExamTime(voIELTSExam.getExamTime());
             ieltsExam.setExamPlace(voIELTSExam.getExamPlace());
-            ieltsExam.setScore(voIELTSExam.getScore());
-//            ieltsExam.setIeltsTrain(voIELTSExam.getIeltsTrain());
-
+            ieltsExam.setDuration(voIELTSExam.getDuration());
+            ieltsExam.setSign(voIELTSExam.getSign());
             if (voIELTSExam.getExamId()!=null){
                 ieltsExam.setIeltsTrain(ieltsTrainBaseDAO.get(IELTSTrain.class,voIELTSExam.getIeltsTrainId()));
             }
-//            if (StringUtil.isNotEmpty(voClassesInfo.getClassNo())){
-//                classesInfo.setClassNo(voClassesInfo.getClassNo());
-//            }
+
         }
 
     }
@@ -108,12 +102,23 @@ public class IELTSTExamServiceImpl extends BaseServiceImpl implements IELTSTExam
     }
 
     @Override
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public List <VoIELTSExam> combobox() {
-        return null;
+        List<VoIELTSExam> rl = new ArrayList<VoIELTSExam>();
+        List<IELTSExam> l = ieltsExamBaseDAO.find("from IELTSExam ");
+        if (l != null && l.size() > 0) {
+            for (IELTSExam t : l) {
+                VoIELTSExam r = new VoIELTSExam();
+                r.setId(t.getId());
+                r.setExamId(t.getExamId());
+                rl.add(r);
+            }
+        }
+        return rl;
     }
 
     /**
-     * ∑µªÿ—≈Àºøº ‘◊‹ ˝
+     * ËøîÂõûÈõÖÊÄùËÄÉËØïÊÄªÊï∞
      * @param voIELTSExam
      * @return
      */
@@ -124,7 +129,7 @@ public class IELTSTExamServiceImpl extends BaseServiceImpl implements IELTSTExam
         return ieltsExamBaseDAO.count(hql, values);
     }
     /**
-     * ∞‡º∂Ãıº˛≤È—Ø
+     * Áè≠Á∫ßÊù°‰ª∂Êü•ËØ¢
      *
      * @param hql
      * @param values
@@ -153,7 +158,7 @@ public class IELTSTExamServiceImpl extends BaseServiceImpl implements IELTSTExam
 
 
     /**
-     * £®≥÷æ√ªØƒ£–Õ£©◊™ªª≥…£® ”Õº≤„ƒ£–Õ£©
+     * ÔºàÊåÅ‰πÖÂåñÊ®°ÂûãÔºâËΩ¨Êç¢ÊàêÔºàËßÜÂõæÂ±ÇÊ®°ÂûãÔºâ
      * @param
      * @return
      */
@@ -164,7 +169,7 @@ public class IELTSTExamServiceImpl extends BaseServiceImpl implements IELTSTExam
                 VoIELTSExam vc= new VoIELTSExam();
                 BeanUtils.copyProperties(tc, vc);
                 vc.setIeltsTrainId(tc.getIeltsTrain().getId());
-               vc.setTrainName(tc.getIeltsTrain().getTrainName());
+                vc.setTrainName(tc.getIeltsTrain().getTrainName());
 
                 voIELTSExams.add(vc);
             }

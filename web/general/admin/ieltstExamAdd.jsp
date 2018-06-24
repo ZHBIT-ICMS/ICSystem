@@ -26,9 +26,18 @@
                             <td><input name="examId" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写考试的编号'" style="width: 97%;" />
                             </td>
                         </tr>
+              <tr>
+                <th style="width:50px;">考试类型</th>
+                    <td>
+                    <select name="sign">
+                        <option value="0" selected="selected">正式考试</option>
+                        <option value="1">模拟考试</option>
+                    </select>
+                   </td>
+               </tr>
                         <tr>
                             <th style="width:50px;">雅思考试时间</th>
-                            <td><input name="examTime" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写雅思考试时间'" style="width: 97%;" />
+                            <td><input name="examTime" class="easyui-datetimebox" data-options="required:true,missingMessage:'请填写雅思考试时间'" style="width: 97%;" />
                             </td>
                         </tr>
                         <tr>
@@ -37,8 +46,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <th style="width:50px;">分数</th>
-                            <td><input name="score" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写分数'" style="width: 97%;" />
+                            <th style="width:50px;">考试时长</th>
+                            <td><input name="duration" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写考试时长'" style="width: 97%;" />
                             </td>
                         </tr>
 

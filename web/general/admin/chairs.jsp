@@ -141,12 +141,8 @@
                                 parent.$.messager.progress('close');
                             }
                         });
-                        f.find('input[name=id]').val(rows[0].id);
-                        f.find('input[name=title]').val(rows[0].title);
-                        f.find('input[name=content]').val(rows[0].content);
-                        f.find('input[name=visitTime]').val(rows[0].visitTime);
-                        f.find('input[name=activityTime]').val(rows[0].activityTime);
-                        f.find('input[name=foreignCollegeId]').val(rows[0].foreignCollegeId);
+                        f.form("reset");
+                        f.form("load",rows[0]);
                     }
                 });
             } else if (rows.length > 1) {

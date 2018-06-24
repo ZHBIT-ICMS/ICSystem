@@ -39,7 +39,7 @@ public class IELTSTInfoServiceImpl extends BaseServiceImpl implements IELTSTInfo
 
 
     /**
-     * ÑÅË¼ÅäĞèÉ¾³ı
+     * é›…æ€é…éœ€åˆ é™¤
      * @param ids
      */
     @Override
@@ -57,12 +57,12 @@ public class IELTSTInfoServiceImpl extends BaseServiceImpl implements IELTSTInfo
     @Override
     public void edit(VoIELTSTrain voIELTSTrain) {
 
-//        private String ieltsTrainId;//ÑÅË¼»ú¹¹±àºÅ
-//        private String trainName;//ÑÅË¼»ú¹¹Ãû³Æ
-//        private String trainTerm;//ÅàÑµµÄÑ§ÆÚ
-//        private Date trainTime;//ÅàÑµµÄÊ±ÆÚ
-//        private String trainClassHours;//ÑÅË¼¿Î³ÌÑ§Ê±
-//        private List<IELTSExam> examList;//ÑÅË¼¿¼ÊÔ
+//        private String ieltsTrainId;//é›…æ€æœºæ„ç¼–å·
+//        private String trainName;//é›…æ€æœºæ„åç§°
+//        private String trainTerm;//åŸ¹è®­çš„å­¦æœŸ
+//        private Date trainTime;//åŸ¹è®­çš„æ—¶æœŸ
+//        private String trainClassHours;//é›…æ€è¯¾ç¨‹å­¦æ—¶
+//        private List<IELTSExam> examList;//é›…æ€è€ƒè¯•
         IELTSTrain ieltsTrain = ieltsTrainBaseDAO.get(IELTSTrain.class,voIELTSTrain.getId());
         if(ieltsTrain!=null){
             ieltsTrain.setIeltsTrainId(voIELTSTrain.getIeltsTrainId());
@@ -88,17 +88,17 @@ public class IELTSTInfoServiceImpl extends BaseServiceImpl implements IELTSTInfo
         j.setTotal(total(voIELTSTrain));
         return j;
     }
-
-    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     @Override
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public List <VoIELTSTrain> combobox() {
+        System.out.println("`````````````````````````````````````````````````````````````````IELTSTraincombobox");
         List<VoIELTSTrain> rl = new ArrayList<VoIELTSTrain>();
-        List<IELTSTrain> l = ieltsTrainBaseDAO.find("from IELTSTrain ");
+        List<IELTSTrain> l = ieltsTrainBaseDAO.find(" from IELTSTrain ");
         if (l != null && l.size() > 0) {
             for (IELTSTrain t : l) {
                 VoIELTSTrain r = new VoIELTSTrain();
                 r.setId(t.getId());
-                r.setTrainName(t.getTrainName());
+                r.setIeltsTrainId(t.getIeltsTrainId());
                 rl.add(r);
             }
         }

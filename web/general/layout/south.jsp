@@ -7,5 +7,5 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div style="text-align: center;">
-    版权所有&nbsp;@<a href="mailto:zhbit@zhbit.com">北京理工大学珠海学院</a>
+    版权所有&nbsp;@<a href="mailto:zhbit@zhbit.com" style="text-decoration: none;color: black;" >北京理工大学珠海学院</a>
 </div>

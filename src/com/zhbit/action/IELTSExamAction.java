@@ -1,147 +1,138 @@
 package com.zhbit.action;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.zhbit.entity.base.Json;
+import com.zhbit.entity.vo.VoClassesInfo;
+import com.zhbit.entity.vo.VoIELTSExam;
 import com.zhbit.entity.vo.VoIELTSTrain;
-import com.zhbit.entity.vo.VoNews;
+import com.zhbit.service.IELTSTExamService;
 import com.zhbit.service.IELTSTInfoService;
-import com.zhbit.service.NewsService;
 import com.zhbit.util.JsonDateFormatUtil;
 import com.zhbit.util.ResponseUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.StrutsStatics;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by wby on 2018/6/20.
  */
-public class IELTSTInfoAction extends ActionSupport implements ModelDriven<VoIELTSTrain> {
+public class IELTSExamAction extends ActionSupport implements ModelDriven<VoIELTSExam> {
     @Resource
-    private IELTSTInfoService ieltstInfoService;
+    private IELTSTExamService ieltstExamService;
 
-    public IELTSTInfoService getIeltstInfoService() {
-        return ieltstInfoService;
+    public IELTSTExamService getIeltstExamService() {
+        return ieltstExamService;
     }
 
-    public void setIeltstInfoService(IELTSTInfoService ieltstInfoService) {
-        this.ieltstInfoService = ieltstInfoService;
+    public void setIeltstExamService(IELTSTExamService ieltstExamService) {
+        this.ieltstExamService = ieltstExamService;
     }
 
-    public VoIELTSTrain getVoIELTSTrain() {
-        return voIELTSTrain;
-    }
-
-    public void setVoIELTSTrain(VoIELTSTrain voIELTSTrain) {
-        this.voIELTSTrain = voIELTSTrain;
-    }
-
-    private VoIELTSTrain voIELTSTrain = new VoIELTSTrain();
+    private VoIELTSExam voIELTSExam = new VoIELTSExam();
 
     @Override
-    public VoIELTSTrain getModel() {
-        return voIELTSTrain;
+    public VoIELTSExam getModel() {
+        return voIELTSExam;
     }
 
-    public String train() {
-        return "ieltstInfos";
+    public String exam() {
+        return "ieltstExam";
     }
 
-    public String ieltstAdd() {
-        return "ieltstAdd";
+    public String ieltstExamAdd() {
+        return "ieltstExamAdd";
     }
 
-    public String ieltstEdit() {
-        return "ieltstEdit";
+    public String ieltstExamEdit() {
+        return "ieltstExamEdit";
     }
 
     /**
-     * ªÒµ√—≈Àº≈‡—µµƒ ˝æ›±Ì∏Ò
+     * Ëé∑ÂæóÈõÖÊÄùÂüπËÆ≠ÁöÑÊï∞ÊçÆË°®Ê†º
      */
     public void datagrid() {
         //super.writeJson(bugService.datagrid(bug));
-        // Ã·ΩªJson
-        System.out.println("sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
-        JSONArray rows = JSONArray.fromObject(ieltstInfoService.dataGrid(voIELTSTrain).getRows(), this.getJsonConfig());
-        long total = ieltstInfoService.dataGrid(voIELTSTrain).getTotal();
+        // Êèê‰∫§Json
+        System.out.println("11111111111111111111111111111111111");
+        JSONArray rows = JSONArray.fromObject(ieltstExamService.dataGrid(voIELTSExam).getRows(),this.getJsonConfig());
+        long total = ieltstExamService.dataGrid(voIELTSExam).getTotal();
+        System.out.println("11111111111111111111111111111111111222222222");
         JSONObject result = new JSONObject();
-        System.out.println(rows+"aaaaaaaaaaaaaaaaaa");
-        result.put("rows", rows);
-        result.put("total", total);
+        System.out.println(voIELTSExam.getTrainName()+"777777777777");
+        result.put("rows",rows);
+        result.put("total",total);
         try {
-            ResponseUtil.write(ServletActionContext.getResponse(), result);
+            ResponseUtil.write(ServletActionContext.getResponse(),result);
         } catch (Exception e) {
-            System.out.println("ResponseUtil“Ï≥££°");
+            System.out.println("ResponseUtilÂºÇÂ∏∏ÔºÅ");
             e.printStackTrace();
         }
     }
 
     /**
-     * …æ≥˝—≈Àº≈‡—µ
+     * Âà†Èô§ÈõÖÊÄùÂüπËÆ≠
      */
     public void delete() {
         Json j = new Json();
         try {
-            ieltstInfoService.delete(voIELTSTrain.getIds());
+            ieltstExamService.delete(voIELTSExam.getIds());
             j.setSuccess(true);
-            j.setMsg("…æ≥˝≥…π¶£°");
+            j.setMsg("Âà†Èô§ÊàêÂäüÔºÅ");
         }catch (Exception ex){
-            j.setMsg("…æ≥˝ ß∞‹£°");
-            System.out.println("…æ≥˝ ß∞‹£°");
+            j.setMsg("Âà†Èô§Â§±Ë¥•ÔºÅ");
+            System.out.println("Âà†Èô§Â§±Ë¥•ÔºÅ");
             ex.printStackTrace();
         }finally {
             try {
                 String json= JSONObject.fromObject(j,this.getJsonConfig()).toString();
                 ResponseUtil.write(ServletActionContext.getResponse(),json);
             }catch (Exception ex){
-                System.out.println("ResponseUtil≥ˆœ÷“Ï≥££°");
+                System.out.println("ResponseUtilÂá∫Áé∞ÂºÇÂ∏∏ÔºÅ");
                 ex.printStackTrace();
             }
         }
     }
 
     /**
-     * ‘ˆº”—≈Àº≈‡—µ
+     * Â¢ûÂä†ÈõÖÊÄùÂüπËÆ≠
      */
     public void add() {
         Json j = new Json();
         try {
-            ieltstInfoService.add(voIELTSTrain);
+            ieltstExamService.add(voIELTSExam);
             j.setSuccess(true);
-            j.setMsg("ÃÌº”≥…π¶£°");
+            j.setMsg("Ê∑ªÂä†ÊàêÂäüÔºÅ");
         }catch (Exception ex){
-            j.setMsg("ÃÌº” ß∞‹£°");
-            System.out.println("ÃÌº” ß∞‹£°");
+            j.setMsg("Ê∑ªÂä†Â§±Ë¥•ÔºÅ");
+            System.out.println("Ê∑ªÂä†Â§±Ë¥•ÔºÅ");
             ex.printStackTrace();
         }finally {
             try {
                 String json= JSONObject.fromObject(j,this.getJsonConfig()).toString();
                 ResponseUtil.write(ServletActionContext.getResponse(),json);
             }catch (Exception ex){
-                System.out.println("ResponseUtil≥ˆœ÷“Ï≥££°");
+                System.out.println("ResponseUtilÂá∫Áé∞ÂºÇÂ∏∏ÔºÅ");
                 ex.printStackTrace();
             }
         }
     }
 
     /**
-     * —≈Àº≈‡—µ±‡º≠
+     * ÈõÖÊÄùÂüπËÆ≠ÁºñËæë
      */
     public void edit() {
         Json j = new Json();
         try {
-            ieltstInfoService.edit(voIELTSTrain);
+            ieltstExamService.edit(voIELTSExam);
             j.setSuccess(true);
-            j.setMsg("–ﬁ∏ƒ≥…π¶£°");
+            j.setMsg("‰øÆÊîπÊàêÂäüÔºÅ");
         }catch (Exception ex){
-            j.setMsg("–ﬁ∏ƒ ß∞‹£°");
-            System.out.println("—ß‘∫–≈œ¢–ﬁ∏ƒ ß∞‹£°");
+            j.setMsg("‰øÆÊîπÂ§±Ë¥•ÔºÅ");
+            System.out.println("‰øÆÊîπÂ§±Ë¥•ÔºÅ");
             ex.printStackTrace();
         }finally {
             try {
@@ -154,19 +145,19 @@ public class IELTSTInfoAction extends ActionSupport implements ModelDriven<VoIEL
     }
 
     /**
-     *ªÒ»°—ß‘∫œ¬¿≠¡–±Ì
+     *Ëé∑ÂèñÈõÖÊÄùËÄÉËØï‰∏ãÊãâÂàóË°®
      */
     public void doNotNeedSession_combobox() {
-        String json= JSONArray.fromObject(ieltstInfoService.combobox(),this.getJsonConfig()).toString();
+        String json= JSONArray.fromObject(ieltstExamService.combobox(),this.getJsonConfig()).toString();
         try {
             ResponseUtil.write(ServletActionContext.getResponse(),json);
         }catch (Exception ex){
-            System.out.println("ResponseUtil“Ï≥££°");
+            System.out.println("ResponseUtilÂºÇÂ∏∏ÔºÅ");
             ex.printStackTrace();
         }
     }
     /**
-     * jsonπ˝¬À∆˜
+     * jsonËøáÊª§Âô®
      * @return
      */
     public JsonConfig getJsonConfig(){

@@ -88,6 +88,28 @@
 .icon-overseaInfo{
 	background:url('icons/出国生信息管理.png') no-repeat center center;
 }
+.icon-loginLog{
+	background:url('icons/记录.png') no-repeat center center;
+}
+.icon-IpAdress{
+	background:url('icons/Ip定位.png') no-repeat center center;
+}
+.icon-ieltsTrain{
+	background:url('icons/雅思培训.png') no-repeat center center;
+}
+.icon-ieltsExam{
+	background:url('icons/雅思考试.png') no-repeat center center;
+}
+.icon-ieltsScore{
+	background:url('icons/雅思成绩.png') no-repeat center center;
+}
+.icon-ielts{
+	background:url('icons/雅思信息管理.png') no-repeat center center;
+}
+
+
+
+/*···················································································*/
 .icon-save{
 	background:url('icons/filesave.png') no-repeat center center;
 }

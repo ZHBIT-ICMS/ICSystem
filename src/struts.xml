@@ -175,18 +175,28 @@
             <result name="agreementsEdit">/general/admin/agreementEdit.jsp</result>
             <result name="showContent">/general/admin/agreementShow.jsp</result>
         </action>
-        <!--雅思-->
-        <action name="ieltstInfo" class="com.zhbit.action.IELTSTInfoAction">
-            <result name="ieltstInfos">/general/admin/ieltst.jsp</result>
-            <result name="ieltstAdd">/general/admin/ieltstAdd.jsp</result>
-            <result name="ieltstEdit">/general/admin/ieltstEdit.jsp</result>
+        <!-- 雅思培训 -->
+        <action name="ieltstInfo" class="com.zhbit.action.IELTSTrainAction">
+            <result name="ieltstInfos">/general/admin/ieltsTrain.jsp</result>
+            <result name="ieltstAdd">/general/admin/ieltsTrainAdd.jsp</result>
+            <result name="ieltstEdit">/general/admin/ieltsTrainEdit.jsp</result>
         </action>
 
-        <!--雅思考试-->
-        <action name="ieltstExam" class="com.zhbit.action.IELTSTExamAction">
-            <result name="ieltstExam">/general/admin/ieltsexam.jsp</result>
-            <result name="ieltstExamAdd">/general/admin/ieltstexamAdd.jsp</result>
-            <result name="ieltstExamEdit">/general/admin/ieltstexamEdit.jsp</result>
+        <!-- 雅思考试 -->
+        <action name="ieltstExam" class="com.zhbit.action.IELTSExamAction">
+            <result name="ieltstExam">/general/admin/ieltsExam.jsp</result>
+            <result name="ieltstExamAdd">/general/admin/ieltstExamAdd.jsp</result>
+            <result name="ieltstExamEdit">/general/admin/ieltstExamEdit.jsp</result>
+        </action>
+        <!-- 国际班学生 -->
+
+        <action name="intls" class="com.zhbit.action.InternationalStudentAction">
+            <result name="internationalStudent">/general/admin/internationalStudent.jsp</result>
+            <result name="internationalStudentAdd">/general/admin/internationalStudentAdd.jsp</result>
+            <result name="internationalStudentEdit">/general/admin/internationalStudentEdit.jsp</result>
+            <result name="intlsSummerCamp">/general/admin/intlsSummerCampEdit.jsp</result>
+            <result name="intlsIeltsTrain">/general/admin/intlsIeltsTrainEdit.jsp</result>
+            <result name="intlsIeltsExam">/general/admin/intlsIeltsExamEdit.jsp</result>
         </action>
     </package>  
 </struts>   

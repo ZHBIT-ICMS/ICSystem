@@ -13,6 +13,7 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="seal">
 <meta http-equiv="description" content="seal">
+<link rel="icon" type="image/png" sizes="96x96" href="${pageContext.request.contextPath}/style/assets/img/favicon.png">
 <!-- jquery库 -->
 <%--<script type="text/javascript" src="${pageContext.request.contextPath}/easyUI/jquery-1.8.2.min.js" charset="utf-8"></script>--%>
 <%--<script src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery.min.js"></script>--%>

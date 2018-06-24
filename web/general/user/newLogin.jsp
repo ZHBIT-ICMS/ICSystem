@@ -11,7 +11,7 @@
 <html lang="en" class="fullscreen-bg">
 
 <head>
-    <title>Login</title>
+    <title>系统登录</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -22,7 +22,8 @@
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/style/assets/css/main.css">
     <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/style/assets/css/demo.css">
+    <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/style/assets/css/demo.css">--%>
+
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <!-- ICONS -->

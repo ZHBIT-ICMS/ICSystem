@@ -20,6 +20,7 @@ public class IELTSTrain {
     private Date trainTime;//培训的时期
     private String trainClassHours;//雅思课程学时
     private List<IELTSExam> examList;//雅思考试
+    private List<InterStuTrain> interStuTrainList;//国际班学生&雅思培训中间
     @Id
     @GeneratedValue(generator="_native")
     @GenericGenerator(name="_native",strategy="native")
@@ -80,5 +81,15 @@ public class IELTSTrain {
 
     public void setExamList(List <IELTSExam> examList) {
         this.examList = examList;
+    }
+
+    /*雅思培训与【国际班学生&雅思培训中间实体】 1对多*/
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "ieltsTrain")
+    public List<InterStuTrain> getInterStuTrainList() {
+        return interStuTrainList;
+    }
+
+    public void setInterStuTrainList(List<InterStuTrain> interStuTrainList) {
+        this.interStuTrainList = interStuTrainList;
     }
 }

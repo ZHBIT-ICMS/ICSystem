@@ -15,6 +15,7 @@ import java.util.List;
 @Table(name="tb_overseas_student")
 public class OverSeasStudent {
     private int id;
+    private String overSeasName;//出国生的名称
     private String schoolName;//出国的学校
     private String schoolType;//出国类型
     private String replaceCourse;//替换课程
@@ -31,6 +32,15 @@ public class OverSeasStudent {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Column(length = 50)
+    public String getOverSeasName() {
+        return overSeasName;
+    }
+
+    public void setOverSeasName(String overSeasName) {
+        this.overSeasName = overSeasName;
     }
 
     @Column(length = 20)

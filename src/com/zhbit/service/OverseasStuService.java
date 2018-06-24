@@ -38,4 +38,6 @@ public interface OverseasStuService {
 
     //添加
     public void add(VoOverseasStu voOverseasStu);
+
+    public List<VoOverseasStu> combobox();
 }
