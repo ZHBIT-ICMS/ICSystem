@@ -12,6 +12,11 @@
         <input type="hidden" name="id" />
         <table class="tableForm">
             <tr>
+                <th style="width:80px;">交换生名称</th>
+                <td><input name="exchangeName" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写交换生名称'" style="width: 97%;" />
+                </td>
+            </tr>
+            <tr>
                 <th style="width:80px;">替换的课程</th>
                 <td><input name="replaceCourse" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写替换的课程'" style="width: 97%;" />
                 </td>
@@ -33,7 +38,7 @@
             </tr>
             <tr>
                 <th style="width:50px;">出国的时间</th>
-                <td><input name="goAbroadTime" class="easyui-datetimebox" data-options="required:true,missingMessage:'请填写出国的时间'" style="width: 97%;" />
+                <td><input name="goAbroadTime" id="goAbroadTime" class="easyui-datebox" data-options="required:true,missingMessage:'请填写出国的时间'" style="width: 97%;" />
                 </td>
             </tr>
 

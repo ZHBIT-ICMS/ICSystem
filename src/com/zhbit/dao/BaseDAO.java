@@ -19,7 +19,7 @@ public interface BaseDAO<T> {
 
 
 	public void saveOrUpdate(T o);
-	
+
 
 	public void merge(T o);
 

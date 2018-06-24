@@ -16,6 +16,7 @@ import java.util.List;
 @Table(name="tb_exchange_student")
 public class ExchangeStudent {
     private int id;
+    private String exchangeName;//交换生的名称
     private String schoolName;//出国的学校
     private String schoolType;//出国类型
     private String replaceCourse;//替换课程
@@ -32,6 +33,14 @@ public class ExchangeStudent {
 
     public void setId(int id) {
         this.id = id;
+    }
+    @Column(length = 50)
+    public String getExchangeName() {
+        return exchangeName;
+    }
+
+    public void setExchangeName(String exchangeName) {
+        this.exchangeName = exchangeName;
     }
 
     @Column(length = 20)

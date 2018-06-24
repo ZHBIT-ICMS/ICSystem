@@ -202,7 +202,6 @@ public class UserAction extends ActionSupport implements ModelDriven<VoUser> {
      * 用户角色批量编辑
      */
     public void roleEdit() {
-
         System.out.println("ids:"+voUser.getIds()+" roleIds:"+voUser.getRoleIds());
         Json j = new Json();
         try {
@@ -221,7 +220,6 @@ public class UserAction extends ActionSupport implements ModelDriven<VoUser> {
                 ex.printStackTrace();
             }
         }
-
     }
     /**
      * 用户删除

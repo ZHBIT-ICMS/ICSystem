@@ -38,4 +38,6 @@ public interface ExchangeStuService {
 
     //添加
     public void add(VoExchangeStu voExchangeStu);
+
+    public List<VoExchangeStu> combobox();
 }

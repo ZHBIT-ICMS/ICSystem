@@ -1,0 +1,28 @@
+INSERT INTO `db_isc`.`tb_menu`
+(`CID`,
+`CICONCLS`,
+`CNAME`,
+`CSEQ`)
+VALUES
+('ysxxgl','icon-international','雅思信息管理','1');
+INSERT INTO `db_isc`.`tb_menu`
+(`CID`,
+`CICONCLS`,
+`CNAME`,
+`CSEQ`,
+`CURL`,
+`CPID`)
+VALUES
+('ysksgl','icon-classInfo','雅思考试管理','2','/ieltstExam!exam.action','ysxxgl');
+INSERT INTO `db_isc`.`tb_menu`
+(`CID`,
+`CICONCLS`,
+`CNAME`,
+`CSEQ`,
+`CURL`,
+`CPID`)
+VALUES
+('yspxgl','icon-classInfo','雅思培训管理','1','/ieltstInfo!train.action','ysxxgl');
+
+
+

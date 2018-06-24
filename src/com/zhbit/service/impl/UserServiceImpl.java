@@ -297,7 +297,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
         return userDao.find(hql,values,pageBean);
     }
     private Long total(VoUser voUser){
-        String hql="select count(*) from User u where 1=1";
+        String hql="select count(*) from User u where 1=1 ";
         List<Object> values=new ArrayList<Object>();
         hql=addWhere(voUser,hql,values);
         return userDao.count(hql,values);
@@ -418,7 +418,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
     public boolean isUniqueUser(String userNo ){
         User tu=null;
         if(StringUtil.isNotEmpty(userNo)){
-            tu=this.userDao.get("from User u where u.userNo= ? ",new String[]{userNo});
+            tu=this.userDao.get(" from User u where u.userNo= ? ",new String[]{userNo});
             if(tu==null){
                 return true ;
             }
@@ -428,18 +428,18 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
     /**
      * 保存用户和角色的关系
-     * @param user
-     * @param u
+     * @param voUser
+     * @param tu
      */
-    private void saveUserRole(VoUser user,User u){
-        System.out.println("userId:"+u.getId());
-        userRoleDAO.executeHql("delete UserRole ur where ur.user = ? ",new Object[]{u});
-        if(user.getRoleIds()!=null){
-            for(String id:user.getRoleIds().split(",")){
+    private void saveUserRole(VoUser voUser,User tu){
+        System.out.println("userId:"+tu.getId());
+        userRoleDAO.executeHql("delete UserRole ur where ur.user = ? ",new Object[]{tu});
+        if(voUser.getRoleIds()!=null){
+            for(String id:voUser.getRoleIds().split(",")){
                 UserRole userRole =new UserRole();
                 userRole.setCid(UUID.randomUUID().toString());
                 userRole.setRole(roleDao.get(Role.class,id.trim()));
-                userRole.setUser(u);
+                userRole.setUser(tu);
                 userRoleDAO.save(userRole);
             }
         }

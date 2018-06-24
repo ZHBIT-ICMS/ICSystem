@@ -27,7 +27,7 @@ private SummerCamp summerCamp;
     public void setId(int id) {
         this.id = id;
     }
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "internationalStudentId")
     public InternationalStudent getInternationalStudent() {
         return internationalStudent;
@@ -36,7 +36,7 @@ private SummerCamp summerCamp;
     public void setInternationalStudent(InternationalStudent internationalStudent) {
         this.internationalStudent = internationalStudent;
     }
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "summerCampId")
     public SummerCamp getSummerCamp() {
         return summerCamp;
@@ -45,4 +45,5 @@ private SummerCamp summerCamp;
     public void setSummerCamp(SummerCamp summerCamp) {
         this.summerCamp = summerCamp;
     }
+
 }

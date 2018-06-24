@@ -20,6 +20,7 @@ public class SummerCamp {
     private Date activityTime;
    // private List<InternationalStudent> studentList=new ArrayList<InternationalStudent>();//一个夏令营活动包括多个国际班学生
     private List<InterStuSummerCamp> interStuSummerCamps;
+    private ForeignCollege foreignCollege; //多个夏令营可对应一个国外院校
     /* 主键采用本地，mysql的本地是自增长
     *
     * */
@@ -75,5 +76,14 @@ public class SummerCamp {
 
     public void setInterStuSummerCamps(List<InterStuSummerCamp> interStuSummerCamps) {
         this.interStuSummerCamps = interStuSummerCamps;
+    }
+    @ManyToOne
+    @JoinColumn(name = "foreignCollegeId")
+    public ForeignCollege getForeignCollege() {
+        return foreignCollege;
+    }
+
+    public void setForeignCollege(ForeignCollege foreignCollege) {
+        this.foreignCollege = foreignCollege;
     }
 }

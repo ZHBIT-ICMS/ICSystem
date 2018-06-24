@@ -108,13 +108,14 @@
            <result name="newsEdit">/general/admin/newsEdit.jsp</result>
            <result name="showContent">/general/admin/newsShow.jsp</result>
        </action>
-
+         <!-- 通知公告发布 -->
         <action name="pubNotice" class="com.zhbit.action.PubNoticeAction">
             <result name="notice">/general/admin/notice/notice.jsp</result>
             <result name="noticeAdd">/general/admin/notice/noticeEdit.jsp</result>
             <result name="noticeEdit">/general/admin/notice/noticeEdit.jsp</result>
             <result name="showContent">/general/admin/notice/noticeShow.jsp</result>
         </action>
+        <!-- 政策法规发布 -->
         <action name="pubPolicy" class="com.zhbit.action.PubPolicyAction">
             <result name="policy">/general/admin/policy/policy.jsp</result>
             <result name="policyAdd">/general/admin/policy/policyEdit.jsp</result>
@@ -160,6 +161,42 @@
             <result name="chairs">/general/admin/chairs.jsp</result>
             <result name="chairsAdd">/general/admin/chairsAdd.jsp</result>
             <result name="chairsEdit">/general/admin/chairsEdit.jsp</result>
+        </action>
+        <!-- 国外院校夏令营 -->
+        <action name="summerCamp" class="com.zhbit.action.SummerCampAction">
+            <result name="summerCamps">/general/admin/summerCamp.jsp</result>
+            <result name="summerCampsAdd">/general/admin/summerCampAdd.jsp</result>
+            <result name="summerCampsEdit">/general/admin/summerCampEdit.jsp</result>
+        </action>
+        <!-- 协议发布管理 -->
+        <action name="pubAgreement" class="com.zhbit.action.PubAgreementAction">
+            <result name="agreements">/general/admin/agreement.jsp</result>
+            <result name="agreementsAdd">/general/admin/agreementAdd.jsp</result>
+            <result name="agreementsEdit">/general/admin/agreementEdit.jsp</result>
+            <result name="showContent">/general/admin/agreementShow.jsp</result>
+        </action>
+        <!-- 雅思培训 -->
+        <action name="ieltstInfo" class="com.zhbit.action.IELTSTrainAction">
+            <result name="ieltstInfos">/general/admin/ieltsTrain.jsp</result>
+            <result name="ieltstAdd">/general/admin/ieltsTrainAdd.jsp</result>
+            <result name="ieltstEdit">/general/admin/ieltsTrainEdit.jsp</result>
+        </action>
+
+        <!-- 雅思考试 -->
+        <action name="ieltstExam" class="com.zhbit.action.IELTSExamAction">
+            <result name="ieltstExam">/general/admin/ieltsExam.jsp</result>
+            <result name="ieltstExamAdd">/general/admin/ieltstExamAdd.jsp</result>
+            <result name="ieltstExamEdit">/general/admin/ieltstExamEdit.jsp</result>
+        </action>
+        <!-- 国际班学生 -->
+
+        <action name="intls" class="com.zhbit.action.InternationalStudentAction">
+            <result name="internationalStudent">/general/admin/internationalStudent.jsp</result>
+            <result name="internationalStudentAdd">/general/admin/internationalStudentAdd.jsp</result>
+            <result name="internationalStudentEdit">/general/admin/internationalStudentEdit.jsp</result>
+            <result name="intlsSummerCamp">/general/admin/intlsSummerCampEdit.jsp</result>
+            <result name="intlsIeltsTrain">/general/admin/intlsIeltsTrainEdit.jsp</result>
+            <result name="intlsIeltsExam">/general/admin/intlsIeltsExamEdit.jsp</result>
         </action>
     </package>  
 </struts>   

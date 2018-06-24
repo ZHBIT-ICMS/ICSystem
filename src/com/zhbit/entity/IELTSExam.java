@@ -3,7 +3,9 @@ package com.zhbit.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by wby on 2018/4/6.
@@ -16,9 +18,12 @@ public class IELTSExam {
     private  String examId;//考试的编号
     private Date examTime;//雅思考试时间
     private String examPlace;//雅思考试地点
-    private int score;//分数
+    private String duration; //考试时长
     private IELTSTrain ieltsTrain;//培训机构
-   private  int sign;//0是正式考试，1是模拟考试
+    private  int sign;//0是正式考试，1是模拟考试
+
+    private List<InterStuExam> interStuExamList = new ArrayList<InterStuExam>();
+
     @Id
     @GeneratedValue(generator="_native")
     @GenericGenerator(name="_native",strategy="native")
@@ -53,13 +58,13 @@ public class IELTSExam {
     public void setExamPlace(String examPlace) {
         this.examPlace = examPlace;
     }
-
-    public int getScore() {
-        return score;
+    @Column(length=50)
+    public String getDuration() {
+        return duration;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 
     public int getSign() {
@@ -70,6 +75,8 @@ public class IELTSExam {
         this.sign = sign;
     }
 
+
+
     @ManyToOne
     @JoinColumn(name="ieltsTrainId")
     public IELTSTrain getIeltsTrain() {
@@ -78,5 +85,14 @@ public class IELTSExam {
 
     public void setIeltsTrain(IELTSTrain ieltsTrain) {
         this.ieltsTrain = ieltsTrain;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "ieltsExam")
+    public List<InterStuExam> getInterStuExamList() {
+        return interStuExamList;
+    }
+
+    public void setInterStuExamList(List<InterStuExam> interStuExamList) {
+        this.interStuExamList = interStuExamList;
     }
 }

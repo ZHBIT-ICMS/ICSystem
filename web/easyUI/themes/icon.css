@@ -55,6 +55,18 @@
 .icon-chair{
 	background:url('icons/讲座.png') no-repeat center center;
 }
+.icon-policy{
+	background:url('icons/政策法规.png') no-repeat center center;
+}
+.icon-notice{
+	background:url('icons/通知.png') no-repeat center center;
+}
+.icon-exchangeInfo{
+	background:url('icons/交换生信息管理.png') no-repeat center center;
+}
+.icon-exchangeStudent{
+	background:url('icons/交换生.png') no-repeat center center;
+}
 .icon-blank{
 	background:url('icons/blank.gif') no-repeat center center;
 }
@@ -70,6 +82,34 @@
 .icon-remove{
 	background:url('icons/删除.png') no-repeat center center;
 }
+.icon-overseaStudent{
+	background:url('icons/出国生管理.png') no-repeat center center;
+}
+.icon-overseaInfo{
+	background:url('icons/出国生信息管理.png') no-repeat center center;
+}
+.icon-loginLog{
+	background:url('icons/记录.png') no-repeat center center;
+}
+.icon-IpAdress{
+	background:url('icons/Ip定位.png') no-repeat center center;
+}
+.icon-ieltsTrain{
+	background:url('icons/雅思培训.png') no-repeat center center;
+}
+.icon-ieltsExam{
+	background:url('icons/雅思考试.png') no-repeat center center;
+}
+.icon-ieltsScore{
+	background:url('icons/雅思成绩.png') no-repeat center center;
+}
+.icon-ielts{
+	background:url('icons/雅思信息管理.png') no-repeat center center;
+}
+
+
+
+/*···················································································*/
 .icon-save{
 	background:url('icons/filesave.png') no-repeat center center;
 }

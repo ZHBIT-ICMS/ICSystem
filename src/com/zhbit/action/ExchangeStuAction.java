@@ -133,6 +133,19 @@ public class ExchangeStuAction extends ActionSupport implements ModelDriven<VoEx
             }
         }
     }
+
+    /**
+     *获取交换生下拉列表
+     */
+    public void doNotNeedSession_combobox() {
+        String json= JSONArray.fromObject(exchangeStuService.combobox(),this.getJsonConfig()).toString();
+        try {
+            ResponseUtil.write(ServletActionContext.getResponse(),json);
+        }catch (Exception ex){
+            System.out.println("ResponseUtil异常！");
+            ex.printStackTrace();
+        }
+    }
     /**
      * json过滤器
      * @return
@@ -140,7 +153,7 @@ public class ExchangeStuAction extends ActionSupport implements ModelDriven<VoEx
     public JsonConfig getJsonConfig(){
         JsonConfig config = new JsonConfig();
         config.setIgnoreDefaultExcludes(false);
-        config.registerJsonValueProcessor(java.util.Date.class,new JsonDateFormatUtil("yyyy-MM-dd HH:mm:ss"));
+        config.registerJsonValueProcessor(java.util.Date.class,new JsonDateFormatUtil("yyyy-MM-dd"));
         return config;
     }
 }

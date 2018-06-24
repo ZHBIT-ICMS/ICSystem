@@ -35,6 +35,12 @@
                     sortable : true,
                     checkbox : true
                 }, {
+                    title : '交换生名称',
+                    field : 'exchangeName',
+                    width : 130,
+                    align: 'center',
+                    sortable : true
+                }, {
                     title : '替换的课程',
                     field : 'replaceCourse',
                     width : 130,

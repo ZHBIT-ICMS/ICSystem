@@ -104,6 +104,7 @@ public class ExchangeStuServiceImpl implements ExchangeStuService {
             t.setSchoolName(voExchangeStu.getSchoolName());
             t.setSchoolType(voExchangeStu.getSchoolType());
             t.setGoAbroadTime(voExchangeStu.getGoAbroadTime());
+            t.setExchangeName(voExchangeStu.getExchangeName());
         }
     }
 
@@ -156,4 +157,23 @@ public class ExchangeStuServiceImpl implements ExchangeStuService {
         return baseDAO.count(hql, values);
     }
 
+    /**
+     * 获取交换生下拉菜单
+     * @return
+     */
+    @Override
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    public List<VoExchangeStu> combobox(){
+        List<VoExchangeStu> rl = new ArrayList<VoExchangeStu>();
+        List<ExchangeStudent> l = baseDAO.find("from ExchangeStudent es where es.studentList is empty ");
+        if (l != null && l.size() > 0) {
+            for (ExchangeStudent t : l) {
+                VoExchangeStu r = new VoExchangeStu();
+                r.setId(t.getId());
+                r.setExchangeName(t.getExchangeName());
+                rl.add(r);
+            }
+        }
+        return rl;
+    }
 }

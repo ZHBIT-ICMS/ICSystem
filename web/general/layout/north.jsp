@@ -9,9 +9,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" charset="utf-8">
     function logout(b) {
-        $('#sessionInfoDiv').html('');
+        //$('#sessionInfoDiv').html('');
         $.post('user!doNotNeedSession_logout.action', function() {
-            if (b) {
+            if (b) {//确定退出
                 if (dj.isLessThanIe8()) {
                     loginDialog.dialog('open');
                 } else {
@@ -70,14 +70,22 @@
         });
     }
 </script>
-<div id="sessionInfoDiv" style="overflow: hidden; height: 30px;
-        background: #7f99be repeat-x center 50%;
-        line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体">
-    <span style="padding-left:10px; font-size: 20px; text-align: inherit; " ><strong style="color: white;">国际合作交流管理系统</strong></span>
-    <span style="position: absolute; right: 0px; bottom: 0px; "><c:if test="${sessionInfo.userId != null}"><strong style="color: white;">[${sessionInfo.loginName}]，欢迎您！您使用[${sessionInfo.ip}]IP登录！</strong></c:if>
-	<a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_pfMenu',iconCls:'icon-themes'"><strong style="color: white;">更换皮肤</strong></a>
-	<a href="javascript:void(0);" class="easyui-menubutton" data-options="iconCls:'icon-personalInfo'" onclick="showUserInfo();"><strong style="color: white;">个人信息</strong></a>
-	<a href="javascript:void(0);" class="easyui-menubutton" data-options="iconCls:'icon-loginout'" onclick="$.messager.confirm('注销','您确定要退出么?',function(r){logout(true);});"><strong style="color: white;">注销</strong></a></span>
+<div id="sessionInfoDiv" style="overflow: hidden; height: 55px;
+        background: url('${pageContext.request.contextPath}/img/zhbitlogo.png') no-repeat;
+        background-color: #fff;
+        line-height: 20px;color: #999;
+        font-family: 'Arial','Microsoft YaHei','黑体','宋体',sans-serif; ">
+    <span style="padding-left:10px; font-size: 20px;   display:block; position: relative;top:50%;transform:translateY(-50%); " >
+       <%-- <strong style="color: white;">国际合作交流管理系统</strong> --%>
+       </span>
+    <span style="position: absolute; right: 0px; bottom: 0px; ">
+    <a href="javascript:void(0);" class="easyui-menubutton" data-options="iconCls:'icon-IpAdress'">
+     <c:if test="${sessionInfo.userId != null}"><strong style="color: #999; bottom: 0px;">[${sessionInfo.loginName}]，欢迎您！您使用[${sessionInfo.ip}]IP登录！</strong></c:if>
+    </a>
+	<a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_pfMenu',iconCls:'icon-themes'"><strong style="color: #999;">更换皮肤</strong></a>
+	<a href="javascript:void(0);" class="easyui-menubutton" data-options="iconCls:'icon-personalInfo'" onclick="showUserInfo();"><strong style="color: #999;">个人信息</strong></a>
+	<a href="javascript:void(0);" class="easyui-menubutton" data-options="iconCls:'icon-loginout'" onclick="$.messager.confirm('注销','您确定要退出么?',function(r){logout(r);});"><strong style="color: #999;">注销</strong></a>
+    </span>
 </div>
 <div id="layout_north_pfMenu" style="width: 120px; display: none;">
     <div onclick="dj.changeTheme('default');">默认</div>

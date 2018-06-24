@@ -124,7 +124,7 @@
 
     });
 </script>
-<div class="easyui-layout" data-options="fit:true,border:false">
+<div class="easyui-layout" data-options="fit:true,border:false" style=" font-family: 'Arial','Microsoft YaHei','黑体','宋体',sans-serif;">
     <div data-options="region:'north',border:false" style="height:180px;overflow: hidden;">
         <div id="calendar"></div>
     </div>

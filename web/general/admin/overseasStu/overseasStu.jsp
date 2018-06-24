@@ -34,7 +34,13 @@
                     width : 100,
                     sortable : true,
                     checkbox : true
-                }, {
+                },{
+                    title : '出国生名称',
+                    field : 'overSeasName',
+                    width : 130,
+                    align: 'center',
+                    sortable : true
+                } ,{
                     title : '替换的课程',
                     field : 'replaceCourse',
                     width : 130,

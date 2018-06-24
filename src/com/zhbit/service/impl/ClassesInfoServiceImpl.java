@@ -6,6 +6,7 @@ import com.zhbit.entity.CollegeInfo;
 import com.zhbit.entity.base.DataGrid;
 import com.zhbit.entity.base.PageBean;
 import com.zhbit.entity.vo.VoClassesInfo;
+import com.zhbit.exception.ValidateFieldsException;
 import com.zhbit.service.ClassesInfoService;
 import com.zhbit.util.StringUtil;
 import org.springframework.beans.BeanUtils;
@@ -51,7 +52,9 @@ public class ClassesInfoServiceImpl extends BaseServiceImpl implements ClassesIn
     public void delete(String ids) {
         if (ids != null) {
             for (String id : ids.split(",")) {
-                ClassesInfo t = classesInfoDAO.get(ClassesInfo.class, Integer.parseInt(id));
+                ClassesInfo t = classesInfoDAO.get(ClassesInfo.class,Integer.parseInt(id));
+                t.getCollegeInfo().getClassesInfoList().remove(t);
+                t.setCollegeInfo(null);
                 System.out.println("```````````````````````````````删除班级id为"+id);
                 if (t != null) {
                     classesInfoDAO.delete(t);
@@ -61,17 +64,25 @@ public class ClassesInfoServiceImpl extends BaseServiceImpl implements ClassesIn
     }
 
     @Override
-    public void edit(VoClassesInfo voClassesInfo) {
+    public void edit(VoClassesInfo voClassesInfo)throws ValidateFieldsException  {
+
         ClassesInfo classesInfo = classesInfoDAO.get(ClassesInfo.class,voClassesInfo.getId());
-        if(classesInfo!=null){
-          classesInfo.setDescInfo(voClassesInfo.getDescInfo());
-          if (voClassesInfo.getCollegeId()>0){
-              classesInfo.setCollegeInfo(collegeInfoDAO.get(CollegeInfo.class,voClassesInfo.getCollegeId()));
-          }
-         if (StringUtil.isNotEmpty(voClassesInfo.getClassNo())){
-              classesInfo.setClassNo(voClassesInfo.getClassNo());
-         }
+        if (voClassesInfo.getClassNo().equals(classesInfo.getClassNo())||isUnqiueClassesInfo(voClassesInfo.getClassNo())){
+            if(classesInfo!=null){
+                if (StringUtil.isNotEmpty(voClassesInfo.getDescInfo())){
+                    classesInfo.setDescInfo(voClassesInfo.getDescInfo());
+                }
+                if (voClassesInfo.getCollegeId()>0){
+                    classesInfo.setCollegeInfo(collegeInfoDAO.get(CollegeInfo.class,voClassesInfo.getCollegeId()));
+                }
+                if (StringUtil.isNotEmpty(voClassesInfo.getClassNo())){
+                    classesInfo.setClassNo(voClassesInfo.getClassNo());
+                }
+            }
+        }else {
+            throw  new ValidateFieldsException("该班级号已存在，请重新输入！");
         }
+
     }
 
     /**
@@ -79,7 +90,10 @@ public class ClassesInfoServiceImpl extends BaseServiceImpl implements ClassesIn
      * @param voClassesInfo
      */
     @Override
-    public void add(VoClassesInfo voClassesInfo) {
+    public void add(VoClassesInfo voClassesInfo) throws ValidateFieldsException {
+      if (!isUnqiueClassesInfo(voClassesInfo.getClassNo())){
+          throw  new ValidateFieldsException("该班级号已存在，请重新输入！");
+      }
         ClassesInfo classesInfo = new ClassesInfo();
         BeanUtils.copyProperties(voClassesInfo,classesInfo);
         classesInfo.setCollegeInfo(collegeInfoDAO.get(CollegeInfo.class,voClassesInfo.getCollegeId()));
@@ -155,4 +169,33 @@ public class ClassesInfoServiceImpl extends BaseServiceImpl implements ClassesIn
         return hql;
     }
 
+    /**
+     * 判断班级号是否唯一
+     * @param classNo
+     * @return
+     */
+    public boolean isUnqiueClassesInfo(String classNo){
+        ClassesInfo classesInfo = null;
+        if (StringUtil.isNotEmpty(classNo)){
+            classesInfo=this.classesInfoDAO.get(" from ClassesInfo c where c.classNo = ? ",new String[]{classNo});
+            if (classesInfo==null){
+                return  true;
+            }
+        }
+        return false;
+    }
+    @Override
+    public List<VoClassesInfo> combobox() {
+        List<VoClassesInfo> rl = new ArrayList<VoClassesInfo>();
+        List<ClassesInfo> l = classesInfoDAO.find("from ClassesInfo ");
+        if (l != null && l.size() > 0) {
+            for (ClassesInfo t : l) {
+                VoClassesInfo r = new VoClassesInfo();
+                r.setId(t.getId());
+                r.setDescInfo(t.getDescInfo());
+                rl.add(r);
+            }
+        }
+        return rl;
+    }
 }

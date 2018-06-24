@@ -5,6 +5,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.zhbit.entity.CollegeInfo;
 import com.zhbit.entity.base.Json;
 import com.zhbit.entity.vo.VoClassesInfo;
+import com.zhbit.exception.ValidateFieldsException;
 import com.zhbit.service.ClassesInfoService;
 import com.zhbit.service.CollegeInfoService;
 import com.zhbit.util.JsonDateFormatUtil;
@@ -89,8 +90,8 @@ public class ClassesInfoAction extends ActionSupport implements ModelDriven<VoCl
             classesInfoService.add(voClassesInfo);
             j.setSuccess(true);
             j.setMsg("添加成功！");
-        }catch (Exception ex){
-            j.setMsg("添加失败！");
+        }catch (ValidateFieldsException ex){
+            j.setMsg(ex.getLocalizedMessage());
             System.out.println("班级添加失败！");
             ex.printStackTrace();
         }finally {
@@ -113,8 +114,8 @@ public class ClassesInfoAction extends ActionSupport implements ModelDriven<VoCl
             classesInfoService.edit(voClassesInfo);
             j.setSuccess(true);
             j.setMsg("修改成功！");
-        }catch (Exception ex){
-            j.setMsg("修改失败！");
+        }catch (ValidateFieldsException ex){
+            j.setMsg(ex.getLocalizedMessage());
             System.out.println("班级信息修改失败！");
             ex.printStackTrace();
         }finally {
@@ -126,7 +127,18 @@ public class ClassesInfoAction extends ActionSupport implements ModelDriven<VoCl
             }
         }
     }
-
+    /**
+     *获取班级下拉列表
+     */
+    public void doNotNeedSession_combobox() {
+        String json= JSONArray.fromObject(classesInfoService.combobox(),this.getJsonConfig()).toString();
+        try {
+            ResponseUtil.write(ServletActionContext.getResponse(),json);
+        }catch (Exception ex){
+            System.out.println("ResponseUtil异常！");
+            ex.printStackTrace();
+        }
+    }
 
     public JsonConfig getJsonConfig(){
         JsonConfig config = new JsonConfig();

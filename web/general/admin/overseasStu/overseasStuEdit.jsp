@@ -12,6 +12,11 @@
         <input type="hidden" name="id" />
         <table class="tableForm">
             <tr>
+                <th style="width:80px;">出国生名称</th>
+                <td><input name="overSeasName" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写出国生名称'" style="width: 97%;" />
+                </td>
+            </tr>
+            <tr>
                 <th style="width:80px;">替换的课程</th>
                 <td><input name="replaceCourse" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写替换的课程'" style="width: 97%;" />
                 </td>

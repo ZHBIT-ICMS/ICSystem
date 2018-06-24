@@ -133,6 +133,20 @@ public class OverseasStuAction  extends ActionSupport implements ModelDriven<VoO
             }
         }
     }
+
+    /**
+     *获取出国生下拉列表
+     */
+    public void doNotNeedSession_combobox() {
+        String json= JSONArray.fromObject(overseasStuService.combobox(),this.getJsonConfig()).toString();
+        try {
+            ResponseUtil.write(ServletActionContext.getResponse(),json);
+        }catch (Exception ex){
+            System.out.println("ResponseUtil异常！");
+            ex.printStackTrace();
+        }
+    }
+
     /**
      * json过滤器
      * @return

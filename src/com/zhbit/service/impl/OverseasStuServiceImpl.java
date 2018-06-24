@@ -105,6 +105,7 @@ public class OverseasStuServiceImpl implements OverseasStuService {
             t.setSchoolName(voOverseasStu.getSchoolName());
             t.setSchoolType(voOverseasStu.getSchoolType());
             t.setGoAbroadTime(voOverseasStu.getGoAbroadTime());
+            t.setOverSeasName(voOverseasStu.getOverSeasName());
         }
     }
 
@@ -155,6 +156,25 @@ public class OverseasStuServiceImpl implements OverseasStuService {
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voOverseasStu, hql, values);
         return baseDAO.count(hql, values);
+    }
+    /**
+     * 获取交换生下拉菜单
+     * @return
+     */
+    @Override
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    public List<VoOverseasStu> combobox(){
+        List<VoOverseasStu> rl = new ArrayList<VoOverseasStu>();
+        List<OverSeasStudent> l = baseDAO.find("from OverSeasStudent ");
+        if (l != null && l.size() > 0) {
+            for (OverSeasStudent t : l) {
+                VoOverseasStu r = new VoOverseasStu();
+                r.setId(t.getId());
+                r.setOverSeasName(t.getOverSeasName());
+                rl.add(r);
+            }
+        }
+        return rl;
     }
 
 }

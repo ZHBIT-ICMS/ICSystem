@@ -8,8 +8,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/css.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/more.css">
+    <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/css/css.css">--%>
+    <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/css/more.css">--%>
 
 </head>
 <body>

@@ -10,6 +10,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <%--private int id;//主键--%>
+    <%--private String classNo;//班级号--%>
+    <%--private String descInfo;//班级描述--%>
+    <%--// private CollegeInfo collegeInfo;//一个学院包括多个班--%>
+    <%--private String collegeName;//学院名称--%>
+    <%--private int collegeId;//学院id--%>
+    <%--private int StudentTotal;--%>
     <jsp:include page="../../inc.jsp"></jsp:include>
     <script type="text/javascript" charset="utf-8">
         var datagrid;

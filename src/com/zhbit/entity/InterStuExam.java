@@ -7,17 +7,18 @@ import javax.persistence.*;
 /**
  * Created by wby on 2018/4/6.
  */
-/* ¹ú¼Ê°àÑÅË¼¿¼ÊÔ
+/* å›½é™…ç­é›…æ€è€ƒè¯•
 *
-*  ¹ú¼Ê°àÑ§Éú±íºÍÑÅË¼¿¼ÊÔµÄÖĞ¼ä±í
+*  å›½é™…ç­å­¦ç”Ÿè¡¨å’Œé›…æ€è€ƒè¯•çš„ä¸­é—´è¡¨
 *
 * */
 @Entity
 @Table(name="tb_interstu_exam")
 public class InterStuExam {
     private int id;
-    private IELTSExam ieltsExam;//ÑÅË¼¿¼ÊÔµÄ±àºÅ
-    private InternationalStudent internationalStudent;//¹ú¼Ê°àÑ§ÉúµÄÑ§ºÅ
+    private IELTSExam ieltsExam;//é›…æ€è€ƒè¯•çš„ç¼–å·
+    private InternationalStudent internationalStudent;//å›½é™…ç­å­¦ç”Ÿçš„å­¦å·
+    private int score;//åˆ†æ•°
     @Id
     @GeneratedValue(generator="_native")
     @GenericGenerator(name="_native",strategy="native")
@@ -29,6 +30,13 @@ public class InterStuExam {
         this.id = id;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 
     @ManyToOne
     @JoinColumn(name="ieltsExamId")
