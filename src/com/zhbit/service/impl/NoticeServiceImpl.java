@@ -36,7 +36,6 @@ public class NoticeServiceImpl implements NoticeService  {
     }
 
     /**
-     * չʾ���й��棬����չʾ1-8�����¹���
      * @param s_notice
      * @param pageBean
      * @return
@@ -64,7 +63,6 @@ public class NoticeServiceImpl implements NoticeService  {
 
 
     /**
-     * ����id �����������
      * @param noticeId
      * @return
      */
@@ -73,28 +71,33 @@ public class NoticeServiceImpl implements NoticeService  {
         return baseDAO.get(Notice.class,noticeId);
     }
     /**
-     * ���㹫���ܵļ�¼��
      * @param s_notice
      * @return
      */
     @Override
     public Long getNoticeCount(Notice s_notice) {
-            List<Object>param=new LinkedList <>();
-            StringBuffer hql=new StringBuffer("select count(*) from Notice");
-            if(s_notice!=null){
-                if(StringUtil.isNotEmpty(s_notice.getTitle())){
-                    hql.append(" and title like ?");
-                    param.add("%"+s_notice.getTitle()+"%");
-                }
+        List<Object>param=new LinkedList <>();
+        StringBuffer hql=new StringBuffer("select count(*) from Notice");
+        if(s_notice!=null){
+            if(StringUtil.isNotEmpty(s_notice.getTitle())){
+                hql.append(" and title like ?");
+                param.add("%"+s_notice.getTitle()+"%");
             }
-            return (Long)baseDAO.count(hql.toString().replaceFirst("and", "where"), param);
         }
+        return (Long)baseDAO.count(hql.toString().replaceFirst("and", "where"), param);
+    }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public DataGrid datagrid(VoNotice voNotice) {
+    public DataGrid datagrid(VoNotice voNotice,String title) {
         DataGrid j = new DataGrid();
-        j.setRows(this.changeModel(this.find(voNotice)));
-        j.setTotal(total(voNotice));
+        String where;
+        if(title!=null) {
+            where = "t.title like '%" + title + "%'";
+        }else{
+            where="1=1";
+        }
+        j.setRows(this.changeModel(this.find(voNotice,where)));
+        j.setTotal(total(voNotice,where));
         return j;
     }
 
@@ -113,9 +116,8 @@ public class NoticeServiceImpl implements NoticeService  {
         return voNoticeList;
     }
 
-    private List<Notice> find(VoNotice voNotice) {
-        String hql = " from Notice t where 1=1 ";
-
+    private List<Notice> find(VoNotice voNotice,String where) {
+        String hql = " from Notice t where " + where + " ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voNotice, hql, values);
 
@@ -133,8 +135,8 @@ public class NoticeServiceImpl implements NoticeService  {
     /**
      *计算通知公告信息总数
      */
-    private Long total(VoNotice voNotice) {
-        String hql = "select count(*) from Notice t where 1=1 ";
+    private Long total(VoNotice voNotice,String where) {
+        String hql = "select count(*) from Notice t where " + where+" ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voNotice, hql, values);
         return baseDAO.count(hql, values);

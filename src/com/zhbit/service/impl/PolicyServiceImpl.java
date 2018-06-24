@@ -36,7 +36,6 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     /**
-     * չʾ�������߷��棬����չʾ1-8���������߷���
      * @param s_policy
      * @param pageBean
      * @return
@@ -60,7 +59,6 @@ public class PolicyServiceImpl implements PolicyService {
         }
     }
     /**
-     * ����id ������߷�������
      * @param policyId
      * @return
      */
@@ -69,7 +67,6 @@ public class PolicyServiceImpl implements PolicyService {
         return baseDAO.get(Policy.class,policyId);
     }
     /**
-     * �����ܼ�¼��
      * @param s_policy
      * @return
      */
@@ -87,10 +84,16 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public DataGrid datagrid(VoPolicy voPolicy) {
+    public DataGrid datagrid(VoPolicy voPolicy,String title) {
         DataGrid j = new DataGrid();
-        j.setRows(this.changeModel(this.find(voPolicy)));
-        j.setTotal(total(voPolicy));
+        String where;
+        if(title!=null) {
+            where = "t.title like '%" + title + "%'";
+        }else{
+            where="1=1";
+        }
+        j.setRows(this.changeModel(this.find(voPolicy,where)));
+        j.setTotal(total(voPolicy,where));
         return j;
     }
 
@@ -109,9 +112,8 @@ public class PolicyServiceImpl implements PolicyService {
         return voPolicyList;
     }
 
-    private List<Policy> find(VoPolicy voPolicy) {
-        String hql = " from Policy t where 1=1 ";
-
+    private List<Policy> find(VoPolicy voPolicy,String where) {
+        String hql = " from Policy t where " + where + " ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voPolicy, hql, values);
 
@@ -129,8 +131,8 @@ public class PolicyServiceImpl implements PolicyService {
     /**
      *计算政策法规信息总数
      */
-    private Long total(VoPolicy voPolicy) {
-        String hql = "select count(*) from Policy t where 1=1 ";
+    private Long total(VoPolicy voPolicy,String where) {
+        String hql = "select count(*) from Policy t where " + where+" ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voPolicy, hql, values);
         return baseDAO.count(hql, values);
