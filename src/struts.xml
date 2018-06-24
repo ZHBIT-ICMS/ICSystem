@@ -193,7 +193,6 @@
         <action name="policy_*" class="com.zhbit.action.PolicyAction" method="{1}">
             <!--<result name="success">mainwby.jsp</result>-->
         </action>
-
         <!--公告-->
         <action name="notice_*" class="com.zhbit.action.NoticeAction" method="{1}">
             <result name="success">notice.jsp</result>
