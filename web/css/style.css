@@ -2612,146 +2612,184 @@ i.s3{
 		padding: 11px;
     }
 }
-@media(max-width:320px){
+@media(max-width:320px) {
 	.logo a h1 {
 		font-size: 1.4em;
 		left: 13px;
 	}
+
 	nav.navbar.navbar-default {
 		right: 2px;
 		top: 12px;
 	}
+
 	.slider-info p {
 		font-size: 13px;
-		line-height:22px;
+		line-height: 22px;
 	}
+
 	.slider-info h3 {
 		font-size: 21px;
-		letter-spacing:0px;
-		 width: 54%;
+		letter-spacing: 0px;
+		width: 54%;
 	}
+
 	.slider-info {
 		top: 62px;
 	}
+
 	.callbacks_nav {
 		top: 44%;
 	}
+
 	.callbacks_nav {
 		left: 20px;
 	}
+
 	.about h4 {
 		font-size: 14px;
 	}
+
 	.about h2 {
-    font-size: 19px;
-    padding-bottom: 0px;
-}
+		font-size: 19px;
+		padding-bottom: 0px;
+	}
+
 	.about {
 		padding: 1% 1% 135% 1%;
 	}
+
 	.about p {
 		padding: 2px 11px;
 	}
+
 	.team h3 {
 		font-size: 22px;
-		letter-spacing:0px;
+		letter-spacing: 0px;
 	}
+
 	.w3grid h5 {
 		font-size: 17px;
-		letter-spacing:0px;
+		letter-spacing: 0px;
 	}
+
 	.text-w3 h4 {
 		font-size: 21px;
 	}
+
 	.icons i {
 		font-size: 19px;
 		width: 36px;
 		height: 36px;
 		line-height: 36px;
 	}
+
 	.grid p {
 		width: 100%;
 	}
+
 	.icons {
 		margin: 6px 0px 73px 11px;
 	}
+
 	.grid p {
 		line-height: 1.7;
 	}
+
 	.demo-2 {
 		height: 217px;
 	}
+
 	.map form {
 		width: 89%;
-		left:16px;
+		left: 16px;
 	}
+
 	figure.effect-bubba figcaption::before, figure.effect-bubba figcaption::after {
 		top: 28px;
 		right: 28px;
 		bottom: 28px;
 		left: 28px;
 	}
+
 	figure.effect-bubba h4 {
 		padding-top: 13%;
 		font-size: 1.6em;
 	}
+
 	figure.effect-bubba p {
 		line-height: 1em;
 		font-size: 1em;
 	}
+
 	.open-head p {
 		line-height: 21px;
 	}
+
 	span.simply-word {
 		font-size: 15px;
 	}
+
 	span.simply-amount {
 		font-size: 37px;
 	}
+
 	div#simply-countdown-losange {
 		margin: 21px 25px;
 	}
+
 	.simply-section {
 		width: 110px;
 		height: 110px;
 	}
+
 	.faculty-head h5 {
 		letter-spacing: 0px;
 	}
+
 	.demo-2 p, .demo-2 h3 {
 		top: 10px;
 	}
+
 	.left-contact h6 {
 		width: 56%;
 		font-size: 23px;
 	}
+
 	.map input[type="submit"] {
 		margin: 6px 55px;
 	}
+
 	.left-w3 {
 		width: 61%;
 	}
+
 	.left-w3 a {
 		font-size: 20px;
 	}
+
 	.right-social {
 		font-size: 25px;
 	}
+
 	.footer-nav ul li {
 		padding: 0px 3px;
 	}
+
 	.logo h1 {
 		margin: 0;
-		margin-top:5px;
+		margin-top: 5px;
 	}
-.navbar-toggle {
-    position: relative;
-    float: right;
-    padding: 9px 10px;
-       margin-top: 0px;
-    margin-right: 15px;
-    margin-bottom: 0px;
-}
+
+	.navbar-toggle {
+		position: relative;
+		float: right;
+		padding: 9px 10px;
+		margin-top: 0px;
+		margin-right: 15px;
+		margin-bottom: 0px;
+	}
+
 
 
 

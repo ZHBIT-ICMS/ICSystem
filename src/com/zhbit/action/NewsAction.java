@@ -70,9 +70,11 @@ public class NewsAction extends ActionSupport implements ServletRequestAware {
     public int getNewsId() {
         return newsId;
     }
+
     public void setNewsId(int newsId) {
         this.newsId = newsId;
     }
+
     /**
      * 前台页面分页展示
      * @return
@@ -94,8 +96,9 @@ public class NewsAction extends ActionSupport implements ServletRequestAware {
      * @return
      */
     public String showNews(){
+        System.out.println("newsId"+newsId);
         news=newsService.getNewsById(newsId);
-        return "success";
+        return "shownews";
     }
 
     @Override

@@ -422,7 +422,7 @@ jQuery(document).ready(function($) {
 				<c:forEach items="${newsList}" var="n">
 					<li>
 
-						<a href="news_getNewsById.action"?newsId=${n.id} target="_blank">${n.title }</a>
+						<a href="news_showNews.action?newsId=${n.id}" target="_blank"  style="float: left">${n.title }</a>
 					</li>
 				</c:forEach>
 			</ul>
@@ -433,8 +433,7 @@ jQuery(document).ready(function($) {
 			<ul>
 				<c:forEach items="${noticeList }" var="n">
 					<li>
-
-						<a href="news_getNoticeById.action"? newsId=${n.id} target="_blank">${n.title }</a>
+						<a href="notice_showNotice.action?noticeId=${n.id}" target="_blank" style="float: left">${n.title }</a>
 					</li>
 				</c:forEach>
 			</ul>

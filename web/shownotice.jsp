@@ -25,7 +25,7 @@
 
             <ul class="top-nav list-none">
                 <li class="t"><a href='#' onclick='SetHome(this,window.location,"非IE浏览器不支持此功能，请手动设置！");' style='cursor:pointer;' title='设为首页'  >设为首页</a><span>|</span><a href='#' onclick='addFavorite("非IE浏览器不支持此功能，请手动设置！");' style='cursor:pointer;' title='收藏本站'  >收藏本站</a><span>|</span><a class="fontswitch" id="StranLink" href="javascript:StranBody()">繁体中文</a><span>|</span><a href='#' title='WAP'>WAP</a><span>|</span><a href='#' title='English'  >English</a><span>|</span><a href='#' title='我的订单' class='shopweba'>我的订单</a></li>
-                <li class="b"><a href="admin/"><strong><span style="color:#ffff00;"><span style="font-size: 16px;">后台演示请点击这里进入</span></span></strong></a></li>
+                <%--<li class="b"><a href="admin/"><strong><span style="color:#ffff00;"><span style="font-size: 16px;">后台演示请点击这里进入</span></span></strong></a></li>--%>
             </ul>
         </div>
         <nav>
@@ -59,8 +59,8 @@
 
         <h3 class='title myCorner' data-corner='top 5px'>QUICK ENTRY</h3>
         <div class="active" id="sidebar" data-csnow="2" data-class3="0" data-jsok="2">
-            <dl class="list-none navnow"><dt id='part2_4'><a href='#'  title='公司动态' class="zm"><span>NEWS</span></a></dt></dl>
-            <dl class="list-none navnow"><dt id='part2_5'><a href='#'  title='业界资讯' class="zm"><span>NOTICE</span></a></dt></dl>
+            <dl class="list-none navnow"><dt id='part2_4'><a href='#'  title='NEWS' class="zm"><span>NEWS</span></a></dt></dl>
+            <dl class="list-none navnow"><dt id='part2_5'><a href='#'  title='NOTICE' class="zm"><span>NOTICE</span></a></dt></dl>
             <div class="clear"></div></div>
 
         <h3 class='title line myCorner' data-corner='top 5px'>CONTRACT US</h3>
@@ -80,15 +80,15 @@
     </div>
     <div class="sb_box">
         <h3 class="title">
-            <div class="position">POSITION：<a href="index.html" title="网站首页">HOME</a> &gt; <a href="news.html">NEWS</a></div>
-            <span>SHOW NEWS</span>
+            <div class="position">POSITION：<a href="index.html" title="网站首页">HOME</a> &gt; <a href="news.html">SHOW NOTICE</a></div>
+            <span>SHOW NOTICE</span>
         </h3>
         <div class="clear"></div>
 
         <div class="active" id="shownews">
-            <h1 class="title">${news.title}</h1>
+            <h1 class="title">${notice.title}</h1>
             <div class="editor"><div><div>
-               ${news.content}
+               ${notice.content}
             </div>
 
                 <div id="metinfo_additional"></div></div><div class="clear"></div></div>

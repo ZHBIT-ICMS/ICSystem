@@ -27,6 +27,6 @@
 .clearfix{display:inline-block}
 .clearfix{display:block}
 .pager { margin-top:15px; }
-.pager ul { float:right; }
-.pager ul li { float:left; border:1px solid #eee; line-height:18px; padding:0 3px; margin:0 1px; display:inline; }
-.pager ul li .current { font-weight:bold; color:#ab1e1e; }
+.pager ul { float:right;list-style:none; }
+.pager ul li { float:left; border:1px solid #1a1a1a; line-height:18px; padding:0 3px; margin:0 1px; display:inline; list-style: none}
+.pager ul li .current { font-weight:bold; color: #ab1298; list-style: none }
