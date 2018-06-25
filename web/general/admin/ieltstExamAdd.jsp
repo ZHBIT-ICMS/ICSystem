@@ -20,42 +20,34 @@
         <%--private int ieltsTrainId;//雅思机构编号--%>
         <%--private String trainName;//雅思机构名称--%>
         <table class="tableForm">
-
-                        <tr>
-                            <th style="width:80px;">考试的编号</th>
-                            <td><input name="examId" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写考试的编号'" style="width: 97%;" />
-                            </td>
-                        </tr>
-              <tr>
-                <th style="width:50px;">考试类型</th>
-                    <td>
+            <tr>
+                <td class="table_left"><font color="red">*</font>考试的编号：</td>
+                <td><input name="examId" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写考试的编号'" />
+                </td>
+                <td class="table_left">考试类型：</td>
+                <td>
                     <select name="sign">
                         <option value="0" selected="selected">正式考试</option>
                         <option value="1">模拟考试</option>
                     </select>
-                   </td>
-               </tr>
-                        <tr>
-                            <th style="width:50px;">雅思考试时间</th>
-                            <td><input name="examTime" class="easyui-datetimebox" data-options="required:true,missingMessage:'请填写雅思考试时间'" style="width: 97%;" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th style="width:50px;">雅思考试地点</th>
-                            <td><input name="examPlace" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写雅思考试地点'" style="width: 97%;" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th style="width:50px;">考试时长</th>
-                            <td><input name="duration" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写考试时长'" style="width: 97%;" />
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th style="width:50px;">所属机构</th>
-                            <td><input type="text" name="ieltsTrainId" style="width: 145px;" data-options="required:'true',missingMessage:'请选择所属所属机构'"/>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="table_left"><font color="red">*</font>雅思考试地点：</td>
+                <td><input name="examPlace" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写雅思考试地点'" />
+                </td>
+                <td class="table_left"><font color="red">*</font>考试时长：</td>
+                <td><input name="duration" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写考试时长'" />
+                </td>
+            </tr>
+            <tr>
+                <td class="table_left"><font color="red">*</font>雅思考试时间：</td>
+                <td><input name="examTime" class="easyui-datetimebox" data-options="width: 150,required:true,missingMessage:'请填写雅思考试时间'" />
+                </td>
+                <td class="table_left"><font color="red">*</font>所属机构：</td>
+                <td><input name="ieltsTrainId" type="text" data-options="width: 150,required:true,missingMessage:'请选择所属所属机构'" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

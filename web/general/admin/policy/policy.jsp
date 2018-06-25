@@ -106,7 +106,7 @@
                     title : '修改政策法规信息',
                     href : '${pageContext.request.contextPath}/pubPolicy!policyEdit.action?id=' + rows[0].id,
                     width : 800,
-                    height : 600,
+                    height : 550,
                     buttons : [ {
                         text : '修改',
                         handler : function() {
@@ -154,8 +154,8 @@
             var p = parent.dj.dialog({
                 title : '发布政策法规信息',
                 href : '${pageContext.request.contextPath}/pubPolicy!policyAdd.action',
-                width : 500,
-                height : 450,
+                width : 800,
+                height : 550,
                 buttons : [ {
                     text : '发布',
                     handler : function() {
@@ -274,7 +274,7 @@
 <body class="easyui-layout">
 <div data-options="region:'north',border:false,title:'查询'" style="height: 55px;overflow: hidden;" align="left">
     <form id="policySearchForm" style="display:inline;">
-        <span style="margin-left:2px;">新闻标题: <input class="easyui-textbox" style="width:100px;" name="title"/></span>
+        <span style="margin-left:2px;">政策法规标题: <input class="easyui-textbox" style="width:100px;" name="title"/></span>
         <a onclick="searchPolicy();" class="easyui-linkbutton" style="width:100px;" data-options="iconCls:'icon-search'">查询</a>
     </form>
 </div>

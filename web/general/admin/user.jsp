@@ -204,8 +204,8 @@
                 var p = parent.dj.dialog({
                     title : '编辑用户',
                     href : '${pageContext.request.contextPath}/user!userEdit.action',
-                    width : 450,
-                    height : 200,
+                    width : 800,
+                    height : 400,
                     buttons : [ {
                         text : '编辑',
                         handler : function() {
@@ -274,8 +274,8 @@
             var p = parent.dj.dialog({
                 title : '添加用户',
                 href : '${pageContext.request.contextPath}/user!userAdd.action',
-                width : 440,
-                height : 200,
+                width : 800,
+                height : 400,
                 buttons : [ {
                     text : '添加',
                     handler : function() {
@@ -349,25 +349,64 @@
                 parent.dj.messagerAlert('提示', '请勾选要删除的记录！', 'error');
             }
         }
-        function _search() {
-            datagrid.datagrid('load', dj.serializeObject($('#searchForm')));
+        function searchUser() {
+            datagrid.datagrid('load',$('#userSearchForm').serializeJson());
         }
+
+        /**
+         *
+         * @requires jQuery
+         *
+         * 将form表单元素的值序列化成对象
+         *
+         * @returns object
+         */
+        (function($){
+            $.fn.serializeJson=function(){
+                var serializeObj={};
+                var array=this.serializeArray();
+                var str=this.serialize();
+                $(array).each(function(){
+                    if(serializeObj[this.name]){
+                        if($.isArray(serializeObj[this.name])){
+                            serializeObj[this.name].push(this.value);
+                        }else{
+                            serializeObj[this.name]=[serializeObj[this.name],this.value];
+                        }
+                    }else{
+                        serializeObj[this.name]=this.value;
+                    }
+                });
+                return serializeObj;
+            };
+        })(jQuery);
+
         function cleanSearch() {
             datagrid.datagrid('load', {});
-            $('#searchForm input').val('');
+            $('#userSearchForm input').val('');
         }
     </script>
 </head>
 <body class="easyui-layout" data-options="fit:true">
-<div data-options="region:'north',border:false,title:'过滤条件'" style="height: 55px;overflow: hidden;" align="left">
-    <form id="searchForm">
-        <table class="tableForm datagrid-toolbar" style="width: 100%;height: 100%;">
-            <tr>
-                <th>用户名</th>
-                <td><input name="cname" style="width:317px;" />
-                    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="_search();">过滤</a><a href="javascript:void(0);" class="easyui-linkbutton" onclick="cleanSearch();">取消</a></td>
-            </tr>
-        </table>
+<div data-options="region:'north',border:false,title:'查询'" style="height: 55px;overflow: hidden;" align="left">
+    <form id="userSearchForm">
+        <span style="margin-left:2px;">所属学院:
+            <input class="easyui-combobox" style="width: 100px"  name="collegeId" data-options="panelHeight:'auto',editable:false,valueField:'id',textField:'collegeName',url:'${pageContext.request.contextPath}/collegeInfo!doNotNeedSession_combobox.action'"/>
+            </span>
+        <span style="margin-left:2px;">状态:
+            <select id="sLocked" class="easyui-combobox" name="locked" size="3" data-options="editable:false,panelHeight:'auto'" style="width:100px;">
+                <option value="0">&nbsp;</option>
+                <option value="1">启动</option>
+                <option value="2">禁用</option>
+            </select></span>
+        <span style="margin-left:2px;">身份:
+            <select id="sSign" class="easyui-combobox" name="sign" size="3" data-options="editable:false,panelHeight:'auto'" style="width:100px;">
+                <option value="0">&nbsp;</option>
+                <option value="1">管理员</option>
+                <option value="2">学生</option>
+            </select></span>
+        <a onclick="searchUser();" class="easyui-linkbutton" style="width:100px;" data-options="iconCls:'icon-search'">查询</a>
+        <a onclick="cleanSearch();" class="easyui-linkbutton" style="width:100px;" data-options="iconCls:'icon-cancel'">取消</a>
     </form>
 </div>
 <div data-options="region:'center',border:false" style="overflow: hidden;">

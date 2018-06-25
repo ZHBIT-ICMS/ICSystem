@@ -6,6 +6,7 @@ import com.zhbit.dao.BaseDAO;
 import com.zhbit.entity.*;
 import com.zhbit.entity.base.DataGrid;
 import com.zhbit.entity.base.PageBean;
+import com.zhbit.entity.vo.VoCollegeInfo;
 import com.zhbit.entity.vo.VoLoginLog;
 import com.zhbit.entity.vo.VoUser;
 import com.zhbit.exception.ValidateFieldsException;
@@ -188,6 +189,21 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
         loginLogBaseDAO.save(loginLog);
     }
 
+    @Override
+    public List<VoCollegeInfo> getCollegeInfoList() {
+        List<VoCollegeInfo> rl = new ArrayList<VoCollegeInfo>();
+        List<CollegeInfo> l = collegeInfoDAO.find(" from CollegeInfo ");
+        if (l != null && l.size() > 0) {
+            for (CollegeInfo t : l) {
+                VoCollegeInfo r = new VoCollegeInfo();
+                r.setId(t.getId());
+                r.setCollegeName(t.getCollegeName());
+                rl.add(r);
+            }
+        }
+        return rl;
+    }
+
     /**
      * 保存用户信息
      * @param voUser
@@ -219,11 +235,35 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
     }
 
     @Override
-    public DataGrid dataGrid(VoUser voUser) {
+    public DataGrid dataGrid(VoUser voUser,int collegeId,int locked,int sign) {
         DataGrid j=new DataGrid();
-        j.setRows(this.changeModel(this.find(voUser)));
-        j.setTotal(this.total(voUser));
+        String where=this.getWhere(collegeId,locked,sign);
+        j.setRows(this.changeModel(this.find(voUser,where)));
+        j.setTotal(this.total(voUser,where));
         return j;
+    }
+
+    //拼接where语句
+    public String getWhere(int collegeId,int locked,int sign){
+        String where="";
+        if(collegeId!=0) {
+            where = " t.collegeInfo = " + collegeId + " ";
+        }
+        if(locked!=0){
+            if(where!=""){where=where+" and ";}
+            locked=locked-1;
+            where =where+ " t.locked = " + locked + " ";
+        }
+        if(sign!=0){
+            if(where!=""){where=where+" and ";}
+            sign=sign-1;
+            where =where+ " t.sign = " + sign + " ";
+        }
+        if(where==""){
+            where=" 1=1";
+        }
+        System.out.println(where);
+        return where;
     }
 
     /**
@@ -286,37 +326,21 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
      * @param voUser
      * @return
      */
-    private List<User> find(VoUser voUser){
-        String hql="from User u where 1=1 ";
+    private List<User> find(VoUser voUser,String where){
+        String hql = " from User t where " + where + " ";
         List<Object> values=new ArrayList<Object>();
-        hql=addWhere(voUser,hql,values);
         if (voUser.getSort()!=null&&voUser.getOrder()!=null){
             hql+=" order by "+ voUser.getSort()+" "+voUser.getOrder();
         }
         PageBean pageBean=new PageBean(voUser.getPage(),voUser.getRows());
         return userDao.find(hql,values,pageBean);
     }
-    private Long total(VoUser voUser){
-        String hql="select count(*) from User u where 1=1 ";
+    private Long total(VoUser voUser,String where){
+        String hql = "select count(*) from User t where " + where+" ";
         List<Object> values=new ArrayList<Object>();
-        hql=addWhere(voUser,hql,values);
         return userDao.count(hql,values);
     }
-    private String addWhere(VoUser voUser,String hql,List<Object> values){
-        if(StringUtil.isNotEmpty(voUser.getUserNo())){
-            hql+=" and u.userNo like ? ";
-            values.add("%%"+voUser.getUserNo().trim()+"%%");
-        }
-        if(StringUtil.isNotEmpty(voUser.getUserName())){
-            hql+=" and u.userName like ? ";
-            values.add("%%"+voUser.getUserName()+"%%");
-        }
-        if(voUser.getCollegeId()>0){
-            hql+="and u.collegeInfo.id = ? ";
-            values.add(" "+voUser.getCollegeId());
-        }
-        return hql;
-    }
+
 
     /**
      *用户删除

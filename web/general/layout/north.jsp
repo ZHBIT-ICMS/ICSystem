@@ -26,8 +26,8 @@
         var p = parent.dj.dialog({
             title : '用户信息',
             href : 'user!doNotNeedAuth_userInfo.action',
-            width : 490,
-            height : 285,
+            width : 800,
+            height : 400,
             buttons : [ {
                 text : '修改密码',
                 handler : function() {

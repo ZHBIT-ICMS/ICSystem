@@ -12,22 +12,19 @@
         <input type="hidden" name="id" />
         <table class="tableForm">
             <tr>
-                <th style="width:80px;">夏令营活动名称</th>
-                <td><input name="activityName" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写夏令营活动名称'" style="width: 97%;" />
+                <td class="table_left"><font color="red">*</font>夏令营活动名称：</td>
+                <td><input name="activityName" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写夏令营活动名称'" />
+                </td>
+                <td class="table_left"><font color="red">*</font>夏令营活动描述：</td>
+                <td><input name="activityDesc" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写夏令营活动描述'" />
                 </td>
             </tr>
             <tr>
-                <th style="width:50px;">夏令营活动描述</th>
-                <td><input name="activityDesc" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写夏令营活动描述'" style="width: 97%;" />
+                <td class="table_left"><font color="red">*</font>夏令营活动时间：</td>
+                <td><input name="activityTime" class="easyui-datebox" id="visitTime" data-options="width: 150,required:true,missingMessage:'请填写夏令营活动时间'" />
                 </td>
-            </tr>
-            <tr>
-                <th style="width:50px;">夏令营活动时间</th>
-                <td><input name="activityTime"  class="easyui-datebox" id="visitTime"  data-options="required:true,missingMessage:'请填写夏令营活动时间'" style="width:150px;"/></td>
-            </tr>
-            <tr>
-                <th style="width:50px;">所属国外院校</th>
-                <td><input type="text" name="foreignCollegeId" style="width: 145px;" data-options="required:'true',missingMessage:'请选择所属国外院校'"/>
+                <td class="table_left"><font color="red">*</font>所属国外院校：</td>
+                <td><input type="text" name="foreignCollegeId" data-options="width: 150,required:true,missingMessage:'请选择所属国外院校'" />
                 </td>
             </tr>
         </table>

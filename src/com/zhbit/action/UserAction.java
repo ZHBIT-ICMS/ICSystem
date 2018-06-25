@@ -18,12 +18,9 @@ import net.sf.json.JsonConfig;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.StrutsStatics;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.io.UnsupportedEncodingException;
-
 
 /**
  * @Author zhangrun 【macmanboy@foxmail.com】
@@ -242,10 +239,12 @@ public class UserAction extends ActionSupport implements ModelDriven<VoUser> {
      * 获得用户datagrid
      */
     public void datagrid() {
-       /* super.writeJson(userService.datagrid(user));*/
-
-        JSONArray rows =JSONArray.fromObject(userService.dataGrid(voUser).getRows(),this.getJsonConfig()) ;
-        long total =userService.dataGrid(voUser).getTotal();
+        int collegeId = voUser.getCollegeId();
+        int locked = voUser.getLocked();
+        int sign= voUser.getSign();
+        System.out.println(collegeId+" "+locked+" "+sign);
+        JSONArray rows =JSONArray.fromObject(userService.dataGrid(voUser,collegeId,locked,sign).getRows(),this.getJsonConfig()) ;
+        long total =userService.dataGrid(voUser,collegeId,locked,sign).getTotal();
         JSONObject result = new JSONObject();
         result.put("rows",rows);
         result.put("total",total);

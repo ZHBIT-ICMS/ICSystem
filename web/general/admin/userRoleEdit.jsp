@@ -12,7 +12,7 @@
         <input name="ids" type="hidden" />
         <table>
             <tr>
-                <th>所属角色</th>
+                <td class="table_left">所属角色：</td>
                 <td><input name="roleIds" style="width:155px;" />
                 </td>
             </tr>
