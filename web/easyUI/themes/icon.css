@@ -28,6 +28,25 @@
 .icon-newsPub{
 	background:url('icons/新闻.png') no-repeat center center;
 }
+.table_left{
+	padding-left: 5px;
+	text-align: right;
+	background-color: #ddedfb;
+	font-size: 12px;
+	font-family:微软雅黑;
+	width: 120px;
+}
+.table_left+td{
+	padding: 5px;
+}
+.table_left+td>input{
+	height: 25px;
+	border: 1px solid silver;
+}
+.table_left+td>textarea{
+	border: 1px solid silver;
+}
+
 .icon-collegeInfo{
 	background:url('icons/学院.png') no-repeat center center;
 }
