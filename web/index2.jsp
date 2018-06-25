@@ -186,6 +186,7 @@ jQuery(document).ready(function($) {
 			".</p>
 		<p>" With the cultural tradition and high-qualifying teaching resources derived from BIT, BITZH is committed to cultivating the overall quality of talented students to meet the needs of the economic development and the society. BITZH strives to turn itself into a top-notch applied university which attaches great importance to the construction of disciplines and majors such as engineering, management, liberal arts, economics, law, art and so on.". </p>
 	</div>
+
 	<div class="clearfix"></div>
 <!--//about-->
 </div>
