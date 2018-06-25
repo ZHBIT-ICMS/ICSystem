@@ -13,7 +13,7 @@
         <table>
             <tr>
                 <td class="table_left">参加的夏令营：</td>
-                <td><input name="summerCampIds" style="width:155px;" />
+                <td><input name="summerCampIds" data-options="width: 150" />
                 </td>
             </tr>
         </table>

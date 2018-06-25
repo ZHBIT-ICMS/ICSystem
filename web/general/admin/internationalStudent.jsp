@@ -151,8 +151,8 @@
                 var p = parent.dj.dialog({
                     title : '批量参加雅思考试',
                     href : '${pageContext.request.contextPath}/intls!intlsIeltsExamEdit.action',
-                    width : 250,
-                    height : 130,
+                    width : 400,
+                    height : 150,
                     buttons : [ {
                         text : '编辑',
                         handler : function() {
@@ -207,8 +207,8 @@
                 var p = parent.dj.dialog({
                     title : '批量参加雅思培训',
                     href : '${pageContext.request.contextPath}/intls!intlsIeltsTrainEdit.action',
-                    width : 250,
-                    height : 130,
+                    width : 400,
+                    height : 150,
                     buttons : [ {
                         text : '编辑',
                         handler : function() {
@@ -263,8 +263,8 @@
                 var p = parent.dj.dialog({
                     title : '批量参加夏令营',
                     href : '${pageContext.request.contextPath}/intls!intlsSummerCampEdit.action',
-                    width : 250,
-                    height : 130,
+                    width : 400,
+                    height : 150,
                     buttons : [ {
                         text : '编辑',
                         handler : function() {

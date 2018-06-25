@@ -13,7 +13,7 @@
         <table>
             <tr>
                 <td class="table_left">参加的雅思培训：</td>
-                <td><input name="ieltsTrainIds" style="width:155px;" />
+                <td><input name="ieltsTrainIds" data-options="width: 150" />
                 </td>
             </tr>
         </table>
