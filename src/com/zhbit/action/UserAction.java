@@ -4,8 +4,10 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import com.opensymphony.xwork2.ModelDriven;
+import com.zhbit.entity.CollegeInfo;
 import com.zhbit.entity.base.Json;
 import com.zhbit.entity.base.SessionInfo;
+import com.zhbit.entity.vo.VoCollegeInfo;
 import com.zhbit.entity.vo.VoUser;
 import com.zhbit.exception.ValidateFieldsException;
 import com.zhbit.service.MenuService;
@@ -23,6 +25,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -38,9 +42,13 @@ public class UserAction extends ActionSupport implements ModelDriven<VoUser> {
     private UserService userService;
     @Resource
     private MenuService menuService;
+    Map m;
     private VoUser voUser = new VoUser();
 
     public String user() {
+        m=ActionContext.getContext().getSession();
+        List<VoCollegeInfo> collegelist=userService.getCollegeInfoList();
+        m.put("collegelist", collegelist);
         return "user";
     }
 
@@ -242,10 +250,12 @@ public class UserAction extends ActionSupport implements ModelDriven<VoUser> {
      * 获得用户datagrid
      */
     public void datagrid() {
-       /* super.writeJson(userService.datagrid(user));*/
-
-        JSONArray rows =JSONArray.fromObject(userService.dataGrid(voUser).getRows(),this.getJsonConfig()) ;
-        long total =userService.dataGrid(voUser).getTotal();
+        int collegeId = voUser.getCollegeId();
+        int locked = voUser.getLocked();
+        int sign= voUser.getSign();
+        System.out.println(collegeId+" "+locked+" "+sign);
+        JSONArray rows =JSONArray.fromObject(userService.dataGrid(voUser,collegeId,locked,sign).getRows(),this.getJsonConfig()) ;
+        long total =userService.dataGrid(voUser,collegeId,locked,sign).getTotal();
         JSONObject result = new JSONObject();
         result.put("rows",rows);
         result.put("total",total);

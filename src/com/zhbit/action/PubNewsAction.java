@@ -60,9 +60,10 @@ public class PubNewsAction extends ActionSupport implements ModelDriven <VoNews>
     public void datagrid() {
         //super.writeJson(bugService.datagrid(bug));
         // 提交Json
+        String title = voNews.getTitle();
         System.out.println("sort："+voNews.getSort()+" order: "+voNews.getOrder());
-        JSONArray rows = JSONArray.fromObject(newsService.datagrid(voNews).getRows(),this.getJsonConfig());
-        long total = newsService.datagrid(voNews).getTotal();
+        JSONArray rows = JSONArray.fromObject(newsService.datagrid(voNews,title).getRows(),this.getJsonConfig());
+        long total = newsService.datagrid(voNews,title).getTotal();
         JSONObject result = new JSONObject();
         result.put("rows",rows);
         result.put("total",total);
