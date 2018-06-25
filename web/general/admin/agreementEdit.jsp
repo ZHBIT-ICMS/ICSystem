@@ -12,30 +12,28 @@
         <input name="id"  type="hidden">
         <table class="tableForm">
             <tr>
-                <th style="width:80px;">协议标题</th>
-                <td><input name="title" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写协议标题'" style="width: 97%;" />
+                <td class="table_left"><font color="red">*</font>协议标题：</td>
+                <td><input name="title" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写协议标题'" />
+                </td>
+                <td class="table_left"><font color="red">*</font>协议类型：</td>
+                <td><input name="type" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写协议类型'" />
                 </td>
             </tr>
             <tr>
-                <th style="width:50px;">协议类型</th>
-                <td><input name="type" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写协议类型'" style="width: 97%;" />
+                <td class="table_left"><font color="red">*</font>签订国外院校：</td>
+                <td><input type="text" name="foreignCollegeId" data-options="width: 150,required:true,missingMessage:'请选择所属国外院校'" />
                 </td>
+                <td class="table_left"><font color="red">*</font>签订时间：</td>
+                <td><input name="agreementTime" class="easyui-datebox" data-options="width: 150,required:true,missingMessage:'请填写签订时间'" />
+                </td>
+
             </tr>
             <tr>
-                <th style="width:50px;">签订国外院校</th>
-                <td><input type="text" name="foreignCollegeId" style="width: 145px;" data-options="required:'true',missingMessage:'请选择所属国外院校'"/>
+                <td class="table_left">协议内容：</td>
+                <td colspan="3"><textarea name="content" style="height: 360px;"></textarea>
                 </td>
             </tr>
-            <tr>
-                <th style="width:50px;">签订时间</th>
-                <td><input name="agreementTime" class="easyui-datebox" data-options="required:true,missingMessage:'请填写签订时间'" style="width: 97%;" />
-                </td>
-            </tr>
-            <tr>
-                <th>协议内容</th>
-                <td><textarea name="content" style="height: 460px;width: 98%;"></textarea>
-                </td>
-            </tr>
+
         </table>
     </form>
 </div>

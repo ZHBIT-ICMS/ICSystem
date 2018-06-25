@@ -12,15 +12,13 @@
         <input type="hidden" name="id" />
         <table class="tableForm">
             <tr>
-                <th style="width:80px;">学院名称</th>
-                <td><input name="collegeName" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写学院名称'" style="width: 97%;" />
+                <td class="table_left"><font color="red">*</font>学院名称：</td>
+                <td><input name="collegeName" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写学院名称'" />
                 </td>
-            </tr>
-            <tr>
-            <tr>
-                <th style="width:80px;">学院描述</th>
-                <td><input name="descInfo" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写学院描述'" style="width: 97%;" />
+                <td class="table_left"><font color="red">*</font>学院描述：</td>
+                <td><input name="descInfo" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写学院描述'" />
                 </td>
+
             </tr>
         </table>
     </form>

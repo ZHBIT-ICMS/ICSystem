@@ -114,8 +114,8 @@
                 var p = parent.dj.dialog({
                     title : '修改交换生信息',
                     href : '${pageContext.request.contextPath}/exchangeStu!exchangeStuEdit.action?id=' + rows[0].id,
-                    width : 500,
-                    height : 450,
+                    width : 800,
+                    height : 250,
                     buttons : [ {
                         text : '修改',
                         handler : function() {
@@ -153,8 +153,8 @@
             var p = parent.dj.dialog({
                 title : '添加交换生信息',
                 href : '${pageContext.request.contextPath}/exchangeStu!exchangeStuAdd.action',
-                width : 500,
-                height : 450,
+                width : 800,
+                height : 250,
                 buttons : [ {
                     text : '添加',
                     handler : function() {

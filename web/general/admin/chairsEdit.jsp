@@ -12,28 +12,30 @@
         <input name="id"  type="hidden">
         <table class="tableForm">
             <tr>
-                <th style="width:80px;">讲座主题</th>
-                <td><input name="title" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写讲座主题'" style="width:150px;"/>
+                <td class="table_left"><font color="red">*</font>讲座主题：</td>
+                <td><input name="title" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写讲座主题'" />
+                </td>
+                <td class="table_left"><font color="red">*</font>所属国外院校：</td>
+                <td><input name="foreignCollegeId"  type="text"  id="foreignCollegeId"  data-options="width: 150,required:true,missingMessage:'请选择所属国外院校'" />
+                </td>
+
+            </tr>
+            <tr>
+                <td class="table_left"><font color="red">*</font>到访时间：</td>
+                <td><input name="visitTime" class="easyui-datebox" id="visitTime" data-options="width: 150,required:true,missingMessage:'请填写到访日期'" />
+                </td>
+                <td class="table_left"><font color="red">*</font>活动时间：</td>
+                <td><input name="activityTime" class="easyui-datebox" id="activityTime" data-options="width: 150,required:true,missingMessage:'请填写活动日期'" />
+                </td>
+
+            </tr>
+
+            <tr>
+                <td class="table_left">讲座内容：</td>
+                <td colspan="3"><textarea name="content" style="height: 360px;"></textarea>
                 </td>
             </tr>
-            <tr>
-                <th style="width:50px;">讲座内容</th>
-                <%-- <td><input name="content" class="easyui-textbox" data-options="required:true,missingMessage:'请填写讲座内容'" style="width: 97%;" />
-                 </td>--%>
-                <td><textarea name="content" style="height: 200px;width: 98%;"></textarea></td>
-            </tr>
-            <tr>
-                <th style="width:50px;">到访时间</th>
-                <td><input name="visitTime"  class="easyui-datebox" id="visitTime"  data-options="required:true,missingMessage:'请填写到访日期'" style="width:150px;"/></td>
-            </tr>
-            <tr>
-                <th style="width:50px;">活动时间</th>
-                <td><input name="activityTime"  class="easyui-datebox" id="activityTime"  data-options="required:true,missingMessage:'请填写活动日期'" style="width:150px;"/></td>
-            </tr>
-            <tr>
-                <th style="width:50px;">所属国外院校</th>
-                <td><input name="foreignCollegeId"  type="text" id="foreignCollegeId"  style="width: 145px;" data-options="required:'true',missingMessage:'请选择所属国外院校'"/></td>
-            </tr>
+
         </table>
     </form>
 </div>

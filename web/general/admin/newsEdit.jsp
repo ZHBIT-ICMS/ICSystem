@@ -12,19 +12,16 @@
         <input type="hidden" name="id" />
         <table class="tableForm">
             <tr>
-                <th style="width:80px;">新闻标题</th>
-                <td><input name="title" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写新闻标题'" style="width: 97%;" />
+                <td class="table_left"><font color="red">*</font>新闻标题：</td>
+                <td><input name="title" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写新闻标题'" />
+                </td>
+                <td class="table_left"><font color="red">*</font>发布人：</td>
+                <td><input name="people" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写发布人'" />
                 </td>
             </tr>
             <tr>
-            <tr>
-                <th style="width:80px;">发布人</th>
-                <td><input name="people" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写新闻标题'" style="width: 97%;" />
-                </td>
-            </tr>
-            <tr>
-                <th>新闻内容</th>
-                <td><textarea name="content" style="height: 460px;width: 98%;">${content}</textarea>
+                <td class="table_left">新闻内容：</td>
+                <td colspan="3"><textarea name="content" style="height: 360px;">${content}</textarea>
                 </td>
             </tr>
         </table>

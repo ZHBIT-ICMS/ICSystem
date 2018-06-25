@@ -104,8 +104,8 @@
                 var p = parent.dj.dialog({
                     title : '修改讲座信息',
                     href : '${pageContext.request.contextPath}/chair!chairsEdit.action?id=' + rows[0].id,
-                    width : 500,
-                    height : 300,
+                    width : 800,
+                    height : 400,
                     buttons : [ {
                         text : '修改',
                         handler : function() {
@@ -155,8 +155,8 @@
             var p = parent.dj.dialog({
                 title : '增加讲座',
                 href : '${pageContext.request.contextPath}/chair!chairsAdd.action',
-                width : 500,
-                height : 450,
+                width : 800,
+                height : 400,
                 buttons : [ {
                     text : '增加',
                     handler : function() {

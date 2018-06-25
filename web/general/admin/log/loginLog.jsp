@@ -171,7 +171,7 @@
 </div>
 
 <div id="menu" class="easyui-menu" style="width:120px;display: none;">
-    <div onclick="searchLoginlog();" data-options="iconCls:'icon-remove'">删除</div>
+    <div onclick="remove();" data-options="iconCls:'icon-remove'">删除</div>
 </div>
 </body>
 </html>

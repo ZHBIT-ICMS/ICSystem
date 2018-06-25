@@ -85,10 +85,16 @@ public class NewsServiceImpl implements NewsService{
      * @return
      */
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public DataGrid datagrid(VoNews voNews) {
+    public DataGrid datagrid(VoNews voNews,String title) {
         DataGrid j = new DataGrid();
-        j.setRows(this.changeModel(this.find(voNews)));
-        j.setTotal(total(voNews));
+        String where;
+        if(title!=null) {
+            where = "t.title like '%" + title + "%'";
+        }else{
+            where="1=1";
+        }
+        j.setRows(this.changeModel(this.find(voNews,where)));
+        j.setTotal(total(voNews,where));
         return j;
     }
 
@@ -114,9 +120,8 @@ public class NewsServiceImpl implements NewsService{
      * @param voNews
      * @return
      */
-    private List<News> find(VoNews voNews) {
-        String hql = " from News t where 1=1 ";
-
+    private List<News> find(VoNews voNews,String where) {
+        String hql = " from News t where " + where + " ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voNews, hql, values);
 
@@ -132,8 +137,8 @@ public class NewsServiceImpl implements NewsService{
      * @param voNews
      * @return
      */
-    private Long total(VoNews voNews) {
-        String hql = "select count(*) from News t where 1=1 ";
+    private Long total(VoNews voNews,String where) {
+        String hql = "select count(*) from News t where " + where+" ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voNews, hql, values);
         return baseDAO.count(hql, values);

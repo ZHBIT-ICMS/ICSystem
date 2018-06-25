@@ -10,10 +10,10 @@ import java.util.List;
 /**
  * Created by wby on 2018/5/28.
  */
-//ĞÂÎÅ
+//æ–°é—»
 public interface NewsService {
     /**
-     * Õ¹Ê¾ËùÓĞĞÂÎÅ£¬ÕâÀïÕ¹Ê¾1-8Ìõ×îĞÂĞÂÎÅ
+     * å±•ç¤ºæ‰€æœ‰æ–°é—»ï¼Œè¿™é‡Œå±•ç¤º1-8æ¡æœ€æ–°æ–°é—»
      * @param s_news
      * @param pageBean
      * @return
@@ -21,45 +21,45 @@ public interface NewsService {
     public List<News> showNewsList(News s_news, PageBean pageBean);
 
     /**
-     * ¸ù¾İid ²é³öĞÂÎÅÏêÇé
+     * æ ¹æ®id æŸ¥å‡ºæ–°é—»è¯¦æƒ…
      * @param newsId
      * @return
      */
     public News getNewsById(int newsId);
 
     /**
-     * ¼ÆËã×Ü¼ÇÂ¼Êı
+     * è®¡ç®—æ€»è®°å½•æ•°
      * @param s_news
      * @return
      */
     public Long getNewsCount(News s_news);
 
 
-//ÒÔÏÂ·½·¨ÓÉ×é³¤ÕÅÈóÌí¼Ó
+//ä»¥ä¸‹æ–¹æ³•ç”±ç»„é•¿å¼ æ¶¦æ·»åŠ 
     /**
-     * »ñµÃÊı¾İ±í¸ñ
+     * è·å¾—æ•°æ®è¡¨æ ¼
      *
      * @param voNews
      * @return
      */
-    public DataGrid datagrid(VoNews voNews);
+    public DataGrid datagrid(VoNews voNews,String title);
 
     /**
-     * É¾³ı
+     * åˆ é™¤
      *
      * @param ids
      */
     public void delete(String ids);
 
     /**
-     * Ìí¼Ó
+     * æ·»åŠ 
      *
      * @param voNews
      */
     public void add(VoNews voNews);
 
     /**
-     * »ñµÃĞÂÎÅÄÚÈİ
+     * è·å¾—æ–°é—»å†…å®¹
      * @param id
      * @return
      */
