@@ -85,7 +85,7 @@
     </div>
     <div class="sb_box">
         <h3 class="title">
-            <div class="position">POSITION：<a href="index.html" title="网站首页">HOME</a> &gt; <a href="notice.html">NOTICE</a></div>
+            <div class="position">POSITION：<a href="index2.jsp" title="网站首页">HOME</a> &gt; <a href="notice.jsp">NOTICE</a></div>
         </h3>
         <div class="clear"></div>
         <div class="active" id="newslist">

@@ -24,8 +24,8 @@
             <%--</a>--%>
 
             <ul class="top-nav list-none">
-                <li class="t"><a href='#' onclick='SetHome(this,window.location,"非IE浏览器不支持此功能，请手动设置！");' style='cursor:pointer;' title='设为首页'  >设为首页</a><span>|</span><a href='#' onclick='addFavorite("非IE浏览器不支持此功能，请手动设置！");' style='cursor:pointer;' title='收藏本站'  >收藏本站</a><span>|</span><a class="fontswitch" id="StranLink" href="javascript:StranBody()">繁体中文</a><span>|</span><a href='#' title='WAP'>WAP</a><span>|</span><a href='#' title='English'  >English</a><span>|</span><a href='#' title='我的订单' class='shopweba'>我的订单</a></li>
-                <li class="b"><a href="admin/"><strong><span style="color:#ffff00;"><span style="font-size: 16px;">后台演示请点击这里进入</span></span></strong></a></li>
+                <li class="t"><span>|</span><a href='#' onclick='addFavorite("非IE浏览器不支持此功能，请手动设置！");' style='cursor:pointer;' title='collection'  >collection</a><span>|</span><a class="fontswitch" id="StranLink" href="javascript:StranBody()">chinese</a><span>|</span><a href='#' title='WAP'>WAP</a><span>|</span><a href='#' title='English'  >English</a><span>|</span><a href='index2.jsp' title='HOME' class='shopweba'>HOME</a></li>
+                <%--<li class="b"><a href="admin/"><strong><span style="color:#ffff00;"><span style="font-size: 16px;">后台演示请点击这里进入</span></span></strong></a></li>--%>
             </ul>
         </div>
         <nav>
@@ -59,8 +59,8 @@
 
         <h3 class='title myCorner' data-corner='top 5px'>QUICK ENTRY</h3>
         <div class="active" id="sidebar" data-csnow="2" data-class3="0" data-jsok="2">
-            <dl class="list-none navnow"><dt id='part2_4'><a href='#'  title='公司动态' class="zm"><span>NEWS</span></a></dt></dl>
-            <dl class="list-none navnow"><dt id='part2_5'><a href='#'  title='业界资讯' class="zm"><span>NOTICE</span></a></dt></dl>
+            <dl class="list-none navnow"><dt id='part2_4'><a href='#'  title='NEWS' class="zm"><span></span></a></dt></dl>
+            <dl class="list-none navnow"><dt id='part2_5'><a href='#'  title='NOTICE' class="zm"><span>NOTICE</span></a></dt></dl>
             <div class="clear"></div></div>
 
         <h3 class='title line myCorner' data-corner='top 5px'>CONTRACT US</h3>
@@ -80,7 +80,7 @@
     </div>
     <div class="sb_box">
         <h3 class="title">
-            <div class="position">POSITION：<a href="index.html" title="网站首页">HOME</a> &gt; <a href="news.html">NEWS</a></div>
+            <div class="position">POSITION：<a href="index2.jsp" title="网站首页">HOME</a> &gt; <a href="shownews.jsp">NEWS</a></div>
             <span>SHOW NEWS</span>
         </h3>
         <div class="clear"></div>
@@ -101,7 +101,7 @@
 
 <footer data-module="2" data-classnow="5">
     <div class="inner">
-        <div class="foot-nav"><a href=''  title='company'>company</a><span>|</span><a href='../message/'  title='在线留言'>在线留言</a><span>|</span><a href=''  title='在线反馈'>在线反馈</a><span>|</span><a href='../link/'  title='友情链接'>友情链接</a><span>|</span><a href='../member/'  title='会员中心'>会员中心</a><span>|</span><a href='../search/'  title='站内搜索'>站内搜索</a><span>|</span><a href='../sitemap/'  title='网站地图'>网站地图</a><span>|</span><a href=''  title='网站管理'>网站管理</a></div>
+        <div class="foot-nav"><a href=''  title='company'>company</a><span>|</span><a href='../message/'  title='comment'>Comment</a><span>|</span><a href=''  title='Rsponse'>Rsponse</a><span>|</span><a href='../link/'  title='Friendship link'>Friendship link</a><span>|</span><a href='../member/'  title='Member Center'>Member Center</a><span>|</span><a href='../search/'  title='Search'>Search</a><span>|</span><a href='../sitemap/'  title='Map'>Map</a><span>|</span><a href=''  title='Website management'>Website-management</a></div>
         <div class="foot-text">
             <p>Copyrigt zhbit <script src="http://s6.cnzz.com/stat.php?id=1670348&web_id=1670348" language="JavaScript"></script></p>
             <p>TEL：0663-3383330  QQ:992720192 Email:992720192@qq.com</p>
