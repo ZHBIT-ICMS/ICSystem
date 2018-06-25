@@ -46,10 +46,9 @@ public class LoginLogAction extends ActionSupport implements ModelDriven<VoLogin
     public void datagrid() {
         //super.writeJson(bugService.datagrid(bug));
         // 提交Json
-        String userNo = voLoginLog.getUserNo();
         System.out.println("sort："+voLoginLog.getSort()+" order: "+voLoginLog.getOrder());
-        JSONArray rows = JSONArray.fromObject(loginLogService.datagrid(voLoginLog,userNo).getRows(),this.getJsonConfig());
-        long total = loginLogService.datagrid(voLoginLog,userNo).getTotal();
+        JSONArray rows = JSONArray.fromObject(loginLogService.datagrid(voLoginLog).getRows(),this.getJsonConfig());
+        long total = loginLogService.datagrid(voLoginLog).getTotal();
         JSONObject result = new JSONObject();
         result.put("rows",rows);
         result.put("total",total);

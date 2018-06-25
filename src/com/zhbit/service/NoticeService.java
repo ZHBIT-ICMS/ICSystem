@@ -31,7 +31,7 @@ public interface NoticeService {
     /**
      * 获得数据表格
      */
-    public DataGrid datagrid(VoNotice voNotice,String title);
+    public DataGrid datagrid(VoNotice voNotice);
 
     /**
      * 删除

@@ -42,7 +42,7 @@ public interface NewsService {
      * @param voNews
      * @return
      */
-    public DataGrid datagrid(VoNews voNews,String title);
+    public DataGrid datagrid(VoNews voNews);
 
     /**
      * 删除

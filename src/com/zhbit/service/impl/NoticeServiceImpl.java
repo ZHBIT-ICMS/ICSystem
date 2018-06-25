@@ -88,16 +88,11 @@ public class NoticeServiceImpl implements NoticeService  {
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public DataGrid datagrid(VoNotice voNotice,String title) {
+    public DataGrid datagrid(VoNotice voNotice) {
         DataGrid j = new DataGrid();
         String where;
-        if(title!=null) {
-            where = "t.title like '%" + title + "%'";
-        }else{
-            where="1=1";
-        }
-        j.setRows(this.changeModel(this.find(voNotice,where)));
-        j.setTotal(total(voNotice,where));
+        j.setRows(this.changeModel(this.find(voNotice)));
+        j.setTotal(total(voNotice));
         return j;
     }
 
@@ -116,8 +111,8 @@ public class NoticeServiceImpl implements NoticeService  {
         return voNoticeList;
     }
 
-    private List<Notice> find(VoNotice voNotice,String where) {
-        String hql = " from Notice t where " + where + " ";
+    private List<Notice> find(VoNotice voNotice) {
+        String hql = " from Notice t where ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voNotice, hql, values);
 
@@ -129,14 +124,22 @@ public class NoticeServiceImpl implements NoticeService  {
     }
 
     private String addWhere(VoNotice voNotice, String hql, List<Object> values) {
+        String where;
+        String title=voNotice.getTitle();
+        if(title!=null) {
+            where = "t.title like '%" + title + "%'";
+        }else{
+            where=" 1=1";
+        }
+        hql=hql+where+" ";
         return hql;
     }
 
     /**
      *计算通知公告信息总数
      */
-    private Long total(VoNotice voNotice,String where) {
-        String hql = "select count(*) from Notice t where " + where+" ";
+    private Long total(VoNotice voNotice) {
+        String hql = "select count(*) from Notice t where ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voNotice, hql, values);
         return baseDAO.count(hql, values);

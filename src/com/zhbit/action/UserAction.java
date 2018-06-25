@@ -239,12 +239,8 @@ public class UserAction extends ActionSupport implements ModelDriven<VoUser> {
      * 获得用户datagrid
      */
     public void datagrid() {
-        int collegeId = voUser.getCollegeId();
-        int locked = voUser.getLocked();
-        int sign= voUser.getSign();
-        System.out.println(collegeId+" "+locked+" "+sign);
-        JSONArray rows =JSONArray.fromObject(userService.dataGrid(voUser,collegeId,locked,sign).getRows(),this.getJsonConfig()) ;
-        long total =userService.dataGrid(voUser,collegeId,locked,sign).getTotal();
+        JSONArray rows =JSONArray.fromObject(userService.dataGrid(voUser).getRows(),this.getJsonConfig()) ;
+        long total =userService.dataGrid(voUser).getTotal();
         JSONObject result = new JSONObject();
         result.put("rows",rows);
         result.put("total",total);

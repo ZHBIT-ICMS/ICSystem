@@ -189,21 +189,6 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
         loginLogBaseDAO.save(loginLog);
     }
 
-    @Override
-    public List<VoCollegeInfo> getCollegeInfoList() {
-        List<VoCollegeInfo> rl = new ArrayList<VoCollegeInfo>();
-        List<CollegeInfo> l = collegeInfoDAO.find(" from CollegeInfo ");
-        if (l != null && l.size() > 0) {
-            for (CollegeInfo t : l) {
-                VoCollegeInfo r = new VoCollegeInfo();
-                r.setId(t.getId());
-                r.setCollegeName(t.getCollegeName());
-                rl.add(r);
-            }
-        }
-        return rl;
-    }
-
     /**
      * 保存用户信息
      * @param voUser
@@ -235,17 +220,18 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
     }
 
     @Override
-    public DataGrid dataGrid(VoUser voUser,int collegeId,int locked,int sign) {
+    public DataGrid dataGrid(VoUser voUser) {
         DataGrid j=new DataGrid();
-        String where=this.getWhere(collegeId,locked,sign);
-        j.setRows(this.changeModel(this.find(voUser,where)));
-        j.setTotal(this.total(voUser,where));
+        j.setRows(this.changeModel(this.find(voUser)));
+        j.setTotal(this.total(voUser));
         return j;
     }
 
-    //拼接where语句
-    public String getWhere(int collegeId,int locked,int sign){
+    private String addWhere(VoUser voUser, String hql, List<Object> values) {
         String where="";
+        int collegeId=voUser.getCollegeId();
+        int locked=voUser.getLocked();
+        int sign=voUser.getSign();
         if(collegeId!=0) {
             where = " t.collegeInfo = " + collegeId + " ";
         }
@@ -262,8 +248,8 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
         if(where==""){
             where=" 1=1";
         }
-        System.out.println(where);
-        return where;
+        hql=hql+where+ " ";
+        return hql;
     }
 
     /**
@@ -326,18 +312,20 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
      * @param voUser
      * @return
      */
-    private List<User> find(VoUser voUser,String where){
-        String hql = " from User t where " + where + " ";
+    private List<User> find(VoUser voUser){
+        String hql = " from User t where ";
         List<Object> values=new ArrayList<Object>();
+        hql = addWhere(voUser,hql,values);
         if (voUser.getSort()!=null&&voUser.getOrder()!=null){
             hql+=" order by "+ voUser.getSort()+" "+voUser.getOrder();
         }
         PageBean pageBean=new PageBean(voUser.getPage(),voUser.getRows());
         return userDao.find(hql,values,pageBean);
     }
-    private Long total(VoUser voUser,String where){
-        String hql = "select count(*) from User t where " + where+" ";
+    private Long total(VoUser voUser){
+        String hql = "select count(*) from User t where ";
         List<Object> values=new ArrayList<Object>();
+        hql = addWhere(voUser, hql, values);
         return userDao.count(hql,values);
     }
 

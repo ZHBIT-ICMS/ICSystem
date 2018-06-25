@@ -20,11 +20,10 @@ import java.util.List;
 public interface UserService {
     public VoUser login(VoUser voUser);
     public void save(VoUser voUser) throws ValidateFieldsException;
-    public DataGrid dataGrid(VoUser voUser,int collegeId,int locked,int sign);
+    public DataGrid dataGrid(VoUser voUser);
     public void delete(String ids);
     public void update(VoUser voUser)throws ValidateFieldsException;
     public void editRole(VoUser voUser);
     public void editUserInfo(VoUser voUser);
     public void addLoginLog(String userNo);
-    public List<VoCollegeInfo> getCollegeInfoList();
 }

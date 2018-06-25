@@ -85,16 +85,10 @@ public class NewsServiceImpl implements NewsService{
      * @return
      */
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public DataGrid datagrid(VoNews voNews,String title) {
+    public DataGrid datagrid(VoNews voNews) {
         DataGrid j = new DataGrid();
-        String where;
-        if(title!=null) {
-            where = "t.title like '%" + title + "%'";
-        }else{
-            where="1=1";
-        }
-        j.setRows(this.changeModel(this.find(voNews,where)));
-        j.setTotal(total(voNews,where));
+        j.setRows(this.changeModel(this.find(voNews)));
+        j.setTotal(total(voNews));
         return j;
     }
 
@@ -120,8 +114,8 @@ public class NewsServiceImpl implements NewsService{
      * @param voNews
      * @return
      */
-    private List<News> find(VoNews voNews,String where) {
-        String hql = " from News t where " + where + " ";
+    private List<News> find(VoNews voNews) {
+        String hql = " from News t where ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voNews, hql, values);
 
@@ -137,8 +131,8 @@ public class NewsServiceImpl implements NewsService{
      * @param voNews
      * @return
      */
-    private Long total(VoNews voNews,String where) {
-        String hql = "select count(*) from News t where " + where+" ";
+    private Long total(VoNews voNews) {
+        String hql = "select count(*) from News t where ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voNews, hql, values);
         return baseDAO.count(hql, values);
@@ -152,6 +146,14 @@ public class NewsServiceImpl implements NewsService{
      * @return
      */
     private String addWhere(VoNews voNews, String hql, List<Object> values) {
+        String where;
+        String title=voNews.getTitle();
+        if(title!=null) {
+            where = "t.title like '%" + title + "%'";
+        }else{
+            where=" 1=1";
+        }
+        hql=hql+where+" ";
         return hql;
     }
 
