@@ -11,18 +11,16 @@
     <form method="post">
         <table class="tableForm">
             <tr>
-                <th style="width: 55px;">角色名称</th>
-                <td><input name="cname" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写菜单名称'" style="width:323px;" />
+                <td class="table_left"><font color="red">*</font>角色名称：</td>
+                <td><input name="cname" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写菜单名称'" />
+                </td>
+                <td class="table_left"><font color="red">*</font>拥有权限：</td>
+                <td><input name="authIds" style="width:250px;" />
                 </td>
             </tr>
             <tr>
-                <th>拥有权限</th>
-                <td><input name="authIds" style="width:327px;" />
-                </td>
-            </tr>
-            <tr>
-                <th>备注</th>
-                <td><textarea name="cdesc" style="height: 100px;"></textarea>
+                <td class="table_left">备注：</td>
+                <td colspan="3"><textarea name="cdesc" style="height: 150px;"></textarea>
                 </td>
             </tr>
         </table>

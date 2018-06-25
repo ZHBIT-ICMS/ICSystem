@@ -11,22 +11,23 @@
     <form method="post">
         <table class="tableForm">
             <tr>
-                <th style="width: 70px;">权限名称</th>
-                <td><input name="cname" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写菜单名称'" style="width: 155px;" /></td>
-                <th style="width: 50px;">排序</th>
+                <td class="table_left"><font color="red">*</font>权限名称：</td>
+                <td><input name="cname" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写菜单名称'" />
+                </td>
+                <td class="table_left">排序：</td>
                 <td><input name="cseq" class="easyui-numberspinner" data-options="min:0,max:999,editable:false,required:true,missingMessage:'请选择菜单排序'" value="10" style="width:120px;" /></td>
             </tr>
             <tr>
-                <th>权限地址</th>
-                <td colspan="3"><input name="curl" style="width:98%;" /></td>
+                <td class="table_left">权限地址：</td>
+                <td><input name="curl" style="width:98%;" /></td>
+                <td class="table_left">上级权限：</td>
+                <td><input name="pid" style="width: 240px;" /></td>
             </tr>
             <tr>
-                <th>权限描述</th>
-                <td colspan="3"><input name="cdesc" style="width:98%;" /></td>
-            </tr>
-            <tr>
-                <th>上级权限</th>
-                <td colspan="3"><input name="pid" style="width: 335px;" /></td>
+                <td class="table_left">权限描述：</td>
+                <td colspan="3">
+                    <input name="cdesc" class="easyui-validatebox" data-options="width: 150" />
+                 </td>
             </tr>
         </table>
     </form>

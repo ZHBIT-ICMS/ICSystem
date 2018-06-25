@@ -43,7 +43,7 @@
                 }, {
                     title : '学生姓名',
                     field : 'name',
-                    width : 100
+                    width : 80
                 } ] ],
                 columns : [ [ {
                     title : '状态',
@@ -53,35 +53,35 @@
                 }, {
                     title : '专业',
                     field : 'major',
-                    width : 100
+                    width : 80
                 }, {
                     title : '所属班级',
                     field : 'classInfoName',
-                    width : 120
+                    width : 100
                 }, {
                     title : '参加的夏令营',
                     field : 'summerCampNames',
-                    width : 80
+                    width : 100
                 }, {
                     title : '参加的雅思培训',
                     field : 'ieltsTrainNames',
                     sortable : true,
-                    width : 120
+                    width : 100
                 }, {
                     title : '参加的雅思考试',
                     field : 'ieltsExamNames',
                     sortable : true,
-                    width : 120
+                    width : 100
                 }, {
                     title : '所属出国生身份',
                     field : 'overSeasStudentName',
                     sortable : true,
-                    width : 40
+                    width : 80
                 },{
                     title : '所属交换生身份',
                     field : 'exchangeStudentName',
                     sortable : true,
-                    width : 40
+                    width : 80
                 }
                 ] ],
                 toolbar : [ {
@@ -315,8 +315,8 @@
                 var p = parent.dj.dialog({
                     title : '编辑国际班学生',
                     href : '${pageContext.request.contextPath}/intls!internationalStudentEdit.action',
-                    width : 500,
-                    height : 250,
+                    width : 800,
+                    height : 300,
                     buttons : [ {
                         text : '编辑',
                         handler : function() {
@@ -426,8 +426,8 @@
             var p = parent.dj.dialog({
                 title : '添加国际班学生',
                 href : '${pageContext.request.contextPath}/intls!internationalStudentAdd.action',
-                width : 600,
-                height : 400,
+                width : 800,
+                height : 300,
                 buttons : [ {
                     text : '添加',
                     handler : function() {

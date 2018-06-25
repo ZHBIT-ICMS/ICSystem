@@ -106,8 +106,8 @@
                 var p = parent.dj.dialog({
                     title : '修改机构信息',
                     href : '${pageContext.request.contextPath}/ieltstInfo!ieltstEdit.action?id=' + rows[0].id,
-                    width : 1000,
-                    height : 700,
+                    width : 800,
+                    height : 300,
                     buttons : [ {
                         text : '修改',
                         handler : function() {
@@ -145,8 +145,8 @@
             var p = parent.dj.dialog({
                 title : '发布机构信息',
                 href : '${pageContext.request.contextPath}/ieltstInfo!ieltstAdd.action',
-                width : 500,
-                height : 450,
+                width : 800,
+                height : 300,
                 buttons : [ {
                     text : '发布',
                     handler : function() {

@@ -11,16 +11,16 @@
     <form method="post">
         <table class="tableForm">
             <tr>
-                <th style="width:80px;">国外院校名称</th>
-                <td><input name="foreignName" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写国外院校名称'" style="width: 97%;" />
+                <td class="table_left"><font color="red">*</font>国外院校名称：</td>
+                <td><input name="foreignName" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写国外院校名称'" />
+                </td>
+                <td class="table_left"><font color="red">*</font>国外院校类型：</td>
+                <td><input name="foreignType" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'国外院校类型'" />
                 </td>
             </tr>
             <tr>
-                <th style="width:50px;">国外院校类型</th>
-                <td><input name="foreignType" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写国外院校类型'" style="width: 97%;" />
-                </td>
-                <th style="width:50px;">国外院校状态</th>
-                <td><input name="stat" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写国外院校状态'" style="width: 97%;" />
+                <td class="table_left"><font color="red">*</font>国外院校状态：</td>
+                <td><input name="stat" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写国外院校状态'" />
                 </td>
             </tr>
         </table>

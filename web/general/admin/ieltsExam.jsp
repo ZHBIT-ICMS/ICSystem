@@ -127,7 +127,7 @@
                 var p = parent.dj.dialog({
                     title : '修改雅思考试信息',
                     href : '${pageContext.request.contextPath}/ieltstExam!ieltstExamEdit.action?id=' + rows[0].id,
-                    width : 500,
+                    width : 800,
                     height : 300,
                     buttons : [ {
                         text : '修改',
@@ -178,8 +178,8 @@
             var p = parent.dj.dialog({
                 title : '增加雅思考试',
                 href : '${pageContext.request.contextPath}/ieltstExam!ieltstExamAdd.action',
-                width : 500,
-                height : 450,
+                width : 800,
+                height : 300,
                 buttons : [ {
                     text : '增加',
                     handler : function() {

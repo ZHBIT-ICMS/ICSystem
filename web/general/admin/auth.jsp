@@ -160,8 +160,8 @@
                 var p = parent.dj.dialog({
                     title : '编辑权限',
                     href : '${pageContext.request.contextPath}/auth!authEdit.action',
-                    width : 440,
-                    height : 200,
+                    width : 800,
+                    height : 300,
                     buttons : [ {
                         text : '编辑',
                         handler : function() {
@@ -203,8 +203,8 @@
             var p = parent.dj.dialog({
                 title : '添加权限',
                 href : '${pageContext.request.contextPath}/auth!authAdd.action',
-                width : 440,
-                height : 200,
+                width : 800,
+                height : 300,
                 buttons : [ {
                     text : '添加',
                     handler : function() {

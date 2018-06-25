@@ -106,7 +106,7 @@
                     title : '修改通知公告信息',
                     href : '${pageContext.request.contextPath}/pubNotice!noticeEdit.action?id=' + rows[0].id,
                     width : 800,
-                    height : 600,
+                    height : 550,
                     buttons : [ {
                         text : '修改',
                         handler : function() {
@@ -154,8 +154,8 @@
             var p = parent.dj.dialog({
                 title : '发添加通知公告',
                 href : '${pageContext.request.contextPath}/pubNotice!noticeAdd.action',
-                width : 500,
-                height : 450,
+                width : 800,
+                height : 550,
                 buttons : [ {
                     text : '发布',
                     handler : function() {
@@ -239,7 +239,7 @@
 
         //搜索实现
         function searchNotic() {
-            datagrid.datagrid('load',$('#newSearchForm').serializeJson());
+            datagrid.datagrid('load',$('#noticeSearchForm').serializeJson());
         }
 
         /**
@@ -273,7 +273,7 @@
 </head>
 <body class="easyui-layout">
 <div data-options="region:'north',border:false,title:'查询'" style="height: 55px;overflow: hidden;" align="left">
-    <form id="newSearchForm" style="display:inline;">
+    <form id="noticeSearchForm" style="display:inline;">
         <span style="margin-left:2px;">公告标题: <input class="easyui-textbox" style="width:100px;" name="title"/></span>
         <a onclick="searchNotic();" class="easyui-linkbutton" style="width:100px;" data-options="iconCls:'icon-search'">查询</a>
     </form>

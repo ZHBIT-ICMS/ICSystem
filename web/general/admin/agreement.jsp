@@ -106,8 +106,8 @@
                 var p = parent.dj.dialog({
                     title : '修改协议',
                     href : '${pageContext.request.contextPath}/pubAgreement!agreementsEdit.action?id=' + rows[0].id,
-                    width : 1000,
-                    height : 700,
+                    width : 800,
+                    height : 450,
                     buttons : [ {
                         text : '修改',
                         handler : function() {
@@ -163,7 +163,7 @@
             var p = parent.dj.dialog({
                 title : '发布协议',
                 href : '${pageContext.request.contextPath}/pubAgreement!agreementsAdd.action',
-                width : 500,
+                width : 800,
                 height : 450,
                 buttons : [ {
                     text : '发布',

@@ -12,7 +12,7 @@
         <input name="ids" type="hidden" />
         <table>
             <tr>
-                <th>参加的夏令营</th>
+                <td class="table_left">参加的夏令营：</td>
                 <td><input name="summerCampIds" style="width:155px;" />
                 </td>
             </tr>

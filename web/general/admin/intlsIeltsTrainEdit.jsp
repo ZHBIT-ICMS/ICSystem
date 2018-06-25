@@ -12,7 +12,7 @@
         <input name="ids" type="hidden" />
         <table>
             <tr>
-                <th>参加的雅思培训</th>
+                <td class="table_left">参加的雅思培训：</td>
                 <td><input name="ieltsTrainIds" style="width:155px;" />
                 </td>
             </tr>
