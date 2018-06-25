@@ -89,7 +89,7 @@ public class NewsServiceImpl implements NewsService{
         DataGrid j = new DataGrid();
         String where;
         if(title!=null) {
-            where = "t.collegeId = '%" + title + "%'";
+            where = "t.title like '%" + title + "%'";
         }else{
             where="1=1";
         }
@@ -138,7 +138,7 @@ public class NewsServiceImpl implements NewsService{
      * @return
      */
     private Long total(VoNews voNews,String where) {
-        String hql = "select count(*) from Policy t where " + where+" ";
+        String hql = "select count(*) from News t where " + where+" ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voNews, hql, values);
         return baseDAO.count(hql, values);
