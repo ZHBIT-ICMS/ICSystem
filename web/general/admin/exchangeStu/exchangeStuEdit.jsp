@@ -12,33 +12,27 @@
         <input type="hidden" name="id" />
         <table class="tableForm">
             <tr>
-                <th style="width:80px;">交换生名称</th>
-                <td><input name="exchangeName" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写交换生名称'" style="width: 97%;" />
+                <td class="table_left"><font color="red">*</font>交换生名称：</td>
+                <td><input name="exchangeName" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写交换生名称'" />
+                </td>
+                <td class="table_left"><font color="red">*</font>替换的课程：</td>
+                <td><input name="replaceCourse" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写替换的课程'" />
                 </td>
             </tr>
             <tr>
-                <th style="width:80px;">替换的课程</th>
-                <td><input name="replaceCourse" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写替换的课程'" style="width: 97%;" />
+                <td class="table_left"><font color="red">*</font>替换的学分：</td>
+                <td><input name="replaceCredit" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写替换的学分'" />
+                </td>
+                <td class="table_left"><font color="red">*</font>出国的学校：</td>
+                <td><input name="schoolName" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写出国的学校'" />
                 </td>
             </tr>
             <tr>
-                <th style="width:80px;">替换的学分</th>
-                <td><input name="replaceCredit" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写替换的学分'" style="width: 97%;" />
+                <td class="table_left"><font color="red">*</font>出国的类型：</td>
+                <td><input name="schoolType" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写出国的类型'" />
                 </td>
-            </tr>
-            <tr>
-                <th style="width:80px;">出国的学校</th>
-                <td><input name="schoolName" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写出国的学校'" style="width: 97%;" />
-                </td>
-            </tr>
-            <tr>
-                <th style="width:80px;">出国的类型</th>
-                <td><input name="schoolType" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写出国的类型'" style="width: 97%;" />
-                </td>
-            </tr>
-            <tr>
-                <th style="width:50px;">出国的时间</th>
-                <td><input name="goAbroadTime" id="goAbroadTime" class="easyui-datebox" data-options="required:true,missingMessage:'请填写出国的时间'" style="width: 97%;" />
+                <td class="table_left"><font color="red">*</font>出国的时间：</td>
+                <td><input name="goAbroadTime" id="goAbroadTime"  class="easyui-datebox" data-options="width: 150,required:true,missingMessage:'请填写出国的时间'" />
                 </td>
             </tr>
 

@@ -115,8 +115,7 @@ public class NewsServiceImpl implements NewsService{
      * @return
      */
     private List<News> find(VoNews voNews) {
-        String hql = " from News t where 1=1 ";
-
+        String hql = " from News t where ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voNews, hql, values);
 
@@ -133,7 +132,7 @@ public class NewsServiceImpl implements NewsService{
      * @return
      */
     private Long total(VoNews voNews) {
-        String hql = "select count(*) from News t where 1=1 ";
+        String hql = "select count(*) from News t where ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voNews, hql, values);
         return baseDAO.count(hql, values);
@@ -147,6 +146,14 @@ public class NewsServiceImpl implements NewsService{
      * @return
      */
     private String addWhere(VoNews voNews, String hql, List<Object> values) {
+        String where;
+        String title=voNews.getTitle();
+        if(title!=null) {
+            where = "t.title like '%" + title + "%'";
+        }else{
+            where=" 1=1";
+        }
+        hql=hql+where+" ";
         return hql;
     }
 

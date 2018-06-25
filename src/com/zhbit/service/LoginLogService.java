@@ -20,7 +20,7 @@ public interface LoginLogService {
 
     public LoginLog getLoginLogById(int loginLogId);
 
-    public DataGrid datagrid(VoLoginLog voLoginLog,String userNo);
+    public DataGrid datagrid(VoLoginLog voLoginLog);
 
     //删除
     public void delete(String ids);

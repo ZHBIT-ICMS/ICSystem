@@ -32,7 +32,7 @@ public interface PolicyService {
     /**
      * 获得数据表格
      */
-    public DataGrid datagrid(VoPolicy voPolicy,String title);
+    public DataGrid datagrid(VoPolicy voPolicy);
 
     /**
      * 删除

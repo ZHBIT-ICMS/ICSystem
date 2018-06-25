@@ -84,16 +84,11 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public DataGrid datagrid(VoPolicy voPolicy,String title) {
+    public DataGrid datagrid(VoPolicy voPolicy) {
         DataGrid j = new DataGrid();
         String where;
-        if(title!=null) {
-            where = "t.title like '%" + title + "%'";
-        }else{
-            where="1=1";
-        }
-        j.setRows(this.changeModel(this.find(voPolicy,where)));
-        j.setTotal(total(voPolicy,where));
+        j.setRows(this.changeModel(this.find(voPolicy)));
+        j.setTotal(total(voPolicy));
         return j;
     }
 
@@ -112,8 +107,8 @@ public class PolicyServiceImpl implements PolicyService {
         return voPolicyList;
     }
 
-    private List<Policy> find(VoPolicy voPolicy,String where) {
-        String hql = " from Policy t where " + where + " ";
+    private List<Policy> find(VoPolicy voPolicy) {
+        String hql = " from Policy t where ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voPolicy, hql, values);
 
@@ -125,14 +120,22 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     private String addWhere(VoPolicy voPolicy, String hql, List<Object> values) {
+        String where;
+        String title=voPolicy.getTitle();
+        if(title!=null) {
+            where = "t.title like '%" + title + "%'";
+        }else{
+            where=" 1=1";
+        }
+        hql=hql+where+" ";
         return hql;
     }
 
     /**
      *计算政策法规信息总数
      */
-    private Long total(VoPolicy voPolicy,String where) {
-        String hql = "select count(*) from Policy t where " + where+" ";
+    private Long total(VoPolicy voPolicy) {
+        String hql = "select count(*) from Policy t where ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voPolicy, hql, values);
         return baseDAO.count(hql, values);

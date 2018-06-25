@@ -101,8 +101,8 @@
                 var p = parent.dj.dialog({
                     title : '修改新闻',
                     href : '${pageContext.request.contextPath}/pubNews!newsEdit.action?id=' + rows[0].id,
-                    width : 1000,
-                    height : 700,
+                    width : 800,
+                    height : 550,
                     buttons : [ {
                         text : '修改',
                         handler : function() {
@@ -150,8 +150,8 @@
             var p = parent.dj.dialog({
                 title : '发布新闻',
                 href : '${pageContext.request.contextPath}/pubNews!newsAdd.action',
-                width : 500,
-                height : 450,
+                width : 800,
+                height : 550,
                 buttons : [ {
                     text : '发布',
                     handler : function() {
@@ -232,9 +232,48 @@
 
             datagrid.datagrid('unselectAll');
         }
+
+        //搜索实现
+        function searchNews() {
+            datagrid.datagrid('load',$('#newsSearchForm').serializeJson());
+        }
+
+        /**
+         *
+         * @requires jQuery
+         *
+         * 将form表单元素的值序列化成对象
+         *
+         * @returns object
+         */
+        (function($){
+            $.fn.serializeJson=function(){
+                var serializeObj={};
+                var array=this.serializeArray();
+                var str=this.serialize();
+                $(array).each(function(){
+                    if(serializeObj[this.name]){
+                        if($.isArray(serializeObj[this.name])){
+                            serializeObj[this.name].push(this.value);
+                        }else{
+                            serializeObj[this.name]=[serializeObj[this.name],this.value];
+                        }
+                    }else{
+                        serializeObj[this.name]=this.value;
+                    }
+                });
+                return serializeObj;
+            };
+        })(jQuery);
     </script>
 </head>
 <body class="easyui-layout">
+<div data-options="region:'north',border:false,title:'查询'" style="height: 55px;overflow: hidden;" align="left">
+    <form id="newsSearchForm" style="display:inline;">
+        <span style="margin-left:2px;">新闻标题: <input class="easyui-textbox" style="width:100px;" name="title"/></span>
+        <a onclick="searchNews();" class="easyui-linkbutton" style="width:100px;" data-options="iconCls:'icon-search'">查询</a>
+    </form>
+</div>
 <div data-options="region:'center',border:false" style="overflow: hidden;">
     <table id="datagrid"></table>
 </div>

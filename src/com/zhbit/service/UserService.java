@@ -1,11 +1,14 @@
 package com.zhbit.service;
 
+import com.zhbit.entity.CollegeInfo;
 import com.zhbit.entity.User;
 import com.zhbit.entity.base.DataGrid;
+import com.zhbit.entity.vo.VoCollegeInfo;
 import com.zhbit.entity.vo.VoUser;
 import com.zhbit.exception.ValidateFieldsException;
 
 import javax.xml.bind.ValidationException;
+import java.util.List;
 
 /**
  * @Author zhangrun 【macmanboy@foxmail.com】

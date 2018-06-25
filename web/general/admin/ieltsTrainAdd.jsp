@@ -4,29 +4,27 @@
     <form method="post">
         <table class="tableForm">
             <tr>
-                <th style="width:80px;">雅思机构编号</th>
-                <td><input name="ieltsTrainId" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写雅思机构编号'" style="width: 97%;" />
+                <td class="table_left"><font color="red">*</font>雅思机构编号：</td>
+                <td><input name="ieltsTrainId" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写雅思机构编号'" />
+                </td>
+                <td class="table_left"><font color="red">*</font>雅思机构名称：</td>
+                <td><input name="trainName" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写雅思机构名称'" />
                 </td>
             </tr>
             <tr>
-                <th style="width:50px;">雅思机构名称</th>
-                <td><input name="trainName" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写雅思机构名称'" style="width: 97%;" />
+                <td class="table_left"><font color="red">*</font>培训的学期：</td>
+                <td><input name="trainTerm" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写培训的学期'" />
+                </td>
+                <td class="table_left"><font color="red">*</font>培训的开始时期：</td>
+                <td><input name="trainClassHours" class="easyui-validatebox" data-options="width: 150,required:true,missingMessage:'请填写雅思课程学时'" />
                 </td>
             </tr>
+
             <tr>
-                <th style="width:50px;">培训的学期</th>
-                <td><input name="trainTerm" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写培训的学期'" style="width: 97%;" />
+                <td class="table_left"><font color="red">*</font>培训的开始时期：</td>
+                <td><input name="trainTime" class="easyui-datebox" data-options="width: 150,required:true,missingMessage:'请填写培训的时期'" />
                 </td>
-            </tr>
-            <tr>
-                <th style="width:50px;">培训的开始时期</th>
-                <td><input name="trainTime" class="easyui-datebox" data-options="required:true,missingMessage:'请填写培训的时期'" style="width: 97%;" />
-                </td>
-            </tr>
-            <tr>
-                <th style="width:50px;">雅思课程学时</th>
-                <td><input name="trainClassHours" class="easyui-validatebox" data-options="required:true,missingMessage:'请填写雅思课程学时'" style="width: 97%;" />
-                </td>
+
             </tr>
         </table>
     </form>

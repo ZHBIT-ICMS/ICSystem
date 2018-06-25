@@ -48,16 +48,10 @@ public class LoginLogServiceImpl implements LoginLogService {
     }
 
     @Override
-    public DataGrid datagrid(VoLoginLog voLoginLog,String userNo) {
+    public DataGrid datagrid(VoLoginLog voLoginLog) {
         DataGrid j = new DataGrid();
-        String where;
-        if(userNo!=null) {
-            where = "t.userNo like '%" + userNo + "%'";
-        }else{
-            where="1=1";
-        }
-        j.setRows(this.changeModel(this.find(voLoginLog,where)));
-        j.setTotal(total(voLoginLog,where));
+        j.setRows(this.changeModel(this.find(voLoginLog)));
+        j.setTotal(total(voLoginLog));
         return j;
     }
 
@@ -130,8 +124,8 @@ public class LoginLogServiceImpl implements LoginLogService {
         return voLoginLogList;
     }
 
-    private List<LoginLog> find(VoLoginLog voLoginLog,String where) {
-        String hql = " from LoginLog t where " + where + " ";
+    private List<LoginLog> find(VoLoginLog voLoginLog) {
+        String hql = " from LoginLog t where ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voLoginLog, hql, values);
         if (voLoginLog.getSort() != null && voLoginLog.getOrder() != null) {
@@ -148,14 +142,22 @@ public class LoginLogServiceImpl implements LoginLogService {
     }
 
     private String addWhere(VoLoginLog voLoginLog, String hql, List<Object> values) {
+        String where;
+        String userNo=voLoginLog.getUserNo();
+        if(userNo!=null) {
+            where = " t.userNo like '%" + userNo + "%'";
+        }else{
+            where=" 1=1";
+        }
+        hql=hql+where+" ";
         return hql;
     }
 
     /**
      *计算登录记录信息条数
      */
-    private Long total(VoLoginLog voLoginLog,String where) {
-        String hql = "select count(*) from LoginLog t where " + where+" ";
+    private Long total(VoLoginLog voLoginLog) {
+        String hql = "select count(*) from LoginLog t where ";
         List<Object> values = new ArrayList<Object>();
         hql = addWhere(voLoginLog, hql, values);
         return baseDAO.count(hql, values);
