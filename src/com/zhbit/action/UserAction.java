@@ -4,10 +4,8 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import com.opensymphony.xwork2.ModelDriven;
-import com.zhbit.entity.CollegeInfo;
 import com.zhbit.entity.base.Json;
 import com.zhbit.entity.base.SessionInfo;
-import com.zhbit.entity.vo.VoCollegeInfo;
 import com.zhbit.entity.vo.VoUser;
 import com.zhbit.exception.ValidateFieldsException;
 import com.zhbit.service.MenuService;
@@ -20,14 +18,9 @@ import net.sf.json.JsonConfig;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.StrutsStatics;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
-import java.util.Map;
-
 
 /**
  * @Author zhangrun 【macmanboy@foxmail.com】
@@ -42,13 +35,9 @@ public class UserAction extends ActionSupport implements ModelDriven<VoUser> {
     private UserService userService;
     @Resource
     private MenuService menuService;
-    Map m;
     private VoUser voUser = new VoUser();
 
     public String user() {
-        m=ActionContext.getContext().getSession();
-        List<VoCollegeInfo> collegelist=userService.getCollegeInfoList();
-        m.put("collegelist", collegelist);
         return "user";
     }
 

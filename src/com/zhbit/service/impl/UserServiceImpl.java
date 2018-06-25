@@ -329,7 +329,6 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
     private List<User> find(VoUser voUser,String where){
         String hql = " from User t where " + where + " ";
         List<Object> values=new ArrayList<Object>();
-        hql=addWhere(voUser,hql,values);
         if (voUser.getSort()!=null&&voUser.getOrder()!=null){
             hql+=" order by "+ voUser.getSort()+" "+voUser.getOrder();
         }
@@ -339,12 +338,9 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
     private Long total(VoUser voUser,String where){
         String hql = "select count(*) from User t where " + where+" ";
         List<Object> values=new ArrayList<Object>();
-        hql=addWhere(voUser,hql,values);
         return userDao.count(hql,values);
     }
-    private String addWhere(VoUser voUser,String hql,List<Object> values){
-        return hql;
-    }
+
 
     /**
      *用户删除

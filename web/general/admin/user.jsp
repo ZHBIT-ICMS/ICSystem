@@ -380,18 +380,19 @@
                 return serializeObj;
             };
         })(jQuery);
+
+        function cleanSearch() {
+            datagrid.datagrid('load', {});
+            $('#userSearchForm input').val('');
+        }
     </script>
 </head>
 <body class="easyui-layout" data-options="fit:true">
 <div data-options="region:'north',border:false,title:'查询'" style="height: 55px;overflow: hidden;" align="left">
     <form id="userSearchForm">
         <span style="margin-left:2px;">所属学院:
-            <select class="easyui-combobox" name="collegeId" data-options="editable:false,panelHeight:'auto'" style="width:100px;">
-                <option value="0">&nbsp;</option>
-                <c:forEach  items="${collegelist }" var="obj">
-                    <option  value='${obj.id}'>${obj.collegeName}</option>
-                </c:forEach>
-            </select></span>
+            <input class="easyui-combobox" style="width: 100px"  name="collegeId" data-options="panelHeight:'auto',editable:false,valueField:'id',textField:'collegeName',url:'${pageContext.request.contextPath}/collegeInfo!doNotNeedSession_combobox.action'"/>
+            </span>
         <span style="margin-left:2px;">状态:
             <select id="sLocked" class="easyui-combobox" name="locked" size="3" data-options="editable:false,panelHeight:'auto'" style="width:100px;">
                 <option value="0">&nbsp;</option>
@@ -405,6 +406,7 @@
                 <option value="2">学生</option>
             </select></span>
         <a onclick="searchUser();" class="easyui-linkbutton" style="width:100px;" data-options="iconCls:'icon-search'">查询</a>
+        <a onclick="cleanSearch();" class="easyui-linkbutton" style="width:100px;" data-options="iconCls:'icon-cancel'">取消</a>
     </form>
 </div>
 <div data-options="region:'center',border:false" style="overflow: hidden;">
