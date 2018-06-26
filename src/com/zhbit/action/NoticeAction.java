@@ -27,6 +27,14 @@ public class NoticeAction extends ActionSupport implements ServletRequestAware {
     private HttpServletRequest request;
     private String pageCode;
 
+    public String getPageCode() {
+        return pageCode;
+    }
+
+    public void setPageCode(String pageCode) {
+        this.pageCode = pageCode;
+    }
+
     public List <Notice> getNoticeList() {
         return noticeList;
     }
@@ -97,7 +105,7 @@ public class NoticeAction extends ActionSupport implements ServletRequestAware {
      */
     public String showNotice(){
         notice=noticeService.getNoticeById(noticeId);
-        return "success";
+        return "shownotice";
     }
 
     @Override

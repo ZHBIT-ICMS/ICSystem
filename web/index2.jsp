@@ -85,7 +85,7 @@ jQuery(document).ready(function($) {
 <body>
 <div class="header" id="home">
 <div class="logo">
-	<a href="#"><h1>Education Hub</h1></a>
+	<a href="#"><h1>ICSystem</h1></a>
 </div>
 <!-- navigation -->
 	<div class="ban-top-con">
@@ -181,11 +181,12 @@ jQuery(document).ready(function($) {
 		<h2>about ZHBIT</h2>
 		<h4>BITZH is located in the City of Zhuhai, Guangdong Province, next to Macau and Hong Kong, easily accessible via Beijing-Hongkong-Macau highway, West Guangdong highway, Guangzhou-Zhuhai express train and also by air travel. The campus covers a scenic area of over 3.3 million square meters with more than 80% of green coverage. It has a reputation for being one of the most naturally beautiful campuses in Zhuhai.
 		</h4>
-		<img src="images/su.jpg" alt="sucess">
+		<img src="images/library.jpg" alt="sucess">
 		<p>"On May 8, 2004, BITZH was jointly established by Beijing Institute of Technology (BIT) and Guangda Strategic Investment Co., Ltd under the approval of the Ministry of Education of the People’s Republic of China and with the support of Zhuhai Municipal Government. BITZH is a legally and financially independent college and an academic affiliated college of BIT.
 			".</p>
 		<p>" With the cultural tradition and high-qualifying teaching resources derived from BIT, BITZH is committed to cultivating the overall quality of talented students to meet the needs of the economic development and the society. BITZH strives to turn itself into a top-notch applied university which attaches great importance to the construction of disciplines and majors such as engineering, management, liberal arts, economics, law, art and so on.". </p>
 	</div>
+
 	<div class="clearfix"></div>
 <!--//about-->
 </div>
@@ -422,7 +423,7 @@ jQuery(document).ready(function($) {
 				<c:forEach items="${newsList}" var="n">
 					<li>
 
-						<a href="news_getNewsById.action"?newsId=${n.id} target="_blank">${n.title }</a>
+						<a href="news_showNews.action?newsId=${n.id}" target="_blank"  style="float: left">${n.title }</a>
 					</li>
 				</c:forEach>
 			</ul>
@@ -433,8 +434,7 @@ jQuery(document).ready(function($) {
 			<ul>
 				<c:forEach items="${noticeList }" var="n">
 					<li>
-
-						<a href="news_getNoticeById.action"? newsId=${n.id} target="_blank">${n.title }</a>
+						<a href="notice_showNotice.action?noticeId=${n.id}" target="_blank" style="float: left">${n.title }</a>
 					</li>
 				</c:forEach>
 			</ul>

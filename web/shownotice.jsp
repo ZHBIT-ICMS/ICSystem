@@ -59,7 +59,7 @@
 
         <h3 class='title myCorner' data-corner='top 5px'>QUICK ENTRY</h3>
         <div class="active" id="sidebar" data-csnow="2" data-class3="0" data-jsok="2">
-            <dl class="list-none navnow"><dt id='part2_4'><a href='#'  title='NEWS' class="zm"><span></span></a></dt></dl>
+            <dl class="list-none navnow"><dt id='part2_4'><a href='#'  title='NEWS' class="zm"><span>NEWS</span></a></dt></dl>
             <dl class="list-none navnow"><dt id='part2_5'><a href='#'  title='NOTICE' class="zm"><span>NOTICE</span></a></dt></dl>
             <div class="clear"></div></div>
 
@@ -80,15 +80,15 @@
     </div>
     <div class="sb_box">
         <h3 class="title">
-            <div class="position">POSITION：<a href="index2.jsp" title="网站首页">HOME</a> &gt; <a href="shownews.jsp">NEWS</a></div>
-            <span>SHOW NEWS</span>
+            <div class="position">POSITION：<a href="index2.jsp" title="网站首页">HOME</a> &gt; <a href="shownotice.jsp">SHOW NOTICE</a></div>
+            <span>SHOW NOTICE</span>
         </h3>
         <div class="clear"></div>
 
         <div class="active" id="shownews">
-            <h1 class="title">${news.title}</h1>
+            <h1 class="title">${notice.title}</h1>
             <div class="editor"><div><div>
-               ${news.content}
+               ${notice.content}
             </div>
 
                 <div id="metinfo_additional"></div></div><div class="clear"></div></div>
@@ -108,7 +108,7 @@
 
 
         </div>
-    </div>
+    </div>>
 </footer>
 <script src="images/fun.inc.js" type="text/javascript"></script>
 

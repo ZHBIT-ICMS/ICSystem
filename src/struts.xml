@@ -17,6 +17,9 @@
     <!-- 文件上传最大值 -->
     <constant name="struts.multipart.maxSize" value="104857600" />
     <!-- 定义登录拦截器 -->
+    <package name="ics1" namespace="/" extends="struts-default">
+    </package>
+
 	<package name="ics" namespace="/" extends="struts-default">
          <interceptors>
              <!--定义session拦截器-->
@@ -47,25 +50,14 @@
         <global-exception-mappings>
             <exception-mapping result="strutsException" exception="java.lang.Exception"></exception-mapping>
         </global-exception-mappings>
-        <!--新闻-->
-        <action name="news_*" class="com.zhbit.action.NewsAction" method="{1}">
-            <result name="success">morenews.jsp</result>
-        </action>
+
 
         <!--交换生-->
         <action name="exchangeStu_*" class="com.zhbit.action.ExchangeStuAction" method="{1}">
             <result name="success">moreexchangestu.jsp</result>
         </action>
 
-        <!--政策法规-->
-        <action name="policy_*" class="com.zhbit.action.PolicyAction" method="{1}">
-            <result name="success">mainwby.jsp</result>
-        </action>
 
-        <!--公告-->
-        <action name="notice_*" class="com.zhbit.action.NoticeAction" method="{1}">
-            <result name="success">morenotice.jsp</result>
-        </action>
         <!-- 用户 -->
         <action name="user" class="com.zhbit.action.UserAction">
             <result name="doNotNeedAuth_index">/general/index.jsp</result>
@@ -198,5 +190,23 @@
             <result name="intlsIeltsTrain">/general/admin/intlsIeltsTrainEdit.jsp</result>
             <result name="intlsIeltsExam">/general/admin/intlsIeltsExamEdit.jsp</result>
         </action>
-    </package>  
+    </package>
+
+    <!--排除后台设置的权限拦截器-->
+    <package name="other" extends="ics1">
+        <!--新闻-->
+        <action name="news_*" class="com.zhbit.action.NewsAction" method="{1}">
+            <result name="success">news.jsp</result>
+            <result name="shownews">shownews.jsp</result>
+        </action>
+        <!--政策法规-->
+        <action name="policy_*" class="com.zhbit.action.PolicyAction" method="{1}">
+            <!--<result name="success">mainwby.jsp</result>-->
+        </action>
+        <!--公告-->
+        <action name="notice_*" class="com.zhbit.action.NoticeAction" method="{1}">
+            <result name="success">notice.jsp</result>
+            <result name="shownotice">shownotice.jsp</result>
+        </action>
+    </package>
 </struts>   

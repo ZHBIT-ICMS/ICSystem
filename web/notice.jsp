@@ -85,15 +85,15 @@
     </div>
     <div class="sb_box">
         <h3 class="title">
-            <div class="position">POSITION：<a href="index2.jsp" title="网站首页">HOME</a> &gt; <a href="news.jsp">NEWS</a></div>
+            <div class="position">POSITION：<a href="index2.jsp" title="网站首页">HOME</a> &gt; <a href="notice.jsp">NOTICE</a></div>
         </h3>
         <div class="clear"></div>
         <div class="active" id="newslist">
             <ul class='list-none metlist'>
-                <c:forEach items="${newsList}" var="n">
+                <c:forEach items="${noticeList}" var="n">
                     <li class='list '>
                         <span>[${n.createTime}]</span>
-                        <a href="news_showNews.action?newsId=${n.id}" target="_blank">${n.title }</a><img class='listhot' src='images/hot.gif' alt='图片关键词' />
+                        <a href="notice_showNotice.action?noticeId=${n.id}" target="_blank">${n.title }</a><img class='listhot' src='images/hot.gif' alt='图片关键词' />
                     </li>
                 </c:forEach>
             </ul>
